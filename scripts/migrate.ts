@@ -7,11 +7,16 @@
  * Safe to re-run — all DDL uses IF NOT EXISTS / ON CONFLICT DO NOTHING.
  */
 
-import { Pool } from "@neondatabase/serverless";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import WebSocket from "ws";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 
 const DATABASE_URL = process.env.DATABASE_URL;
+
+// The migration runner uses Neon Pool directly, so configure Node WebSockets
+// here as well as in src/lib/db.ts.
+neonConfig.webSocketConstructor = WebSocket;
 
 if (!DATABASE_URL) {
   console.error("❌  DATABASE_URL is not set. Copy .env.local.example → .env.local and fill it in.");

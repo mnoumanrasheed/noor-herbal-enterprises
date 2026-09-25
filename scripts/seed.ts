@@ -30,7 +30,7 @@ const CATEGORIES = [
   {
     name: "Chutney",
     slug: "chutney",
-    description: "Handcrafted chutneys made from fresh, natural ingredients.",
+    description: "Handcrafted chutneys made with carefully selected ingredients.",
     sort_order: 1,
   },
   {
@@ -48,7 +48,7 @@ const CATEGORIES = [
   {
     name: "Shampoo",
     slug: "shampoo",
-    description: "Natural herbal shampoos free from harsh chemicals.",
+    description: "Herbal shampoos prepared for everyday care.",
     sort_order: 4,
   },
 ];

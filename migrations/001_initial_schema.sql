@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS product_variants (
   product_id     UUID NOT NULL REFERENCES products(id) ON DELETE CASCADE,
   sku            TEXT NOT NULL UNIQUE,
   name           TEXT NOT NULL,           -- e.g. "250g", "500ml"
-  price_paise    INTEGER NOT NULL,        -- price in paise (INR × 100), integer avoids float rounding
+  price_paise    INTEGER NOT NULL,        -- price in Pakistani paise, integer avoids float rounding
   compare_price_paise INTEGER,            -- crossed-out "was" price
   weight_grams   INTEGER,
   is_active      BOOLEAN NOT NULL DEFAULT TRUE,
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS orders (
   city             TEXT NOT NULL,
   state            TEXT NOT NULL,
   postal_code      TEXT NOT NULL,
-  country          TEXT NOT NULL DEFAULT 'IN',
+  country          TEXT NOT NULL DEFAULT 'PK',
   -- Financials (all in paise)
   subtotal_paise   INTEGER NOT NULL,
   shipping_paise   INTEGER NOT NULL DEFAULT 0,
@@ -252,12 +252,16 @@ $$;
 -- -------------------------------------------------------------
 INSERT INTO site_settings (key, value) VALUES
   ('site_name',        'Noor Herbal Enterprises'),
-  ('site_tagline',     'Pure. Natural. Handcrafted.'),
-  ('contact_email',    'hello@noorherbal.com'),
-  ('contact_phone',    ''),
+  ('site_tagline',     'Traditional. Thoughtful. Handcrafted.'),
+  ('contact_email',    'noorherbalenterprises@gmail.com'),
+  ('contact_phone',    '+92 300 5599174'),
+  ('contact_instagram','https://www.instagram.com/noorherbalenterprices/'),
+  ('hero_eyebrow',     'The Noor Herbal collection'),
+  ('hero_title',       'A considered ritual' || CHR(10) || 'for every day.'),
+  ('hero_description', 'Discover chutneys, pickles, oils, and herbal shampoos composed with care for kitchens, shelves, and daily routines.'),
+  ('hero_cta_label',   'Shop the collection'),
+  ('hero_visual_category', 'The complete collection'),
   ('contact_address',  ''),
-  ('currency_code',    'INR'),
-  ('currency_symbol',  '₹'),
-  ('free_shipping_threshold_paise', '50000'),   -- ₹500 free shipping
-  ('shipping_flat_rate_paise',      '6000')     -- ₹60 flat rate
+  ('currency_code',    'PKR'),
+  ('currency_symbol',  'Rs')
 ON CONFLICT (key) DO NOTHING;

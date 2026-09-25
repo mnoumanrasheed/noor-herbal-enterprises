@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     template: "%s | Noor Herbal Enterprises",
   },
   description:
-    "Pure, natural, and handcrafted herbal products. Chutneys, pickles, oils, and shampoos rooted in tradition.",
-  keywords: ["herbal", "natural", "chutney", "pickles", "herbal oil", "herbal shampoo", "organic"],
+    "Thoughtfully made herbal products from Noor Herbal Enterprises in Pakistan. Chutneys, pickles, oils, and shampoos rooted in tradition.",
+  keywords: ["herbal", "chutney", "pickles", "herbal oil", "herbal shampoo", "Pakistan"],
   authors: [{ name: "Noor Herbal Enterprises" }],
   openGraph: {
     type: "website",
-    locale: "en_IN",
+    locale: "en_PK",
     siteName: "Noor Herbal Enterprises",
   },
 };

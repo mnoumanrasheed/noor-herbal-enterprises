@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LoginForm } from "./LoginForm";
+import { Logo } from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Admin Login",
@@ -12,11 +13,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-2">
-            <span className="font-display text-2xl font-bold text-[#c9a84c]">
-              Noor Herbal
-            </span>
-          </div>
+          <div className="inline-flex rounded-md bg-white p-1.5"><Logo size={38} /></div>
           <p className="mt-1 text-xs tracking-widest uppercase text-[#6b6560]">
             Admin Portal
           </p>

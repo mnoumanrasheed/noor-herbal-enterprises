@@ -1,26 +1,36 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CategoryCard } from "@/components/storefront/CategoryCard";
-import { getActiveCategories } from "@/lib/queries";
+import { CategoryShowcase } from "@/components/storefront/CategoryShowcase";
+import HeroScene from "@/components/storefront/HeroScene";
+import { getCategoryShowcases, getHeroSettings, getStorefrontContent } from "@/lib/queries";
+import { DEFAULT_HERO_SETTINGS, type HeroSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Noor Herbal Enterprises — Pure. Natural. Handcrafted.",
+  title: "Noor Herbal Enterprises — Traditional. Thoughtful. Handcrafted.",
   description:
-    "Discover our range of natural chutneys, pickles, oils, and herbal shampoos crafted from the finest ingredients.",
+    "Discover our range of chutneys, pickles, oils, and herbal shampoos made with care in Pakistan.",
 };
 
 // ISR: revalidate homepage every 60 s
 export const revalidate = 60;
 
 export default async function HomePage() {
-  let categories: Awaited<ReturnType<typeof getActiveCategories>> = [];
+  let categories: Awaited<ReturnType<typeof getCategoryShowcases>> = [];
+  let catalogError = false;
+  let hero: HeroSettings = DEFAULT_HERO_SETTINGS;
+  let content = { homepageCopy: "Discover chutneys, pickles, oils, and shampoos composed with care for kitchens, shelves, and daily routines.", featuredContent: "A considered selection from the Noor Herbal collection.", footerContent: "" };
   try {
-    categories = await getActiveCategories();
+    categories = await getCategoryShowcases();
   } catch {
-    // DB not configured yet — render static shell
-    categories = [];
+    catalogError = true;
   }
+  try {
+    hero = await getHeroSettings();
+  } catch {
+    // Render managed defaults until the database is available.
+  }
+  try { content = await getStorefrontContent(); } catch { /* managed defaults remain visible */ }
 
   return (
     <>
@@ -32,107 +42,38 @@ export default async function HomePage() {
         Skip to main content
       </a>
 
-      {/* Hero section */}
-      <section
-        aria-labelledby="hero-heading"
-        className="relative overflow-hidden bg-[#0f0f0f] text-white"
-      >
-        {/* Background texture */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-[#0f0f0f] via-[#1c1c1c] to-[#0f0f0f] opacity-90"
-        />
-        {/* Gold accent line */}
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"
-        />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center">
-          {/* Eyebrow */}
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#c9a84c]">
-            Pure · Natural · Handcrafted
-          </p>
-
-          <h1
-            id="hero-heading"
-            className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
-          >
-            Rooted in Nature,
-            <br />
-            <span className="text-[#c9a84c]">Crafted with Care</span>
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-xl text-base sm:text-lg text-[#a09a8f] leading-relaxed">
-            Noor Herbal Enterprises brings you authentic, chemical-free products
-            made from handpicked natural ingredients — from your kitchen to your
-            daily care routine.
-          </p>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/categories"
-              className="rounded-[8px] bg-[#c9a84c] px-7 py-3.5 text-base font-semibold text-[#0f0f0f] hover:bg-[#a67c2e] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c] focus-visible:outline-offset-2"
-            >
-              Shop All Products
-            </Link>
-            <Link
-              href="/about"
-              className="rounded-[8px] border border-[#c9a84c]/50 px-7 py-3.5 text-base font-medium text-[#d4cfc5] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
-            >
-              Our Story
-            </Link>
+      <section aria-labelledby="hero-heading" className="hero-section">
+        <div className="hero-glow hero-glow-one" aria-hidden="true" />
+        <div className="hero-glow hero-glow-two" aria-hidden="true" />
+        <div className="hero-grid-lines" aria-hidden="true" />
+        <div className="site-shell hero-layout px-4 sm:px-6 lg:px-8">
+          <div className="hero-copy">
+            <p className="eyebrow">{hero.eyebrow}</p>
+            <h1 id="hero-heading" className="hero-heading">{hero.title}</h1>
+            <p className="hero-description">{hero.description}</p>
+            <div className="hero-actions">
+              <Link href="/categories" className="button-primary">{hero.ctaLabel}</Link>
+              <Link href="/about" className="hero-secondary-action">Our story <span aria-hidden="true">↗</span></Link>
+            </div>
+            <div className="hero-meta" aria-label="Collection details">
+              <span>01 / 04</span>
+              <span className="hero-meta-rule" aria-hidden="true" />
+              <span>{hero.visualCategory}</span>
+            </div>
+          </div>
+          <div className="hero-visual-wrap">
+            <HeroScene />
+            <div className="hero-visual-caption" aria-hidden="true">
+              <span>Four expressions</span>
+              <span>One considered collection</span>
+            </div>
+            <p className="sr-only">A composed 3D arrangement of unlabelled jars and bottles representing chutney, pickles, oils, and shampoo. Product packaging will be added when approved assets are available.</p>
           </div>
         </div>
+        <div className="hero-bottom-line" aria-hidden="true" />
       </section>
 
-      {/* Categories section */}
-      <section
-        aria-labelledby="categories-heading"
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
-      >
-        <div className="mb-10 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] mb-2">
-            Our Collections
-          </p>
-          <h2
-            id="categories-heading"
-            className="font-display text-3xl font-bold text-[#0f0f0f] sm:text-4xl"
-          >
-            Shop by Category
-          </h2>
-          <hr className="divider-gold mt-4 max-w-xs mx-auto" />
-        </div>
-
-        {categories.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((cat) => (
-              <CategoryCard key={cat.id} category={cat} />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {["Chutney", "Pickles", "Oils", "Shampoo"].map((name) => (
-              <div
-                key={name}
-                className="aspect-[4/3] animate-pulse rounded-[12px] bg-[#e8e3d9]"
-                aria-label={`Loading ${name} category`}
-              />
-            ))}
-          </div>
-        )}
-
-        {categories.length > 0 && (
-          <div className="mt-10 text-center">
-            <Link
-              href="/categories"
-              className="inline-block rounded-[8px] border border-[#c9a84c] px-6 py-2.5 text-sm font-medium text-[#c9a84c] hover:bg-[#f5eecf] transition-colors"
-            >
-              View all categories
-            </Link>
-          </div>
-        )}
-      </section>
+      <CategoryShowcase categories={categories} error={catalogError} intro={content.homepageCopy} featuredContent={content.featuredContent} />
 
       {/* Values strip */}
       <section
@@ -142,12 +83,12 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-3 text-center">
             {[
-              { icon: "🌿", title: "100% Natural", desc: "No preservatives, no artificial colours." },
-              { icon: "🤲", title: "Handcrafted", desc: "Small batches, authentic recipes." },
-              { icon: "🚚", title: "Fast Delivery", desc: "Doorstep delivery across India." },
-            ].map(({ icon, title, desc }) => (
+              { number: "01", title: "Thoughtfully Made", desc: "Carefully prepared in small batches." },
+              { number: "02", title: "Handcrafted", desc: "Small batches, authentic recipes." },
+              { number: "03", title: "Pakistan Delivery", desc: "Delivery options confirmed at checkout." },
+            ].map(({ number, title, desc }) => (
               <li key={title} className="flex flex-col items-center">
-                <span className="text-3xl" aria-hidden="true">{icon}</span>
+                <span className="font-display text-xl text-[#c9a84c]" aria-hidden="true">{number}</span>
                 <h3 className="mt-3 font-display text-base font-semibold text-[#c9a84c]">
                   {title}
                 </h3>

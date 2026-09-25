@@ -21,7 +21,7 @@ export function Input({
       {label && (
         <label
           htmlFor={inputId}
-          className="text-sm font-medium text-[#1c1c1c]"
+          className="text-sm font-medium text-[#c5bdb1]"
         >
           {label}
           {props.required && (

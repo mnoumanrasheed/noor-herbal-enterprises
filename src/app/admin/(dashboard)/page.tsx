@@ -38,7 +38,7 @@ export default async function AdminDashboardPage() {
     <div>
       <h1 className="font-display text-2xl font-bold text-white mb-1">Dashboard</h1>
       <p className="text-sm text-[#a09a8f] mb-8">
-        Welcome back. Here's an overview of your store.
+        Welcome back. Here&apos;s an overview of your store.
       </p>
 
       {/* Stats grid */}

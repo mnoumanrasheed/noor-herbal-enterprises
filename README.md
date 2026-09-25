@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Noor Herbal Enterprises
 
-## Getting Started
+Noor Herbal Enterprises is a Pakistan-based herbal products storefront built with Next.js, Neon PostgreSQL, and NextAuth credentials authentication.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20 or newer
+- npm
+- A Neon PostgreSQL database
+
+## Local setup
+
+1. Install dependencies:
+
+   ```bash
+   npm ci
+   ```
+
+2. Copy `.env.example` to `.env.local` and fill in `DATABASE_URL`, `AUTH_SECRET`, and the admin credentials. Use a strong random `AUTH_SECRET`, such as the output of `openssl rand -base64 32`.
+
+   Add the server-only `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` values to enable validated catalogue image uploads from the admin screens. Never expose the API secret to the browser.
+
+3. Apply the database migrations:
+
+   ```bash
+   npm run db:migrate
+   ```
+
+4. Seed the initial categories and administrator:
+
+   ```bash
+   npm run db:seed
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+Open <http://localhost:3000>. The administrator sign-in is at `/admin/login`.
+
+## Catalogue management
+
+After signing in, use `/admin/categories` to create and order visible collections, and `/admin/products` to create or edit products, variants, PKR prices, stock, images, and publication status. Product uploads are checked on the server and stored with Cloudinary metadata and required alt text. Hiding a category or product preserves its records and removes it from the storefront; categories are not deleted, so products are never orphaned.
+
+## Verification
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run typecheck
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app uses Pakistani rupees (`PKR`), Pakistan locale formatting (`en-PK`), and Pakistan as the default order country. Shipping remains configurable; no fixed shipping price is assumed by the schema or seed data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set the production site URL in `NEXT_PUBLIC_SITE_URL` and configure the required environment variables in the hosting provider. Run migrations before starting the application with `npm run start`.
