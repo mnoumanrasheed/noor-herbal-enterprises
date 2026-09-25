@@ -7,9 +7,11 @@
 import { sql } from "@/lib/db";
 import {
   DEFAULT_CONTACT_SETTINGS,
+  DEFAULT_BRAND_STORY_CONTENT,
   DEFAULT_HERO_SETTINGS,
   DEFAULT_STOREFRONT_CONTENT,
   type ContactSettings,
+  type BrandStoryContent,
   type HeroSettings,
   type StorefrontContent,
 } from "@/lib/site-settings";
@@ -62,9 +64,39 @@ export async function getStorefrontContent(): Promise<StorefrontContent> {
   };
 }
 
+export async function getBrandStoryContent(): Promise<BrandStoryContent> {
+  const rows = await sql`
+    SELECT key, value
+    FROM site_settings
+    WHERE key IN (
+      'story_heading', 'story_body_one', 'story_body_two', 'story_mission', 'story_vision',
+      'story_opening_image', 'story_opening_image_alt', 'story_opening_image_public_id',
+      'story_mission_image', 'story_mission_image_alt', 'story_mission_image_public_id',
+      'story_vision_image', 'story_vision_image_alt', 'story_vision_image_public_id'
+    )
+  `;
+  const values = Object.fromEntries(rows.map((row) => [String(row.key), String(row.value ?? "")]));
+  return {
+    heading: values.story_heading || DEFAULT_BRAND_STORY_CONTENT.heading,
+    bodyOne: values.story_body_one || DEFAULT_BRAND_STORY_CONTENT.bodyOne,
+    bodyTwo: values.story_body_two || DEFAULT_BRAND_STORY_CONTENT.bodyTwo,
+    mission: values.story_mission || DEFAULT_BRAND_STORY_CONTENT.mission,
+    vision: values.story_vision || DEFAULT_BRAND_STORY_CONTENT.vision,
+    openingImage: values.story_opening_image || DEFAULT_BRAND_STORY_CONTENT.openingImage,
+    openingImageAlt: values.story_opening_image_alt || DEFAULT_BRAND_STORY_CONTENT.openingImageAlt,
+    openingImagePublicId: values.story_opening_image_public_id || null,
+    missionImage: values.story_mission_image || DEFAULT_BRAND_STORY_CONTENT.missionImage,
+    missionImageAlt: values.story_mission_image_alt || DEFAULT_BRAND_STORY_CONTENT.missionImageAlt,
+    missionImagePublicId: values.story_mission_image_public_id || null,
+    visionImage: values.story_vision_image || DEFAULT_BRAND_STORY_CONTENT.visionImage,
+    visionImageAlt: values.story_vision_image_alt || DEFAULT_BRAND_STORY_CONTENT.visionImageAlt,
+    visionImagePublicId: values.story_vision_image_public_id || null,
+  };
+}
+
 export async function getActiveCategories(): Promise<Category[]> {
   const rows = await sql`
-    SELECT id, name, slug, description, image_url, image_alt, sort_order, is_active, created_at, updated_at
+    SELECT id, name, slug, description, image_url, image_public_id, image_alt, sort_order, is_active, created_at, updated_at
     FROM categories
     WHERE is_active = TRUE
     ORDER BY sort_order ASC, name ASC
@@ -132,7 +164,7 @@ export async function getCategoryShowcases(): Promise<Category[]> {
 
 export async function getCategoryBySlug(slug: string): Promise<Category | null> {
   const rows = await sql`
-    SELECT id, name, slug, description, image_url, image_alt, sort_order, is_active, created_at, updated_at
+    SELECT id, name, slug, description, image_url, image_public_id, image_alt, sort_order, is_active, created_at, updated_at
     FROM categories
     WHERE slug = ${slug} AND is_active = TRUE
     LIMIT 1

@@ -2,14 +2,15 @@
 
 import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/lib/auth";
+import { isAdminAccessError, requireAdmin } from "@/lib/admin";
+import { destroyCatalogImages } from "@/lib/cloudinary";
 import { sql } from "@/lib/db";
 import { z } from "zod";
 import type { AdminActionState } from "../categories/actions";
 
 const imageSchema = z.object({
   url: z.string().url(),
-  publicId: z.string().min(1),
+  publicId: z.string().trim().min(1).max(400).nullable().optional(),
   altText: z.string().trim().min(3, "Add useful alt text for every image.").max(160),
   width: z.number().int().positive().nullable().optional(),
   height: z.number().int().positive().nullable().optional(),
@@ -35,20 +36,15 @@ const productSchema = z.object({
   sku: z.string().trim().max(80).optional(),
   categoryId: z.string().uuid("Choose a category."),
   shortDesc: z.string().trim().max(240).optional(),
-  description: z.string().trim().max(5000).optional(),
+  description: z.string().trim().min(10, "Add a product description of at least 10 characters.").max(5000),
   ingredients: z.string().trim().max(3000).optional(),
   howToUse: z.string().trim().max(3000).optional(),
   sortOrder: z.coerce.number().int().min(0).max(9999),
   isActive: z.boolean(),
   isFeatured: z.boolean(),
-  images: z.array(imageSchema).max(8, "Use up to 8 images."),
+  images: z.array(imageSchema).min(1, "Add at least one product image before saving.").max(8, "Use up to 8 images."),
   variants: z.array(variantSchema).min(1, "Add at least one variant before saving."),
 });
-
-async function requireAdmin() {
-  const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
-}
 
 function jsonField(formData: FormData, key: string) {
   try { return JSON.parse(String(formData.get(key) || "[]")); } catch { return null; }
@@ -83,6 +79,7 @@ export async function saveProduct(_previous: AdminActionState, formData: FormDat
     if (new Set(variantSkus).size !== variantSkus.length) return { ok: false, error: "Variant SKUs must be unique." };
     const productId = data.id ?? randomUUID();
     const variantIds = data.variants.map((variant) => variant.id ?? randomUUID());
+    let removedImagePublicIds: string[] = [];
 
     if (data.id) {
       const productRows = await sql`SELECT id FROM products WHERE id = ${data.id} LIMIT 1`;
@@ -92,6 +89,11 @@ export async function saveProduct(_previous: AdminActionState, formData: FormDat
       if (data.variants.some((variant) => variant.id && !existingVariantIds.has(variant.id))) {
         return { ok: false, error: "One of the submitted variants does not belong to this product." };
       }
+      const existingImages = await sql`SELECT cloudinary_public_id FROM product_images WHERE product_id = ${data.id}`;
+      const incomingPublicIds = new Set(data.images.map((image) => image.publicId).filter((id): id is string => Boolean(id)));
+      removedImagePublicIds = existingImages
+        .map((image) => image.cloudinary_public_id ? String(image.cloudinary_public_id) : "")
+        .filter((publicId) => Boolean(publicId) && !incomingPublicIds.has(publicId));
     }
 
     const queries = [sql`
@@ -125,13 +127,37 @@ export async function saveProduct(_previous: AdminActionState, formData: FormDat
     });
 
     await sql.transaction(queries);
+    await destroyCatalogImages(removedImagePublicIds);
     revalidatePath("/admin/products");
     revalidatePath("/", "layout");
     revalidatePath("/categories", "layout");
     return { ok: true, message: data.id ? "Product updated." : "Product created." };
   } catch (error) {
     if ((error as { code?: string }).code === "23505") return { ok: false, error: "That product slug or SKU is already in use." };
-    if (error instanceof Error && error.message === "Unauthorized") return { ok: false, error: "Your admin session has expired. Sign in again." };
+    if (isAdminAccessError(error)) return { ok: false, error: "Your admin session has expired. Sign in again." };
     return { ok: false, error: "The product could not be saved. Check the database connection and try again." };
+  }
+}
+
+const deleteProductSchema = z.string().uuid();
+
+export async function deleteProduct(id: string): Promise<AdminActionState> {
+  try {
+    await requireAdmin();
+    const parsed = deleteProductSchema.safeParse(id);
+    if (!parsed.success) return { ok: false, error: "The product identifier is invalid." };
+
+    const images = await sql`SELECT cloudinary_public_id FROM product_images WHERE product_id = ${parsed.data}`;
+    const deleted = await sql`DELETE FROM products WHERE id = ${parsed.data} RETURNING id`;
+    if (!deleted.length) return { ok: false, error: "That product no longer exists." };
+
+    await destroyCatalogImages(images.map((image) => image.cloudinary_public_id ? String(image.cloudinary_public_id) : null));
+    revalidatePath("/admin/products");
+    revalidatePath("/", "layout");
+    revalidatePath("/categories", "layout");
+    return { ok: true, message: "Product deleted." };
+  } catch (error) {
+    if (isAdminAccessError(error)) return { ok: false, error: "Your admin session has expired. Sign in again." };
+    return { ok: false, error: "The product could not be deleted. Check the database connection and try again." };
   }
 }

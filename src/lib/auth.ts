@@ -17,6 +17,11 @@ const loginSchema = z.object({
   password: z.string().min(8),
 });
 
+function isConfiguredAdmin(email: string) {
+  const configuredEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  return Boolean(configuredEmail && configuredEmail === email.trim().toLowerCase());
+}
+
 export const authConfig: NextAuthConfig = {
   secret: process.env.AUTH_SECRET,
   session: { strategy: "jwt" },
@@ -55,7 +60,7 @@ export const authConfig: NextAuthConfig = {
       const isLoginPage = request.nextUrl.pathname === "/admin/login";
 
       if (isAdminRoute && !isLoginPage) {
-        return !!auth?.user; // must be authenticated
+        return Boolean(auth?.user?.email && isConfiguredAdmin(auth.user.email));
       }
       return true;
     },
@@ -71,12 +76,15 @@ export const authConfig: NextAuthConfig = {
         if (!parsed.success) return null;
 
         const { email, password } = parsed.data;
+        // A single configured address is the only account allowed to sign in.
+        // This keeps an unexpected additional database row from becoming an admin.
+        if (!isConfiguredAdmin(email)) return null;
 
         // Query admin_users — server-only, never exposed to client
         const rows = await sql`
           SELECT id, email, name, password_hash
           FROM admin_users
-          WHERE email = ${email}
+          WHERE LOWER(email) = LOWER(${email})
           LIMIT 1
         `;
 

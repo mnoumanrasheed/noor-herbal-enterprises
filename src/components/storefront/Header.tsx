@@ -13,7 +13,6 @@ const CATEGORY_LINKS = [
 ];
 
 const PRIMARY_LINKS = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "Our story" },
   { href: "/contact", label: "Contact" },
 ];
@@ -47,30 +46,31 @@ export function Header() {
         </div>
       </div>
 
-      <div className="site-shell flex h-[76px] items-center justify-between gap-6 px-4 sm:px-6 lg:h-[86px] lg:px-8">
-        <Link href="/" aria-label="Noor Herbal Enterprises — go to homepage" className="shrink-0 rounded-md bg-white p-1.5 transition-opacity hover:opacity-90">
+      <div className="site-shell site-header-main px-4 sm:px-6 lg:px-8">
+        <Link href="/" aria-label="Noor Herbal Enterprises — go to homepage" className="site-brand-link">
           <Logo size={48} />
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Main navigation" className="site-nav hidden lg:flex">
           {PRIMARY_LINKS.map(({ href, label }) => (
             <Link key={href} href={href} className="nav-link">{label}</Link>
           ))}
-          <div className="group relative">
+          <div className="nav-categories group relative">
             <Link href="/categories" className="nav-link inline-flex items-center gap-1.5">
               Categories
-              <span aria-hidden="true" className="text-[10px] text-brand-gold">⌄</span>
+              <span aria-hidden="true" className="nav-chevron">⌄</span>
             </Link>
-            <div className="invisible absolute left-1/2 top-full z-20 mt-4 w-48 -translate-x-1/2 rounded-xl border border-[#39342d] bg-[#171614] p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:mt-3 group-hover:opacity-100 group-focus-within:visible group-focus-within:mt-3 group-focus-within:opacity-100">
+            <div className="nav-dropdown invisible absolute left-1/2 top-full z-20 mt-4 w-52 -translate-x-1/2 opacity-0 transition-all group-hover:visible group-hover:mt-3 group-hover:opacity-100 group-focus-within:visible group-focus-within:mt-3 group-focus-within:opacity-100">
+              <p className="nav-dropdown-label">The collection</p>
               {CATEGORY_LINKS.map(({ href, label }) => (
-                <Link key={href} href={href} className="block rounded-lg px-3 py-2.5 text-sm text-[#c5bdb1] hover:bg-[#25221d] hover:text-brand-gold">{label}</Link>
+                <Link key={href} href={href} className="nav-dropdown-link">{label}<span aria-hidden="true">→</span></Link>
               ))}
             </div>
           </div>
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link href="/categories" className="button-primary hidden sm:inline-flex">Shop now</Link>
+        <div className="site-header-actions">
+          <Link href="/categories" className="button-primary site-header-cta hidden sm:inline-flex">Shop now</Link>
           <Link href="/cart" className="icon-button relative" aria-label={`Shopping cart${cartCount ? `, ${cartCount} items` : ""}`}>
             <CartIcon />
             {cartCount > 0 ? <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c9a84c] px-1 text-[9px] font-bold text-[#11100f]">{cartCount}</span> : null}
@@ -94,7 +94,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div id="mobile-menu" className="border-t border-[#39342d] bg-[#11100f] lg:hidden">
+        <div id="mobile-menu" className="site-mobile-menu lg:hidden">
           <nav aria-label="Mobile navigation" className="site-shell px-4 py-5 sm:px-6">
             <div className="grid grid-cols-2 gap-1">
               {PRIMARY_LINKS.map(({ href, label }) => (

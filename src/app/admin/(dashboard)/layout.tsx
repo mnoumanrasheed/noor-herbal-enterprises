@@ -1,6 +1,6 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
+import { getAdminSession } from "@/lib/admin";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 
 export default async function AdminDashboardLayout({
@@ -9,7 +9,7 @@ export default async function AdminDashboardLayout({
   children: React.ReactNode;
 }) {
   // Server-side auth guard — belt-and-suspenders alongside middleware
-  const session = await auth();
+  const session = await getAdminSession();
   if (!session?.user) {
     redirect("/admin/login");
   }

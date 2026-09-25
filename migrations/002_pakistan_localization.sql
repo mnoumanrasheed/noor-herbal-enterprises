@@ -18,7 +18,7 @@ VALUES
   ('hero_visual_category', 'The complete collection'),
   ('currency_code', 'PKR'),
   ('currency_symbol', 'Rs')
-ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+ON CONFLICT (key) DO NOTHING;
 
 -- Shipping is not fixed until an approved policy/rate is configured.
 DELETE FROM site_settings

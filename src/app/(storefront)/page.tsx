@@ -4,7 +4,10 @@ import Link from "next/link";
 import { CategoryShowcase } from "@/components/storefront/CategoryShowcase";
 import HeroScene from "@/components/storefront/HeroScene";
 import { getCategoryShowcases, getHeroSettings, getStorefrontContent } from "@/lib/queries";
-import { DEFAULT_HERO_SETTINGS, type HeroSettings } from "@/lib/site-settings";
+import {
+  DEFAULT_HERO_SETTINGS,
+  type HeroSettings,
+} from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Noor Herbal Enterprises — Traditional. Thoughtful. Handcrafted.",
@@ -49,7 +52,10 @@ export default async function HomePage() {
         <div className="site-shell hero-layout px-4 sm:px-6 lg:px-8">
           <div className="hero-copy">
             <p className="eyebrow">{hero.eyebrow}</p>
-            <h1 id="hero-heading" className="hero-heading">{hero.title}</h1>
+            <h1 id="hero-heading" className="hero-heading">
+              <span>For the table.</span>
+              <span>For everyday care.</span>
+            </h1>
             <p className="hero-description">{hero.description}</p>
             <div className="hero-actions">
               <Link href="/categories" className="button-primary">{hero.ctaLabel}</Link>
@@ -67,7 +73,7 @@ export default async function HomePage() {
               <span>Four expressions</span>
               <span>One considered collection</span>
             </div>
-            <p className="sr-only">A composed 3D arrangement of unlabelled jars and bottles representing chutney, pickles, oils, and shampoo. Product packaging will be added when approved assets are available.</p>
+            <p className="sr-only">A studio product composition featuring the real Noor Herbal Aloo Bukharay Ki Chutney, Crush Mango Pickle, Hair Oil, and Shampoo fronts. The photographs are not 360-degree product models.</p>
           </div>
         </div>
         <div className="hero-bottom-line" aria-hidden="true" />

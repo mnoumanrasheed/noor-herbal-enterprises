@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useMemo, useState } from "react";
+import { useActionState, useMemo, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { AdminImageUpload, type AdminImage } from "./AdminImageUpload";
-import { saveProduct } from "@/app/admin/(dashboard)/products/actions";
+import { deleteProduct, saveProduct } from "@/app/admin/(dashboard)/products/actions";
 import type { AdminActionState } from "@/app/admin/(dashboard)/categories/actions";
 import type { Category, Product } from "@/types";
 
@@ -21,7 +22,9 @@ type EditableVariant = {
 const initialState: AdminActionState = { ok: false };
 
 function initialVariants(product?: Product): EditableVariant[] {
-  if (!product?.variants?.length) return [{ name: "", sku: "", price: "", comparePrice: "", weight: "", quantity: "0", lowStockAlert: "5", isActive: true }];
+  if (!product?.variants?.length) {
+    return [{ name: "", sku: "", price: "", comparePrice: "", weight: "", quantity: "0", lowStockAlert: "5", isActive: true }];
+  }
   return product.variants.map((variant) => ({
     id: variant.id,
     name: variant.name,
@@ -36,8 +39,20 @@ function initialVariants(product?: Product): EditableVariant[] {
 }
 
 export function ProductForm({ product, categories }: { product?: Product; categories: Category[] }) {
+  const router = useRouter();
   const [state, action, pending] = useActionState(saveProduct, initialState);
-  const [images, setImages] = useState<AdminImage[]>(product?.images?.map((image) => ({ url: image.url, publicId: image.cloudinary_public_id || "existing-product-image", altText: image.alt_text || "", width: image.width, height: image.height, format: image.format })) || []);
+  const [deleting, startDeleting] = useTransition();
+  const [deleteError, setDeleteError] = useState("");
+  const [images, setImages] = useState<AdminImage[]>(
+    product?.images?.map((image) => ({
+      url: image.url,
+      publicId: image.cloudinary_public_id,
+      altText: image.alt_text || "",
+      width: image.width,
+      height: image.height,
+      format: image.format,
+    })) || [],
+  );
   const [variants, setVariants] = useState<EditableVariant[]>(initialVariants(product));
   const serializedVariants = useMemo(() => JSON.stringify(variants.map((variant) => ({
     id: variant.id,
@@ -52,7 +67,23 @@ export function ProductForm({ product, categories }: { product?: Product; catego
   }))), [variants]);
 
   function updateVariant(index: number, field: keyof EditableVariant, value: string | boolean) {
-    setVariants((current) => current.map((variant, variantIndex) => variantIndex === index ? { ...variant, [field]: value } : variant));
+    setVariants((current) => current.map((variant, variantIndex) => (
+      variantIndex === index ? { ...variant, [field]: value } : variant
+    )));
+  }
+
+  function removeProduct() {
+    if (!product || !window.confirm("Delete this product? This removes its variants, inventory, and catalogue images.")) return;
+    setDeleteError("");
+    startDeleting(async () => {
+      const result = await deleteProduct(product.id);
+      if (!result.ok) {
+        setDeleteError(result.error || "The product could not be deleted.");
+        return;
+      }
+      router.replace("/admin/products");
+      router.refresh();
+    });
   }
 
   return (
@@ -67,7 +98,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
         <label><span className="field-label">Product SKU</span><input name="sku" className="field-input" defaultValue={product?.sku || ""} placeholder="Optional parent SKU" /></label>
         <label><span className="field-label">Category</span><select name="categoryId" className="field-input" defaultValue={product?.category_id || ""} required><option value="">Choose a category</option>{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}</select></label>
         <label className="sm:col-span-2"><span className="field-label">Short description</span><input name="shortDesc" className="field-input" defaultValue={product?.short_desc || ""} /></label>
-        <label className="sm:col-span-2"><span className="field-label">Description</span><textarea name="description" className="field-input min-h-28 resize-y" defaultValue={product?.description || ""} /></label>
+        <label className="sm:col-span-2"><span className="field-label">Description</span><textarea name="description" className="field-input min-h-28 resize-y" defaultValue={product?.description || ""} required /></label>
         <label><span className="field-label">Display order</span><input name="sortOrder" type="number" min="0" className="field-input" defaultValue={product?.sort_order ?? 0} /></label>
         <div className="flex flex-wrap items-center gap-5 pt-7"><label className="admin-checkbox-label"><input name="isActive" type="checkbox" defaultChecked={product?.is_active ?? false} /> Published</label><label className="admin-checkbox-label"><input name="isFeatured" type="checkbox" defaultChecked={product?.is_featured ?? false} /> Featured</label></div>
         <label className="sm:col-span-2"><span className="field-label">Ingredients / composition</span><textarea name="ingredients" className="field-input min-h-24 resize-y" defaultValue={product?.ingredients || ""} /></label>
@@ -94,8 +125,12 @@ export function ProductForm({ product, categories }: { product?: Product; catego
 
       <AdminImageUpload images={images} onChange={setImages} multiple />
       {state.error && <p role="alert" className="admin-form-error">{state.error}</p>}
+      {deleteError && <p role="alert" className="admin-form-error">{deleteError}</p>}
       {state.message && <p role="status" className="admin-form-success">{state.message}</p>}
-      <div className="flex justify-end"><button className="button-primary" disabled={pending}>{pending ? "Saving…" : product ? "Save product" : "Create product"}</button></div>
+      <div className="flex flex-wrap justify-end gap-3">
+        {product ? <button type="button" onClick={removeProduct} className="admin-remove-button" disabled={pending || deleting}>{deleting ? "Deleting..." : "Delete product"}</button> : null}
+        <button className="button-primary" disabled={pending || deleting}>{pending ? "Saving..." : product ? "Save product" : "Create product"}</button>
+      </div>
     </form>
   );
 }

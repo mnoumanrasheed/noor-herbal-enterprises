@@ -42,4 +42,17 @@ yarn-error.log*
 next-env.d.ts
 /.npm-cache/
 /.audit-*/
-/audit-build-output.txt
+
+# Local audit and browser-run artifacts
+/.audit-chrome-*/
+/audit-*.png
+/audit-*.jpg
+/audit-*.jpeg
+/audit-*.webp
+/audit-*.txt
+
+# Generated caches and test output
+/.cache/
+/.turbo/
+/playwright-report/
+/test-results/

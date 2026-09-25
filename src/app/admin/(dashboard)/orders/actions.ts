@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { auth } from "@/lib/auth";
+import { getAdminSession } from "@/lib/admin";
 import { getPool } from "@/lib/db";
 
 const requestSchema = z.object({
@@ -13,7 +13,7 @@ const requestSchema = z.object({
 export type OrderActionResult = { ok: boolean; message: string; error?: string };
 
 export async function transitionOrder(orderId: string, status: "confirmed" | "processing" | "shipped" | "delivered" | "cancelled"): Promise<OrderActionResult> {
-  const session = await auth();
+  const session = await getAdminSession();
   if (!session?.user) return { ok: false, message: "Unauthorized", error: "Your admin session has expired." };
   const parsed = requestSchema.safeParse({ orderId, status });
   if (!parsed.success) return { ok: false, message: "Invalid request", error: "The order update is invalid." };

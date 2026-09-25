@@ -1,10 +1,7 @@
 /**
- * Database migration runner
- * Usage: npx tsx scripts/migrate.ts
- *
- * Reads migration SQL files from /migrations in filename order
- * and executes them against the Neon database.
- * Safe to re-run — all DDL uses IF NOT EXISTS / ON CONFLICT DO NOTHING.
+ * Applies each SQL migration once and records it in schema_migrations.
+ * Run only after selecting the intended Neon database:
+ *   npm run db:migrate
  */
 
 import { Pool, neonConfig } from "@neondatabase/serverless";
@@ -12,51 +9,67 @@ import WebSocket from "ws";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 
-const DATABASE_URL = process.env.DATABASE_URL;
+const databaseUrl = process.env.DATABASE_URL;
 
-// The migration runner uses Neon Pool directly, so configure Node WebSockets
-// here as well as in src/lib/db.ts.
 neonConfig.webSocketConstructor = WebSocket;
 
-if (!DATABASE_URL) {
-  console.error("❌  DATABASE_URL is not set. Copy .env.local.example → .env.local and fill it in.");
+function validDatabaseUrl(value: string | undefined) {
+  return Boolean(value && !value.includes("ep-placeholder") && !value.includes("user:pass@"));
+}
+
+if (!validDatabaseUrl(databaseUrl)) {
+  console.error("DATABASE_URL is not configured with a real Neon connection string.");
   process.exit(1);
 }
 
 async function main() {
-  // Use pg Pool for migrations — supports multi-statement SQL files
-  const pool = new Pool({ connectionString: DATABASE_URL as string });
+  const pool = new Pool({ connectionString: databaseUrl });
   const client = await pool.connect();
 
-  const migrationsDir = join(process.cwd(), "migrations");
-  const files = readdirSync(migrationsDir)
-    .filter((f) => f.endsWith(".sql"))
-    .sort();
+  try {
+    await client.query([
+      "CREATE TABLE IF NOT EXISTS schema_migrations (",
+      "filename TEXT PRIMARY KEY,",
+      "applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()",
+      ")",
+    ].join(" "));
 
-  console.log(`▶  Running ${files.length} migration(s)…\n`);
+    const migrationsDir = join(process.cwd(), "migrations");
+    const files = readdirSync(migrationsDir)
+      .filter((file) => file.endsWith(".sql"))
+      .sort();
+    const applied = await client.query<{ filename: string }>("SELECT filename FROM schema_migrations");
+    const appliedFiles = new Set(applied.rows.map((row) => row.filename));
+    const pending = files.filter((file) => !appliedFiles.has(file));
 
-  for (const file of files) {
-    const filePath = join(migrationsDir, file);
-    const content = readFileSync(filePath, "utf8");
-    console.log(`  ⟶  ${file}`);
-    try {
-      await client.query("BEGIN");
-      await client.query(content);
-      await client.query("COMMIT");
-      console.log(`     ✓ done`);
-    } catch (err) {
-      await client.query("ROLLBACK");
-      console.error(`     ✗ FAILED: ${file}`);
-      console.error(err);
-      client.release();
-      await pool.end();
-      process.exit(1);
+    if (!pending.length) {
+      console.log("Database schema is already up to date.");
+      return;
     }
-  }
 
-  client.release();
-  await pool.end();
-  console.log("\n✅  All migrations applied successfully.");
+    console.log("Applying " + pending.length + " database migration(s).");
+    for (const file of pending) {
+      const content = readFileSync(join(migrationsDir, file), "utf8");
+      await client.query("BEGIN");
+      try {
+        await client.query(content);
+        await client.query("INSERT INTO schema_migrations (filename) VALUES ($1)", [file]);
+        await client.query("COMMIT");
+        console.log("Applied " + file);
+      } catch {
+        await client.query("ROLLBACK");
+        console.error("Migration failed at " + file + ". No credentials or connection details were printed.");
+        process.exitCode = 1;
+        return;
+      }
+    }
+  } finally {
+    client.release();
+    await pool.end();
+  }
 }
 
-main();
+main().catch(() => {
+  console.error("Migration could not connect to the database. No credentials were printed.");
+  process.exit(1);
+});

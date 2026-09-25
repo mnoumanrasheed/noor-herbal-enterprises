@@ -1,88 +1,66 @@
 /**
- * Database seed script
- * Usage: npx tsx scripts/seed.ts
+ * Creates the four initial categories and the first administrator.
+ * It never creates products, prices, or stock, and never overwrites an
+ * existing administrator password.
  *
- * Seeds:
- *  1. The four initial categories (Chutney, Pickles, Oils, Shampoo)
- *  2. A single admin user from ADMIN_EMAIL + ADMIN_PASSWORD env vars
- *
- * Safe to re-run — uses ON CONFLICT DO NOTHING for categories
- * and ON CONFLICT (email) DO UPDATE for the admin (allows password reset).
+ * Run only after applying migrations to the intended Neon database:
+ *   npm run db:seed
  */
 
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcryptjs";
 
-const DATABASE_URL = process.env.DATABASE_URL;
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const databaseUrl = process.env.DATABASE_URL;
+const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+const adminPassword = process.env.ADMIN_PASSWORD;
 
-if (!DATABASE_URL) {
-  console.error("❌  DATABASE_URL is not set.");
-  process.exit(1);
-}
-if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
-  console.error("❌  ADMIN_EMAIL and ADMIN_PASSWORD must be set in .env.local");
-  process.exit(1);
+function validDatabaseUrl(value: string | undefined) {
+  return Boolean(value && !value.includes("ep-placeholder") && !value.includes("user:pass@"));
 }
 
-const CATEGORIES = [
-  {
-    name: "Chutney",
-    slug: "chutney",
-    description: "Handcrafted chutneys made with carefully selected ingredients.",
-    sort_order: 1,
-  },
-  {
-    name: "Pickles",
-    slug: "pickles",
-    description: "Traditional pickles prepared with authentic recipes.",
-    sort_order: 2,
-  },
-  {
-    name: "Oils",
-    slug: "oils",
-    description: "Pure, cold-pressed and infused herbal oils.",
-    sort_order: 3,
-  },
-  {
-    name: "Shampoo",
-    slug: "shampoo",
-    description: "Herbal shampoos prepared for everyday care.",
-    sort_order: 4,
-  },
+if (!validDatabaseUrl(databaseUrl)) {
+  console.error("DATABASE_URL is not configured with a real Neon connection string.");
+  process.exit(1);
+}
+if (!adminEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(adminEmail)) {
+  console.error("ADMIN_EMAIL must be a valid administrator email address.");
+  process.exit(1);
+}
+if (!adminPassword || adminPassword.length < 12) {
+  console.error("ADMIN_PASSWORD must be at least 12 characters long.");
+  process.exit(1);
+}
+
+const categories = [
+  { name: "Chutney", slug: "chutney", description: "Handcrafted chutneys made with carefully selected ingredients.", sortOrder: 1 },
+  { name: "Pickles", slug: "pickles", description: "Traditional pickles prepared with authentic recipes.", sortOrder: 2 },
+  { name: "Oils", slug: "oils", description: "Pure, cold-pressed and infused herbal oils.", sortOrder: 3 },
+  { name: "Shampoo", slug: "shampoo", description: "Herbal shampoos prepared for everyday care.", sortOrder: 4 },
 ];
 
 async function main() {
-  const sql = neon(DATABASE_URL as string);
+  const sql = neon(databaseUrl as string);
 
-  // --- Categories ---
-  console.log("▶  Seeding categories…");
-  for (const cat of CATEGORIES) {
+  for (const category of categories) {
     await sql`
       INSERT INTO categories (name, slug, description, sort_order)
-      VALUES (${cat.name}, ${cat.slug}, ${cat.description}, ${cat.sort_order})
+      VALUES (${category.name}, ${category.slug}, ${category.description}, ${category.sortOrder})
       ON CONFLICT (slug) DO NOTHING
     `;
-    console.log(`   ✓ ${cat.name}`);
   }
+  console.log("Initial categories are ready.");
 
-  // --- Admin user ---
-  console.log("\n▶  Seeding admin user…");
-  const passwordHash = await bcrypt.hash(ADMIN_PASSWORD as string, 12);
-  await sql`
+  const passwordHash = await bcrypt.hash(adminPassword as string, 12);
+  const inserted = await sql`
     INSERT INTO admin_users (email, password_hash, name)
-    VALUES (${ADMIN_EMAIL}, ${passwordHash}, 'Administrator')
-    ON CONFLICT (email) DO UPDATE
-      SET password_hash = EXCLUDED.password_hash,
-          updated_at    = NOW()
+    VALUES (${adminEmail}, ${passwordHash}, 'Administrator')
+    ON CONFLICT (email) DO NOTHING
+    RETURNING id
   `;
-  console.log(`   ✓ Admin: ${ADMIN_EMAIL}`);
-
-  console.log("\n✅  Seed complete.");
+  console.log(inserted.length ? "First administrator created." : "Existing administrator retained.");
 }
 
-main().catch((err) => {
-  console.error("Seed failed:", err);
+main().catch(() => {
+  console.error("Seed could not complete. No credentials or connection details were printed.");
   process.exit(1);
 });

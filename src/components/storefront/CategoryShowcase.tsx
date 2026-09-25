@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Category } from "@/types";
 import { CategoryCard } from "@/components/storefront/CategoryCard";
+import { CatalogMedia } from "@/components/storefront/CatalogMedia";
 import { ProductCard } from "@/components/storefront/ProductCard";
 
 interface CategoryShowcaseProps {
@@ -12,25 +13,81 @@ interface CategoryShowcaseProps {
   featuredContent?: string;
 }
 
-export function CatalogUnavailable() {
+const PRELAUNCH_COLLECTIONS = [
+  {
+    name: "Chutney",
+    slug: "chutney",
+    description: "Aloo Bukharay Ki Chutney, presented for the table.",
+    note: "Authentic product photography",
+    image: "/images/products/aloo-bukharay-ki-chutney-cutout.png",
+    imageAlt: "Noor Herbal Aloo Bukharay Ki Chutney jar",
+    product: "Aloo Bukharay Ki Chutney",
+  },
+  {
+    name: "Pickles",
+    slug: "pickles",
+    description: "Crush Mango Pickle, presented for the collection.",
+    note: "Authentic product photography",
+    image: "/images/products/crush-mango-pickle.jpeg",
+    imageAlt: "Noor Herbal Crush Mango Pickle jar",
+    product: "Crush Mango Pickle",
+  },
+  {
+    name: "Oils",
+    slug: "oils",
+    description: "Noor Herbal Hair Oil for the daily-care collection.",
+    note: "Authentic product photography",
+    image: "/images/products/noor-herbal-hair-oil-cutout.png",
+    imageAlt: "Noor Herbal Hair Oil bottle",
+    product: "Noor Herbal Hair Oil",
+  },
+  {
+    name: "Shampoo",
+    slug: "shampoo",
+    description: "Noor Herbal Shampoo for everyday care.",
+    note: "Authentic product photography",
+    image: "/images/products/noor-herbal-shampoo.jpeg",
+    imageAlt: "Noor Herbal Shampoo bottle",
+    product: "Noor Herbal Shampoo",
+  },
+];
+
+function PrelaunchCollections() {
   return (
-    <div className="catalog-state" role="alert">
-      <p className="eyebrow">Catalog unavailable</p>
-      <h2 className="mt-3 font-display text-2xl text-[#f6f0e7]">We could not reach the collection.</h2>
-      <p className="mt-3 max-w-md text-sm leading-6 text-[#aaa39a]">The catalogue is temporarily unavailable. Please try again shortly.</p>
-      <Link href="/contact" className="button-primary mt-6">Contact us</Link>
+    <div className="prelaunch-state">
+      <div className="prelaunch-state-copy">
+        <p className="eyebrow">Shop the Noor Herbal edit</p>
+        <h3>Pantry staples and daily care, chosen with intention.</h3>
+        <p>Explore the four collection previews. Live product details will appear when the catalogue is connected.</p>
+        <Link href="/contact" className="button-secondary">Ask about availability <span aria-hidden="true">↗</span></Link>
+      </div>
+      <div className="prelaunch-category-sections" aria-label="Noor Herbal collection categories">
+        {PRELAUNCH_COLLECTIONS.map((category, index) => (
+          <article key={category.slug} className={`prelaunch-category-section prelaunch-category-${category.slug}`}>
+            <div className="prelaunch-category-media">
+              <CatalogMedia src={category.image} alt={category.imageAlt} kind="category" className={`prelaunch-media-${category.slug}`} />
+              <span className="prelaunch-category-note">{category.note}</span>
+            </div>
+            <div className="prelaunch-category-copy">
+              <div className="prelaunch-category-number">0{index + 1}</div>
+              <h4>{category.name}</h4>
+              <p>{category.description}</p>
+              <div className="prelaunch-product-card"><span>Collection preview</span><strong>{category.product}</strong><small>Product details coming soon</small></div>
+              <Link href={`/categories/${category.slug}`} className="text-link">Enter collection <span aria-hidden="true">↗</span></Link>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
 
+export function CatalogUnavailable() {
+  return <PrelaunchCollections />;
+}
+
 export function CatalogEmpty({ message = "The collection is being prepared." }: { message?: string }) {
-  return (
-    <div className="catalog-state" role="status">
-      <p className="eyebrow">No collections yet</p>
-      <h2 className="mt-3 font-display text-2xl text-[#f6f0e7]">Nothing is listed here yet.</h2>
-      <p className="mt-3 max-w-md text-sm leading-6 text-[#aaa39a]">{message}</p>
-    </div>
-  );
+  return <div role="status" aria-label={message}><PrelaunchCollections /></div>;
 }
 
 export function CategoryShowcase({

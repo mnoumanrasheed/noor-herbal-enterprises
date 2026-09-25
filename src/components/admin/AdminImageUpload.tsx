@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export type AdminImage = {
   url: string;
-  publicId: string;
+  publicId?: string | null;
   altText: string;
   width?: number | null;
   height?: number | null;
@@ -16,10 +16,12 @@ export function AdminImageUpload({
   images,
   onChange,
   multiple = false,
+  label,
 }: {
   images: AdminImage[];
   onChange: (images: AdminImage[]) => void;
   multiple?: boolean;
+  label?: string;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -53,15 +55,15 @@ export function AdminImageUpload({
 
   return (
     <div className="space-y-3">
-      <label className="field-label">{multiple ? "Product images" : "Category image"}</label>
-      <input type="file" accept="image/jpeg,image/png,image/webp" multiple={multiple} disabled={busy} onChange={(event) => upload(event.target.files)} className="admin-file-input" />
-      <p className="text-xs text-[#7e776d]">JPG, PNG, or WebP. Maximum 5 MB per image. Uploads are validated on the server.</p>
+      <label className="field-label">{label || (multiple ? "Product images" : "Category image")}</label>
+      <input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple={multiple} disabled={busy} onChange={(event) => upload(event.target.files)} className="admin-file-input" />
+      <p className="text-xs text-[#7e776d]">JPG, PNG, or WebP. Maximum 5 MB per image. Convert JFIF files to JPG before uploading.</p>
       {error && <p role="alert" className="admin-form-error">{error}</p>}
       {busy && <p className="text-xs text-[#c9a84c]">Uploading securely…</p>}
       {images.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {images.map((image, index) => (
-            <div key={`${image.publicId}-${index}`} className="admin-image-item">
+            <div key={`${image.publicId || image.url}-${index}`} className="admin-image-item">
               <Image src={image.url} alt={image.altText || "Uploaded catalogue image preview"} width={image.width || 1200} height={image.height || 900} className="admin-image-preview" />
               <div className="flex gap-2">
                 <input value={image.altText} onChange={(event) => updateAlt(index, event.target.value)} placeholder="Useful alt text" aria-label={`Alt text for image ${index + 1}`} className="field-input" required />

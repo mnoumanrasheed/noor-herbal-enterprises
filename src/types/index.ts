@@ -8,6 +8,7 @@ export interface Category {
   slug: string;
   description: string | null;
   image_url: string | null;
+  image_public_id: string | null;
   image_alt: string | null;
   sort_order: number;
   is_active: boolean;
