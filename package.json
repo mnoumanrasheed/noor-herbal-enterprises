@@ -6,15 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:migrate": "dotenv -e .env.local -- npx tsx scripts/migrate.ts",
-    "db:seed": "dotenv -e .env.local -- npx tsx scripts/seed.ts"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "db:migrate": "node ./node_modules/dotenv-cli/cli.js -e .env.local -- node ./node_modules/tsx/dist/cli.mjs scripts/migrate.ts",
+    "db:seed": "node ./node_modules/dotenv-cli/cli.js -e .env.local -- node ./node_modules/tsx/dist/cli.mjs scripts/seed.ts"
   },
   "dependencies": {
-    "@auth/pg-adapter": "^1.11.3",
     "@neondatabase/serverless": "^1.1.0",
     "bcryptjs": "^3.0.3",
-    "next": "^16.3.6",
+    "next": "15.5.26",
     "next-auth": "^5.0.0-beta.29",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -28,11 +28,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
     "@types/ws": "^8.18.1",
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "15.5.26",
     "tailwindcss": "^4",
+    "three": "^0.186.1",
     "tsx": "^4.23.15",
     "typescript": "^5"
   }
