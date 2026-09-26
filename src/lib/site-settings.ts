@@ -1,21 +1,23 @@
 export const DEFAULT_CONTACT_SETTINGS = {
   email: "noorherbalenterprises@gmail.com",
   phone: "+92 300 5599174",
-  instagram: "https://www.instagram.com/noorherbalenterprices/",
+  instagram: "https://www.instagram.com/noorherbalenterprices?utm_source=qr&stkn=MTZnNnJhdWl1ZXhtMQ%3D",
+  facebook: "https://www.facebook.com/share/19hy2eDsyq/",
 } as const;
 
 export type ContactSettings = {
   email: string;
   phone: string;
   instagram: string;
+  facebook?: string;
 };
 
 export const DEFAULT_HERO_SETTINGS = {
-  eyebrow: "Real products. Rooted in care.",
-  title: "For the table.\nFor everyday care.",
-  description: "Meet Noor Herbal's real pantry and personal-care collection, photographed for the shelf, the table, and the daily reset.",
-  ctaLabel: "Explore the collection",
-  visualCategory: "Pickles + shampoo preview",
+  eyebrow: "ROOTED IN TRADITION. MADE FOR EVERYDAY.",
+  title: "Crafted for the table. Made for everyday care.",
+  description: "Discover our pure, handcrafted collection of traditional chutneys, artisanal pickles, nourishing botanical oils, and herbal shampoos prepared for daily rituals across Pakistan.",
+  ctaLabel: "Shop the collection",
+  visualCategory: "The Noor Herbal Collection",
 } as const;
 
 export type HeroSettings = {
@@ -24,6 +26,32 @@ export type HeroSettings = {
   description: string;
   ctaLabel: string;
   visualCategory: string;
+};
+
+export const DEFAULT_STORE_SETTINGS = {
+  storeName: "Noor Herbal Enterprises",
+  shippingFeePaise: 25000,
+  freeShippingThresholdPaise: 300000,
+  codEnabled: true,
+  bankTransferEnabled: true,
+  bankTransferDetails: "Meezan Bank\nAccount Title: Noor Herbal Enterprises\nAccount Number: 0101-0102030405\nIBAN: PK12MEZN0001010102030405",
+  announcementBarText: "Free delivery across Pakistan on orders over Rs. 3,000 • Pure, Handcrafted & Traditional",
+  shippingPolicy: "We deliver across all cities in Pakistan within 3 to 5 business days via tracked courier services. Standard flat shipping is Rs. 250, and free shipping applies automatically on all orders over Rs. 3,000.",
+  returnsPolicy: "Customer satisfaction is our top priority. If your order arrives damaged, defective, or incorrect, please reach out on WhatsApp within 48 hours of delivery with pictures for a swift replacement or refund.",
+  whatsappPhone: "+923005599174",
+} as const;
+
+export type StoreSettings = {
+  storeName: string;
+  shippingFeePaise: number;
+  freeShippingThresholdPaise: number;
+  codEnabled: boolean;
+  bankTransferEnabled: boolean;
+  bankTransferDetails: string;
+  announcementBarText: string;
+  shippingPolicy: string;
+  returnsPolicy: string;
+  whatsappPhone: string;
 };
 
 export const DEFAULT_STOREFRONT_CONTENT = {

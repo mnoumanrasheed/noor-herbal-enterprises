@@ -1,79 +1,124 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Card } from "@/components/ui/Card";
-import { getAllCategories, getAllProducts } from "@/lib/queries";
+import { getAdminDashboardSummary } from "@/lib/queries";
 
-export const metadata: Metadata = { title: "Admin Dashboard" };
-
-async function getDashboardStats() {
-  try {
-    const [categories, products] = await Promise.all([
-      getAllCategories(),
-      getAllProducts(),
-    ]);
-    return {
-      categories: categories.length,
-      products: products.length,
-      activeProducts: products.filter((p) => p.is_active).length,
-    };
-  } catch {
-    return { categories: 0, products: 0, activeProducts: 0 };
-  }
-}
-
-const STAT_LINKS = [
-  { label: "Categories",       href: "/admin/categories", color: "text-[#c9a84c]" },
-  { label: "Products",         href: "/admin/products",   color: "text-[#c9a84c]" },
-  { label: "Active Products",  href: "/admin/products",   color: "text-green-400" },
-  { label: "Orders",           href: "/admin/orders",     color: "text-blue-400" },
-];
+export const metadata: Metadata = { title: "Admin Dashboard — Noor Herbal Enterprises" };
 
 export default async function AdminDashboardPage() {
-  const stats = await getDashboardStats();
+  let summary = {
+    categoryCount: 0,
+    productCount: 0,
+    publishedProductCount: 0,
+    draftProductCount: 0,
+    lowStockCount: 0,
+    outOfStockCount: 0,
+  };
 
-  const statValues = [stats.categories, stats.products, stats.activeProducts, 0];
+  try {
+    const data = await getAdminDashboardSummary();
+    summary = {
+      categoryCount: data.categoryCount,
+      productCount: data.productCount,
+      publishedProductCount: data.publishedProductCount,
+      draftProductCount: data.draftProductCount,
+      lowStockCount: data.lowStockCount,
+      outOfStockCount: data.outOfStockCount,
+    };
+  } catch {
+    /* fallback to defaults */
+  }
+
+  const statCards = [
+    {
+      label: "Total Categories",
+      value: summary.categoryCount,
+      sub: "Active catalogue categories",
+      valueColor: "text-[#b8913f]",
+      iconBg: "bg-[#c9a84c]/10",
+      icon: "◫",
+      href: "/admin/categories",
+    },
+    {
+      label: "Published Products",
+      value: summary.publishedProductCount,
+      sub: `${summary.draftProductCount} draft(s)`,
+      valueColor: "text-emerald-600",
+      iconBg: "bg-emerald-50",
+      icon: "🛍️",
+      href: "/admin/products",
+    },
+    {
+      label: "Total Products",
+      value: summary.productCount,
+      sub: "Catalogue items count",
+      valueColor: "text-blue-600",
+      iconBg: "bg-blue-50",
+      icon: "⊠",
+      href: "/admin/products",
+    },
+    {
+      label: "Inventory Alerts",
+      value: `${summary.lowStockCount + summary.outOfStockCount}`,
+      sub: `${summary.outOfStockCount} out of stock, ${summary.lowStockCount} low`,
+      valueColor: summary.outOfStockCount > 0 ? "text-red-600" : summary.lowStockCount > 0 ? "text-amber-600" : "text-[#374151]",
+      iconBg: "bg-red-50",
+      icon: "⚠️",
+      href: "/admin/inventory",
+    },
+  ];
 
   return (
-    <div>
-      <h1 className="font-display text-2xl font-bold text-white mb-1">Dashboard</h1>
-      <p className="text-sm text-[#a09a8f] mb-8">
-        Welcome back. Here&apos;s an overview of your store.
-      </p>
+    <div className="space-y-8">
+      {/* Header */}
+      <div>
+        <h1 className="font-display text-2xl font-bold text-[#111827] mb-1">
+          Store Administration
+        </h1>
+        <p className="text-sm text-[#6b7280]">
+          Overview of catalogue, inventory, and storefront performance metrics.
+        </p>
+      </div>
 
-      {/* Stats grid */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-        {STAT_LINKS.map(({ label, href, color }, i) => (
-          <Link key={label} href={href}>
-            <Card
-              className="border-[#2e2e2e] bg-[#1c1c1c] hover:border-[#c9a84c]/40 transition-colors cursor-pointer"
-              padding="md"
-            >
-              <p className="text-xs font-medium uppercase tracking-widest text-[#6b6560] mb-2">
-                {label}
-              </p>
-              <p className={`font-display text-4xl font-bold ${color}`}>
-                {statValues[i]}
-              </p>
-            </Card>
+      {/* Primary Metrics Grid */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {statCards.map((card) => (
+          <Link key={card.label} href={card.href} className="group">
+            <div className="rounded-2xl border border-[#e2e5ee] bg-white p-5 h-full flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#c9a84c]/40 transition-all duration-200">
+              <div className="flex items-start justify-between">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-[#9ca3af] mb-3">
+                  {card.label}
+                </p>
+                <span className={`text-xl rounded-xl p-1.5 ${card.iconBg}`}>{card.icon}</span>
+              </div>
+              <div>
+                <p className={`font-display text-3xl font-bold ${card.valueColor}`}>
+                  {card.value}
+                </p>
+                <p className="text-xs text-[#9ca3af] mt-2">{card.sub}</p>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
 
-      {/* Quick actions */}
+      {/* Quick Action Navigation */}
       <div>
-        <h2 className="font-semibold text-white mb-4">Quick Actions</h2>
+        <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9ca3af] mb-4">
+          Quick Management
+        </h2>
         <div className="flex flex-wrap gap-3">
           {[
-            { href: "/admin/categories", label: "Manage Categories" },
-            { href: "/admin/products",   label: "Add Product" },
-            { href: "/admin/orders",     label: "View Orders" },
-            { href: "/admin/settings",   label: "Site Settings" },
+            { href: "/admin/products/new", label: "+ Add New Product" },
+            { href: "/admin/categories/new", label: "+ Add New Category" },
+            { href: "/admin/products", label: "Manage Products" },
+            { href: "/admin/inventory", label: "Manage Inventory & Stock" },
+            { href: "/admin/settings", label: "Store Settings" },
           ].map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="rounded-[8px] border border-[#2e2e2e] bg-[#1c1c1c] px-4 py-2.5 text-sm font-medium text-[#a09a8f] hover:border-[#c9a84c]/50 hover:text-[#c9a84c] transition-colors"
+              className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#374151] hover:border-[#c9a84c]/60 hover:text-[#b8913f] hover:bg-[#c9a84c]/5 transition-all shadow-sm"
             >
               {label}
             </Link>

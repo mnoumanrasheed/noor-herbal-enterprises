@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { isAdminAccessError, requireAdmin } from "@/lib/admin";
 import { sql } from "@/lib/db";
-import { DEFAULT_CONTACT_SETTINGS } from "@/lib/site-settings";
+import { DEFAULT_CONTACT_SETTINGS, DEFAULT_STORE_SETTINGS } from "@/lib/site-settings";
 import type { AdminActionState } from "../categories/actions";
 import { z } from "zod";
 
@@ -24,6 +24,12 @@ const settingsSchema = z.object({
   homepageCopy: z.string().trim().min(2).max(1500),
   featuredContent: z.string().trim().min(2).max(1000),
   footerContent: z.string().trim().min(2).max(1000),
+  announcementBarText: z.string().trim().min(2).max(300),
+  shippingFeeRs: z.coerce.number().min(0).max(50000),
+  freeShippingThresholdRs: z.coerce.number().min(0).max(500000),
+  shippingPolicy: z.string().trim().min(10).max(2000),
+  returnsPolicy: z.string().trim().min(10).max(2000),
+  bankTransferDetails: z.string().trim().min(10).max(2000),
   storyHeading: z.string().trim().min(2).max(240),
   storyBodyOne: z.string().trim().min(20).max(2000),
   storyBodyTwo: z.string().trim().min(20).max(2000),
@@ -55,6 +61,12 @@ export async function saveSiteSettings(_previous: AdminActionState, formData: Fo
       homepageCopy: String(formData.get("homepageCopy") || "").trim(),
       featuredContent: String(formData.get("featuredContent") || "").trim(),
       footerContent: String(formData.get("footerContent") || "").trim(),
+      announcementBarText: String(formData.get("announcementBarText") || "").trim() || DEFAULT_STORE_SETTINGS.announcementBarText,
+      shippingFeeRs: formData.get("shippingFeeRs") || 250,
+      freeShippingThresholdRs: formData.get("freeShippingThresholdRs") || 3000,
+      shippingPolicy: String(formData.get("shippingPolicy") || "").trim() || DEFAULT_STORE_SETTINGS.shippingPolicy,
+      returnsPolicy: String(formData.get("returnsPolicy") || "").trim() || DEFAULT_STORE_SETTINGS.returnsPolicy,
+      bankTransferDetails: String(formData.get("bankTransferDetails") || "").trim() || DEFAULT_STORE_SETTINGS.bankTransferDetails,
       storyHeading: String(formData.get("storyHeading") || "").trim(),
       storyBodyOne: String(formData.get("storyBodyOne") || "").trim(),
       storyBodyTwo: String(formData.get("storyBodyTwo") || "").trim(),
@@ -70,48 +82,60 @@ export async function saveSiteSettings(_previous: AdminActionState, formData: Fo
       storyVisionImageAlt: String(formData.get("storyVisionImageAlt") || "").trim(),
       storyVisionImagePublicId: String(formData.get("storyVisionImagePublicId") || "").trim(),
     });
+
     if (!parsed.success) return { ok: false, error: parsed.error.issues[0]?.message ?? "Check the site settings." };
     const data = parsed.data;
 
-  for (const [key, value] of [
-    ["contact_email", data.email],
-    ["contact_phone", data.phone],
-    ["contact_instagram", data.instagram],
-    ["hero_eyebrow", data.heroEyebrow],
-    ["hero_title", data.heroTitle],
-    ["hero_description", data.heroDescription],
-    ["hero_cta_label", data.heroCtaLabel],
-    ["hero_visual_category", data.heroVisualCategory],
-    ["homepage_copy", data.homepageCopy],
-    ["featured_content", data.featuredContent],
-    ["footer_content", data.footerContent],
-    ["story_heading", data.storyHeading],
-    ["story_body_one", data.storyBodyOne],
-    ["story_body_two", data.storyBodyTwo],
-    ["story_mission", data.storyMission],
-    ["story_vision", data.storyVision],
-    ["story_opening_image", data.storyOpeningImage],
-    ["story_opening_image_alt", data.storyOpeningImageAlt],
-    ["story_opening_image_public_id", data.storyOpeningImagePublicId],
-    ["story_mission_image", data.storyMissionImage],
-    ["story_mission_image_alt", data.storyMissionImageAlt],
-    ["story_mission_image_public_id", data.storyMissionImagePublicId],
-    ["story_vision_image", data.storyVisionImage],
-    ["story_vision_image_alt", data.storyVisionImageAlt],
-    ["story_vision_image_public_id", data.storyVisionImagePublicId],
-  ]) {
-    await sql`
-      INSERT INTO site_settings (key, value)
-      VALUES (${key}, ${value})
-      ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
-    `;
-  }
+    const shippingFeePaise = String(Math.round(data.shippingFeeRs * 100));
+    const freeShippingThresholdPaise = String(Math.round(data.freeShippingThresholdRs * 100));
 
-  revalidatePath("/", "layout");
-  revalidatePath("/about");
-  return { ok: true, message: "Site settings saved." };
+    for (const [key, value] of [
+      ["contact_email", data.email],
+      ["contact_phone", data.phone],
+      ["contact_instagram", data.instagram],
+      ["hero_eyebrow", data.heroEyebrow],
+      ["hero_title", data.heroTitle],
+      ["hero_description", data.heroDescription],
+      ["hero_cta_label", data.heroCtaLabel],
+      ["hero_visual_category", data.heroVisualCategory],
+      ["homepage_copy", data.homepageCopy],
+      ["featured_content", data.featuredContent],
+      ["footer_content", data.footerContent],
+      ["announcement_bar_text", data.announcementBarText],
+      ["shipping_fee_paise", shippingFeePaise],
+      ["free_shipping_threshold_paise", freeShippingThresholdPaise],
+      ["shipping_policy", data.shippingPolicy],
+      ["returns_policy", data.returnsPolicy],
+      ["bank_transfer_details", data.bankTransferDetails],
+      ["story_heading", data.storyHeading],
+      ["story_body_one", data.storyBodyOne],
+      ["story_body_two", data.storyBodyTwo],
+      ["story_mission", data.storyMission],
+      ["story_vision", data.storyVision],
+      ["story_opening_image", data.storyOpeningImage],
+      ["story_opening_image_alt", data.storyOpeningImageAlt],
+      ["story_opening_image_public_id", data.storyOpeningImagePublicId],
+      ["story_mission_image", data.storyMissionImage],
+      ["story_mission_image_alt", data.storyMissionImageAlt],
+      ["story_mission_image_public_id", data.storyMissionImagePublicId],
+      ["story_vision_image", data.storyVisionImage],
+      ["story_vision_image_alt", data.storyVisionImageAlt],
+      ["story_vision_image_public_id", data.storyVisionImagePublicId],
+    ]) {
+      await sql`
+        INSERT INTO site_settings (key, value)
+        VALUES (${key}, ${value})
+        ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
+      `;
+    }
+
+    revalidatePath("/", "layout");
+    revalidatePath("/about");
+    revalidatePath("/shipping-returns");
+    revalidatePath("/checkout");
+    return { ok: true, message: "Store settings saved successfully." };
   } catch (error) {
     if (isAdminAccessError(error)) return { ok: false, error: "Your admin session has expired. Sign in again." };
-    return { ok: false, error: "The site settings could not be saved. Check the database connection and try again." };
+    return { ok: false, error: "The site settings could not be saved. Check the database connection." };
   }
 }

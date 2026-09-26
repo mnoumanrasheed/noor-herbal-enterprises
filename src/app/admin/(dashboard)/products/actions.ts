@@ -20,7 +20,7 @@ const imageSchema = z.object({
 const variantSchema = z.object({
   id: z.string().uuid().optional(),
   name: z.string().trim().min(1, "Every variant needs a name.").max(80),
-  sku: z.string().trim().min(1, "Every variant needs a SKU.").max(80),
+  sku: z.string().trim().max(80).optional(),
   pricePaise: z.coerce.number().int().positive("Price must be greater than zero."),
   comparePricePaise: z.coerce.number().int().positive().nullable().optional(),
   weightGrams: z.coerce.number().int().positive().nullable().optional(),
@@ -32,13 +32,15 @@ const variantSchema = z.object({
 const productSchema = z.object({
   id: z.string().uuid().optional(),
   name: z.string().trim().min(2, "Enter a product name.").max(160),
-  slug: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use a lowercase URL slug with hyphens."),
+  slug: z.string().trim().max(200).optional(),
   sku: z.string().trim().max(80).optional(),
   categoryId: z.string().uuid("Choose a category."),
   shortDesc: z.string().trim().max(240).optional(),
-  description: z.string().trim().min(10, "Add a product description of at least 10 characters.").max(5000),
+  description: z.string().trim().max(5000).optional(),
   ingredients: z.string().trim().max(3000).optional(),
   howToUse: z.string().trim().max(3000).optional(),
+  seoTitle: z.string().trim().max(160).optional(),
+  seoDescription: z.string().trim().max(300).optional(),
   sortOrder: z.coerce.number().int().min(0).max(9999),
   isActive: z.boolean(),
   isFeatured: z.boolean(),
@@ -50,17 +52,33 @@ function jsonField(formData: FormData, key: string) {
   try { return JSON.parse(String(formData.get(key) || "[]")); } catch { return null; }
 }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "") || `product-${Date.now()}`;
+}
+
 function readProduct(formData: FormData) {
+  const rawName = String(formData.get("name") || "");
+  const rawSlug = String(formData.get("slug") || "").trim();
+  // Auto-generate slug from name if blank or invalid
+  const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawSlug) ? rawSlug : slugify(rawName);
   return productSchema.safeParse({
     id: String(formData.get("id") || "") || undefined,
-    name: formData.get("name"),
-    slug: formData.get("slug"),
+    name: rawName,
+    slug,
     sku: String(formData.get("sku") || "").trim() || undefined,
     categoryId: formData.get("categoryId"),
     shortDesc: formData.get("shortDesc") || "",
     description: formData.get("description") || "",
     ingredients: formData.get("ingredients") || "",
     howToUse: formData.get("howToUse") || "",
+    seoTitle: formData.get("seoTitle") || "",
+    seoDescription: formData.get("seoDescription") || "",
     sortOrder: formData.get("sortOrder") || 0,
     isActive: formData.get("isActive") === "on",
     isFeatured: formData.get("isFeatured") === "on",
@@ -69,14 +87,18 @@ function readProduct(formData: FormData) {
   });
 }
 
+
 export async function saveProduct(_previous: AdminActionState, formData: FormData): Promise<AdminActionState> {
   try {
     await requireAdmin();
     const parsed = readProduct(formData);
     if (!parsed.success) return { ok: false, error: parsed.error.issues[0]?.message ?? "Check the product fields." };
     const data = parsed.data;
-    const variantSkus = data.variants.map((variant) => variant.sku.toLowerCase());
-    if (new Set(variantSkus).size !== variantSkus.length) return { ok: false, error: "Variant SKUs must be unique." };
+    // Auto-assign variant SKUs if not provided
+    data.variants = data.variants.map((variant, i) => ({
+      ...variant,
+      sku: variant.sku?.trim() || `${data.slug}-v${i + 1}-${Date.now()}`,
+    }));
     const productId = data.id ?? randomUUID();
     const variantIds = data.variants.map((variant) => variant.id ?? randomUUID());
     let removedImagePublicIds: string[] = [];
@@ -97,10 +119,19 @@ export async function saveProduct(_previous: AdminActionState, formData: FormDat
     }
 
     const queries = [sql`
-      INSERT INTO products (id, category_id, name, slug, sku, short_desc, description, ingredients, how_to_use, sort_order, is_active, is_featured)
-      VALUES (${productId}, ${data.categoryId}, ${data.name}, ${data.slug}, ${data.sku || null}, ${data.shortDesc || null}, ${data.description || null}, ${data.ingredients || null}, ${data.howToUse || null}, ${data.sortOrder}, ${data.isActive}, ${data.isFeatured})
-      ON CONFLICT (id) DO UPDATE SET category_id = EXCLUDED.category_id, name = EXCLUDED.name, slug = EXCLUDED.slug, sku = EXCLUDED.sku,
+      INSERT INTO products (
+        id, category_id, name, slug, sku, short_desc, description, ingredients, how_to_use,
+        seo_title, seo_description, sort_order, is_active, is_featured
+      )
+      VALUES (
+        ${productId}, ${data.categoryId}, ${data.name}, ${data.slug}, ${data.sku || null},
+        ${data.shortDesc || null}, ${data.description || null}, ${data.ingredients || null}, ${data.howToUse || null},
+        ${data.seoTitle || null}, ${data.seoDescription || null}, ${data.sortOrder}, ${data.isActive}, ${data.isFeatured}
+      )
+      ON CONFLICT (id) DO UPDATE SET
+        category_id = EXCLUDED.category_id, name = EXCLUDED.name, slug = EXCLUDED.slug, sku = EXCLUDED.sku,
         short_desc = EXCLUDED.short_desc, description = EXCLUDED.description, ingredients = EXCLUDED.ingredients, how_to_use = EXCLUDED.how_to_use,
+        seo_title = EXCLUDED.seo_title, seo_description = EXCLUDED.seo_description,
         sort_order = EXCLUDED.sort_order, is_active = EXCLUDED.is_active, is_featured = EXCLUDED.is_featured
     `, sql`DELETE FROM product_images WHERE product_id = ${productId}`];
 
@@ -129,6 +160,7 @@ export async function saveProduct(_previous: AdminActionState, formData: FormDat
     await sql.transaction(queries);
     await destroyCatalogImages(removedImagePublicIds);
     revalidatePath("/admin/products");
+    revalidatePath("/admin/inventory");
     revalidatePath("/", "layout");
     revalidatePath("/categories", "layout");
     return { ok: true, message: data.id ? "Product updated." : "Product created." };
@@ -153,6 +185,7 @@ export async function deleteProduct(id: string): Promise<AdminActionState> {
 
     await destroyCatalogImages(images.map((image) => image.cloudinary_public_id ? String(image.cloudinary_public_id) : null));
     revalidatePath("/admin/products");
+    revalidatePath("/admin/inventory");
     revalidatePath("/", "layout");
     revalidatePath("/categories", "layout");
     return { ok: true, message: "Product deleted." };

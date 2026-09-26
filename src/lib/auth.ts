@@ -56,10 +56,12 @@ export const authConfig: NextAuthConfig = {
      * authorized callback — runs in middleware to gate routes.
      */
     authorized({ auth, request }) {
-      const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
-      const isLoginPage = request.nextUrl.pathname === "/admin/login";
+      const pathname = request.nextUrl.pathname;
+      const isAdminRoute = pathname.startsWith("/admin");
+      const isApiAdminRoute = pathname.startsWith("/api/admin");
+      const isLoginPage = pathname === "/admin/login";
 
-      if (isAdminRoute && !isLoginPage) {
+      if ((isAdminRoute || isApiAdminRoute) && !isLoginPage) {
         return Boolean(auth?.user?.email && isConfiguredAdmin(auth.user.email));
       }
       return true;
