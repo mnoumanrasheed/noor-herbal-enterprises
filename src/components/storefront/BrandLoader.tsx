@@ -3,22 +3,16 @@
 import React, { useEffect, useState } from "react";
 
 export function BrandLoader() {
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [fading, setFading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Only run on client after initial mount to eliminate hydration blinking
-    setMounted(true);
-
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) {
+      setVisible(false);
       return;
     }
-
-    // Activate smooth loader overlay
-    setVisible(true);
 
     const startTime = performance.now();
     const duration = 1200; // 1.2s luxury load time
@@ -48,7 +42,7 @@ export function BrandLoader() {
     };
   }, []);
 
-  if (!mounted || !visible) return null;
+  if (!visible) return null;
 
   return (
     <div
