@@ -85,7 +85,7 @@ export function CategoryHero({
   const slug = category.slug.toLowerCase();
   const theme = CATEGORY_THEMES[slug] || {
     tagline: "THE NOOR HERBAL COLLECTION",
-    accentColor: "#c9a84c",
+    accentColor: "#BC9233",
     glowGradient:
       "radial-gradient(circle at 70% 50%, rgba(201, 168, 76, 0.28) 0%, rgba(140, 100, 30, 0.1) 45%, transparent 75%)",
     motto: category.description || "Thoughtful pantry and personal care essentials crafted for daily rituals.",
@@ -138,18 +138,18 @@ export function CategoryHero({
 
             {/* Breadcrumb Bar */}
             <nav aria-label="Breadcrumb" className="hero-eyebrow-anim flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#8e8578]">
-              <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
+              <Link href="/" className="hover:text-[#BC9233] transition-colors">Home</Link>
               <span aria-hidden="true" className="text-[#4a443b]">/</span>
-              <Link href="/categories" className="hover:text-[#c9a84c] transition-colors">Shop</Link>
+              <Link href="/categories" className="hover:text-[#BC9233] transition-colors">Shop</Link>
               <span aria-hidden="true" className="text-[#4a443b]">/</span>
-              <span aria-current="page" className="text-[#c9a84c] font-semibold">{category.name}</span>
+              <span aria-current="page" className="text-[#BC9233] font-semibold">{category.name}</span>
             </nav>
 
             {/* Collection Eyebrow */}
             <div className="hero-eyebrow-anim flex items-center gap-3">
-              <span className="h-px w-8 bg-[#c9a84c]/60" />
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c9a84c] shadow-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              <span className="h-px w-8 bg-[#BC9233]/60" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#BC9233] shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233] animate-pulse" />
                 COLLECTION {collectionIndex} • {theme.tagline}
               </span>
             </div>
@@ -180,7 +180,7 @@ export function CategoryHero({
             <div className="hero-cta-anim flex flex-wrap items-center gap-3 pt-0.5">
               {/* Product Count Pill */}
               <div className="inline-flex items-center gap-2 rounded-full border border-[#38332a] bg-[#161411] px-4 py-2 text-xs text-[#d8d2c7] font-semibold shadow-md">
-                <span className="w-2 h-2 rounded-full bg-[#c9a84c]" />
+                <span className="w-2 h-2 rounded-full bg-[#BC9233]" />
                 <span>
                   {productCount} {productCount === 1 ? "Product" : "Products"} Available
                 </span>
@@ -197,7 +197,7 @@ export function CategoryHero({
             <div className="hero-cta-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               <a
                 href="#collection-products"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c9a84c] px-8 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#c9a84c]/20 transition-all duration-300 hover:shadow-[#c9a84c]/40 hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#BC9233] px-8 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#BC9233]/20 transition-all duration-300 hover:shadow-[#BC9233]/40 hover:-translate-y-0.5"
               >
                 <span>EXPLORE COLLECTION</span>
                 <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-1">↓</span>
@@ -205,7 +205,7 @@ export function CategoryHero({
 
               <Link
                 href="/categories"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e0d8cc] transition-all duration-300 hover:border-[#c9a84c]/60 hover:text-[#c9a84c] hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e0d8cc] transition-all duration-300 hover:border-[#BC9233]/60 hover:text-[#BC9233] hover:bg-white/10"
               >
                 <span>ALL COLLECTIONS</span>
                 <span aria-hidden="true" className="text-xs">↗</span>
@@ -216,7 +216,7 @@ export function CategoryHero({
 
           {/* Right Column: Product Showcase Panel (no tilt) */}
           <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-            <div className="relative w-full max-w-sm rounded-3xl border border-[#c9a84c]/30 bg-[#12100e] p-6 shadow-2xl overflow-hidden">
+            <div className="relative w-full max-w-sm rounded-3xl border border-[#BC9233]/30 bg-[#12100e] p-6 shadow-2xl overflow-hidden">
               {/* Category glow */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -228,7 +228,7 @@ export function CategoryHero({
 
               {/* Stage Header */}
               <div className="relative z-10 w-full flex items-center justify-between border-b border-[#28241e] pb-3 mb-4">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c9a84c]">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#BC9233]">
                   COLLECTION {collectionIndex} ATELIER
                 </span>
                 <span className="text-[9px] font-mono text-[#8e8578] uppercase tracking-wider">
@@ -250,7 +250,7 @@ export function CategoryHero({
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center text-center p-8 space-y-3 h-40">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#c9a84c]/40 bg-[#1c1813] text-xl font-display font-bold text-[#c9a84c] shadow-lg">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#BC9233]/40 bg-[#1c1813] text-xl font-display font-bold text-[#BC9233] shadow-lg">
                     {category.name.substring(0, 2).toUpperCase()}
                   </span>
                   <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[#e0d8cc]">
@@ -261,7 +261,7 @@ export function CategoryHero({
 
               {/* Stage Footer */}
               <div className="relative z-10 w-full pt-3 border-t border-[#28241e] flex items-center justify-between">
-                <span className="text-[9px] font-bold uppercase tracking-widest text-[#c9a84c]">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#BC9233]">
                   Authentic Handcrafted Batch
                 </span>
                 <span className="text-[9px] text-[#a09a8f] uppercase tracking-wider">
@@ -279,10 +279,10 @@ export function CategoryHero({
         className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none z-10"
         aria-hidden="true"
       >
-        <span className="text-[9px] uppercase tracking-[0.32em] text-[#c9a84c]/80 font-semibold">
+        <span className="text-[9px] uppercase tracking-[0.32em] text-[#BC9233]/80 font-semibold">
           SCROLL TO EXPLORE
         </span>
-        <div className="w-px h-6 bg-gradient-to-b from-[#c9a84c]/70 to-transparent animate-pulse" />
+        <div className="w-px h-6 bg-gradient-to-b from-[#BC9233]/70 to-transparent animate-pulse" />
       </div>
 
       <style>{`

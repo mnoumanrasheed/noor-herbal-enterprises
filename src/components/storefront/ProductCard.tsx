@@ -27,7 +27,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const isLowStock = variants.length > 0 && totalStock > 0 && totalStock <= 5;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#2a2620] bg-[#141210] transition-all duration-300 hover:border-[#c9a84c]/50 hover:shadow-2xl hover:shadow-[#c9a84c]/5 hover:-translate-y-1">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#2a2620] bg-[#141210] transition-all duration-300 hover:border-[#BC9233]/50 hover:shadow-2xl hover:shadow-[#BC9233]/5 hover:-translate-y-1">
       {/* Product Image Stage */}
       <div className="relative aspect-square w-full overflow-hidden bg-[#1a1715]">
         <Link
@@ -66,7 +66,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Badges Overlay */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5 pointer-events-none">
           {product.is_featured && (
-            <span className="rounded-full border border-[#c9a84c]/40 bg-[#161412]/90 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c9a84c]">
+            <span className="rounded-full border border-[#BC9233]/40 bg-[#161412]/90 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#BC9233]">
               Featured
             </span>
           )}
@@ -92,7 +92,7 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
 
         {/* Product Title */}
-        <h3 className="font-display text-lg font-semibold text-[#f6f0e7] transition-colors group-hover:text-[#c9a84c] line-clamp-1">
+        <h3 className="font-display text-lg font-semibold text-[#f6f0e7] transition-colors group-hover:text-[#BC9233] line-clamp-1">
           <Link href={`/products/${product.slug}`}>
             {product.name}
           </Link>
@@ -113,7 +113,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-baseline gap-2">
             {minPrice !== null ? (
               <>
-                <span className="font-display text-base font-bold text-[#c9a84c]">
+                <span className="font-display text-base font-bold text-[#BC9233]">
                   {variants.length > 1 && minPrice !== maxPrice ? `From ${formatPrice(minPrice)}` : formatPrice(minPrice)}
                 </span>
                 {comparePrice && comparePrice > minPrice && (
@@ -129,7 +129,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
           <Link
             href={`/products/${product.slug}`}
-            className="text-xs font-semibold uppercase tracking-[0.15em] text-[#d8d2c7] hover:text-[#c9a84c] transition-colors inline-flex items-center gap-1"
+            className="text-xs font-semibold uppercase tracking-[0.15em] text-[#d8d2c7] hover:text-[#BC9233] transition-colors inline-flex items-center gap-1"
           >
             <span>View</span>
             <span aria-hidden="true">→</span>

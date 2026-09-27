@@ -10,12 +10,12 @@ const Hero3DCanvas = dynamic(
     loading: () => (
       <div className="relative w-full h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[550px] flex items-center justify-center select-none">
         <div
-          className="w-44 h-44 rounded-full border border-[#c9a84c]/20 flex items-center justify-center animate-pulse"
+          className="w-44 h-44 rounded-full border border-[#BC9233]/20 flex items-center justify-center animate-pulse"
           style={{
             background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, rgba(14,13,12,0.4) 70%)",
           }}
         >
-          <div className="w-24 h-24 rounded-full border border-[#c9a84c]/40" />
+          <div className="w-24 h-24 rounded-full border border-[#BC9233]/40" />
         </div>
       </div>
     ),

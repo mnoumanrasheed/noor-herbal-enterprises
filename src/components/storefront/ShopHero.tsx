@@ -66,16 +66,16 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
 
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="hero-eyebrow-anim flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#8e8578]">
-              <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
+              <Link href="/" className="hover:text-[#BC9233] transition-colors">Home</Link>
               <span aria-hidden="true" className="text-[#4a443b]">/</span>
-              <span aria-current="page" className="text-[#c9a84c] font-semibold">Shop Collections</span>
+              <span aria-current="page" className="text-[#BC9233] font-semibold">Shop Collections</span>
             </nav>
 
             {/* Eyebrow pill */}
             <div className="hero-eyebrow-anim flex items-center gap-3">
-              <span className="h-px w-8 bg-[#c9a84c]/60" />
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c9a84c] shadow-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              <span className="h-px w-8 bg-[#BC9233]/60" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#BC9233] shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233] animate-pulse" />
                 EXPLORE THE COLLECTION
               </span>
             </div>
@@ -106,7 +106,7 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
             <div className="hero-cta-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
               <a
                 href="#all-collections"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c9a84c] px-8 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#c9a84c]/20 transition-all duration-300 hover:shadow-[#c9a84c]/40 hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#AD7A2B] via-[#F1DD7A] to-[#BC9233] px-8 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#BC9233]/20 transition-all duration-300 hover:brightness-110 hover:shadow-[#BC9233]/40 hover:-translate-y-0.5"
               >
                 <span>EXPLORE COLLECTIONS</span>
                 <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-1">↓</span>
@@ -114,7 +114,7 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
 
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e0d8cc] transition-all duration-300 hover:border-[#c9a84c]/60 hover:text-[#c9a84c] hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e0d8cc] transition-all duration-300 hover:border-[#BC9233]/60 hover:text-[#BC9233] hover:bg-white/10"
               >
                 <span>OUR HERITAGE STORY</span>
                 <span aria-hidden="true" className="text-xs">↗</span>
@@ -124,11 +124,11 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
             {/* Quick Stats */}
             <div className="hero-cta-anim flex items-center gap-6 text-xs text-[#a09a8f]">
               <div className="flex items-center gap-2">
-                <span className="text-[#c9a84c] font-bold">✦</span>
+                <span className="text-[#BC9233] font-bold">✦</span>
                 <span>{categories.length > 0 ? categories.length : 4} Curated Categories</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#c9a84c] font-bold">✦</span>
+                <span className="text-[#BC9233] font-bold">✦</span>
                 <span>100% Handcrafted Recipes</span>
               </div>
             </div>
@@ -136,7 +136,7 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
 
           {/* Right Column: Premium Brand Info Panel (no images, no tilt) */}
           <div className="lg:col-span-5 hidden lg:block">
-            <div className="relative rounded-3xl border border-[#c9a84c]/30 bg-[#12100e] p-8 shadow-2xl overflow-hidden">
+            <div className="relative rounded-3xl border border-[#BC9233]/30 bg-[#12100e] p-8 shadow-2xl overflow-hidden">
               {/* Ambient glow */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -148,10 +148,10 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
 
               {/* Header */}
               <div className="relative z-10 mb-6 border-b border-[#2d2822] pb-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#c9a84c] mb-1.5">NOOR HERBAL</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#BC9233] mb-1.5">NOOR HERBAL</p>
                 <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#f6f0e7] leading-tight">
                   Curated Artisan<br />
-                  <span className="text-[#c9a84c]">Collections</span>
+                  <span className="text-[#BC9233]">Collections</span>
                 </h3>
               </div>
 
@@ -165,9 +165,9 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
                 ].map(({ label, tagline, num }) => (
                   <div
                     key={label}
-                    className="rounded-2xl border border-[#2d2822] bg-[#161411] p-3.5 space-y-1 hover:border-[#c9a84c]/40 transition-colors"
+                    className="rounded-2xl border border-[#2d2822] bg-[#161411] p-3.5 space-y-1 hover:border-[#BC9233]/40 transition-colors"
                   >
-                    <p className="text-[9px] font-mono font-bold text-[#c9a84c]">{num}</p>
+                    <p className="text-[9px] font-mono font-bold text-[#BC9233]">{num}</p>
                     <p className="text-[12px] font-bold text-[#f6f0e7] leading-tight">{label}</p>
                     <p className="text-[10px] text-[#a09a8f] leading-snug">{tagline}</p>
                   </div>
@@ -176,8 +176,8 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
 
               {/* Bottom tagline */}
               <div className="relative z-10 flex items-center gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a84c]/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233] animate-pulse" />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#BC9233]/80">
                   Handcrafted · Small-Batch · Pakistan
                 </p>
               </div>
@@ -192,10 +192,10 @@ export function ShopHero({ categories = [] }: ShopHeroProps) {
         className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none z-10"
         aria-hidden="true"
       >
-        <span className="text-[9px] uppercase tracking-[0.32em] text-[#c9a84c]/80 font-semibold">
+        <span className="text-[9px] uppercase tracking-[0.32em] text-[#BC9233]/80 font-semibold">
           SCROLL TO DISCOVER
         </span>
-        <div className="w-px h-6 bg-gradient-to-b from-[#c9a84c]/70 to-transparent animate-pulse" />
+        <div className="w-px h-6 bg-gradient-to-b from-[#BC9233]/70 to-transparent animate-pulse" />
       </div>
 
       <style>{`

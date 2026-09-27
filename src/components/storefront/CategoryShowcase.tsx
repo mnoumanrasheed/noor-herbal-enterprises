@@ -16,7 +16,7 @@ interface CategoryShowcaseProps {
 
 export function CatalogUnavailable() {
   return (
-    <div className="rounded-3xl border border-[#c9a84c]/30 bg-[#12100e] p-10 sm:p-14 text-center my-10 shadow-2xl relative overflow-hidden">
+    <div className="rounded-3xl border border-[#BC9233]/30 bg-[#12100e] p-10 sm:p-14 text-center my-10 shadow-2xl relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none opacity-20"
         style={{
@@ -24,10 +24,10 @@ export function CatalogUnavailable() {
         }}
       />
       <div className="relative z-10 space-y-4">
-        <div className="mx-auto w-14 h-14 rounded-2xl border border-[#c9a84c]/50 bg-[#1a1612] flex items-center justify-center text-[#c9a84c] text-xl font-serif shadow-lg">
+        <div className="mx-auto w-14 h-14 rounded-2xl border border-[#BC9233]/50 bg-[#1a1612] flex items-center justify-center text-[#BC9233] text-xl font-serif shadow-lg">
           ✦
         </div>
-        <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#c9a84c] block">
+        <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#BC9233] block">
           ATELIER SERVICE UPDATE
         </span>
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#f6f0e7]">
@@ -39,7 +39,7 @@ export function CatalogUnavailable() {
         <div className="pt-2">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#0a0907] shadow-lg hover:bg-[#d8b467] transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#BC9233] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#0a0907] shadow-lg hover:bg-[#d8b467] transition-colors"
           >
             <span>Contact Customer Care</span>
             <span aria-hidden="true">↗</span>
@@ -54,7 +54,7 @@ export function CatalogEmpty({ message = "No products listed in this collection 
   return (
     <div className="rounded-3xl border border-[#383229] bg-[#12100e] p-10 sm:p-12 text-center my-8 shadow-xl relative overflow-hidden">
       <div className="relative z-10 space-y-4">
-        <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#c9a84c] block">
+        <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#BC9233] block">
           CURATED ARTISANAL BATCH
         </span>
         <h3 className="font-display text-xl sm:text-2xl font-bold text-[#f6f0e7] max-w-lg mx-auto">
@@ -66,7 +66,7 @@ export function CatalogEmpty({ message = "No products listed in this collection 
         <div className="pt-2">
           <Link
             href="/categories"
-            className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/50 bg-[#1a1612] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0a0907] transition-all duration-300 shadow-md"
+            className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/50 bg-[#1a1612] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0a0907] transition-all duration-300 shadow-md"
           >
             <span>Explore All Collections</span>
             <span aria-hidden="true">➔</span>
@@ -124,13 +124,13 @@ export function CategoryShowcase({
           <div className="relative z-10 space-y-8">
             {/* Top Eyebrow & Live Counter */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2a2620] pb-6">
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-[#c9a84c]/40 bg-[#1e1a14] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.26em] text-[#c9a84c] shadow-md">
-                <span className="w-2 h-2 rounded-full bg-[#c9a84c] animate-pulse" />
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-[#BC9233]/40 bg-[#1e1a14] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.26em] text-[#BC9233] shadow-md">
+                <span className="w-2 h-2 rounded-full bg-[#BC9233] animate-pulse" />
                 <span>{eyebrow}</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#c9a84c]">
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#BC9233]">
                 <span className="text-[#a09a8f]">Total Collections:</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#c9a84c]/15 border border-[#c9a84c]/30 text-[#c9a84c] font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#BC9233]/15 border border-[#BC9233]/30 text-[#BC9233] font-bold">
                   {categories.length}
                 </span>
               </div>
@@ -156,8 +156,8 @@ export function CategoryShowcase({
                     onClick={() => setSelectedFilter("all")}
                     className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-[0.18em] transition-all duration-300 ${
                       selectedFilter === "all"
-                        ? "bg-[#c9a84c] text-[#0a0907] shadow-lg shadow-[#c9a84c]/20 font-extrabold scale-[1.02]"
-                        : "text-[#c9a84c]/80 border border-transparent hover:border-[#c9a84c]/40 hover:bg-[#1a1713] hover:text-[#f6f0e7]"
+                        ? "bg-[#BC9233] text-[#0a0907] shadow-lg shadow-[#BC9233]/20 font-extrabold scale-[1.02]"
+                        : "text-[#BC9233]/80 border border-transparent hover:border-[#BC9233]/40 hover:bg-[#1a1713] hover:text-[#f6f0e7]"
                     }`}
                   >
                     All ({categories.length})
@@ -169,8 +169,8 @@ export function CategoryShowcase({
                       onClick={() => setSelectedFilter(cat.slug.toLowerCase())}
                       className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-[0.18em] transition-all duration-300 ${
                         selectedFilter === cat.slug.toLowerCase()
-                          ? "bg-[#c9a84c] text-[#0a0907] shadow-lg shadow-[#c9a84c]/20 font-extrabold scale-[1.02]"
-                          : "text-[#c9a84c]/80 border border-transparent hover:border-[#c9a84c]/40 hover:bg-[#1a1713] hover:text-[#f6f0e7]"
+                          ? "bg-[#BC9233] text-[#0a0907] shadow-lg shadow-[#BC9233]/20 font-extrabold scale-[1.02]"
+                          : "text-[#BC9233]/80 border border-transparent hover:border-[#BC9233]/40 hover:bg-[#1a1713] hover:text-[#f6f0e7]"
                       }`}
                     >
                       {cat.name}
@@ -191,13 +191,13 @@ export function CategoryShowcase({
             return (
               <article
                 key={category.id}
-                className="group relative rounded-3xl border border-[#2d2822] bg-[#12100e] p-6 sm:p-10 shadow-2xl transition-all duration-300 hover:border-[#c9a84c]/60"
+                className="group relative rounded-3xl border border-[#2d2822] bg-[#12100e] p-6 sm:p-10 shadow-2xl transition-all duration-300 hover:border-[#BC9233]/60"
               >
                 {/* Category Header Bar (Entire Row is Clickable & Navigation Friendly) */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-[#25221d] pb-8 mb-8">
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#c9a84c] bg-[#1a1612] px-3.5 py-1 rounded-full border border-[#c9a84c]/30 shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#BC9233] bg-[#1a1612] px-3.5 py-1 rounded-full border border-[#BC9233]/30 shadow-sm">
                         COLLECTION {collectionIndex}
                       </span>
                       <span className="text-xs font-semibold uppercase tracking-wider text-[#a09a8f]">
@@ -205,7 +205,7 @@ export function CategoryShowcase({
                       </span>
                     </div>
 
-                    <h3 className="font-display text-2xl sm:text-4xl font-bold text-[#f6f0e7] group-hover:text-[#c9a84c] transition-colors">
+                    <h3 className="font-display text-2xl sm:text-4xl font-bold text-[#f6f0e7] group-hover:text-[#BC9233] transition-colors">
                       <Link href={`/categories/${category.slug}`}>
                         {category.name}
                       </Link>
@@ -221,7 +221,7 @@ export function CategoryShowcase({
                   {/* Direct Collection CTA Link */}
                   <Link
                     href={`/categories/${category.slug}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/40 bg-[#181512] px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0a0907] transition-all duration-300 shadow-md self-start md:self-center"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/40 bg-[#181512] px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0a0907] transition-all duration-300 shadow-md self-start md:self-center"
                   >
                     <span>EXPLORE COLLECTION</span>
                     <span aria-hidden="true">➔</span>
@@ -243,7 +243,7 @@ export function CategoryShowcase({
                   </div>
                 ) : (
                   <div className="rounded-2xl border border-dashed border-[#2d2822] bg-[#161411]/80 p-8 text-center space-y-3">
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c9a84c]">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#BC9233]">
                       Fresh Batch In Preparation
                     </p>
                     <p className="text-xs text-[#a09a8f]">
@@ -251,7 +251,7 @@ export function CategoryShowcase({
                     </p>
                     <Link
                       href={`/categories/${category.slug}`}
-                      className="inline-block text-xs font-semibold uppercase tracking-wider text-[#c9a84c] hover:underline pt-1"
+                      className="inline-block text-xs font-semibold uppercase tracking-wider text-[#BC9233] hover:underline pt-1"
                     >
                       View Collection Atelier Page ↗
                     </Link>

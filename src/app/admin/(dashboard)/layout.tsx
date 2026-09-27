@@ -24,7 +24,7 @@ export default async function AdminDashboardLayout({
             <span className="text-sm text-[#6b7280] font-medium">
               {session.user.name ?? session.user.email}
             </span>
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c9a84c]/15 text-xs font-bold text-[#c9a84c] border border-[#c9a84c]/30">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#BC9233]/15 text-xs font-bold text-[#BC9233] border border-[#BC9233]/30">
               A
             </span>
           </div>

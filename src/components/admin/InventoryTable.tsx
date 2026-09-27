@@ -73,8 +73,8 @@ export function InventoryTable({ items }: InventoryTableProps) {
             onClick={() => setFilter("all")}
             className={`rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${
               filter === "all"
-                ? "bg-[#c9a84c] text-[#0e0d0c]"
-                : "border border-[#332f28] bg-[#181614] text-[#d8d2c7] hover:border-[#c9a84c]/50"
+                ? "bg-[#BC9233] text-[#0e0d0c]"
+                : "border border-[#332f28] bg-[#181614] text-[#d8d2c7] hover:border-[#BC9233]/50"
             }`}
           >
             All Items ({items.length})
@@ -110,7 +110,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search variant, SKU, product..."
-            className="w-full sm:w-64 rounded-xl border border-[#38332a] bg-[#181614] px-4 py-2 text-xs text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none"
+            className="w-full sm:w-64 rounded-xl border border-[#38332a] bg-[#181614] px-4 py-2 text-xs text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none"
           />
         </div>
       </div>
@@ -159,7 +159,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
                   return (
                     <tr key={item.variant_id} className="hover:bg-[#1a1715]/60 transition-colors">
                       {/* SKU */}
-                      <td className="p-4 font-mono text-xs text-[#c9a84c] font-semibold">
+                      <td className="p-4 font-mono text-xs text-[#BC9233] font-semibold">
                         {item.sku}
                       </td>
 
@@ -167,7 +167,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
                       <td className="p-4">
                         <Link
                           href={`/admin/products/${item.product_id}/edit`}
-                          className="font-medium text-white hover:text-[#c9a84c] transition-colors"
+                          className="font-medium text-white hover:text-[#BC9233] transition-colors"
                         >
                           {item.product_name}
                         </Link>
@@ -194,7 +194,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
                             min={0}
                             value={editQty}
                             onChange={(e) => setEditQty(Math.max(0, parseInt(e.target.value) || 0))}
-                            className="w-20 rounded-lg border border-[#c9a84c] bg-[#1e1b15] px-2 py-1 text-center font-bold text-white text-xs"
+                            className="w-20 rounded-lg border border-[#BC9233] bg-[#1e1b15] px-2 py-1 text-center font-bold text-white text-xs"
                           />
                         ) : (
                           <span
@@ -263,7 +263,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
                           <button
                             type="button"
                             onClick={() => handleStartEdit(item)}
-                            className="text-xs font-semibold text-[#c9a84c] hover:underline"
+                            className="text-xs font-semibold text-[#BC9233] hover:underline"
                           >
                             Adjust Stock
                           </button>

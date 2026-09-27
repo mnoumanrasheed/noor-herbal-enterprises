@@ -13,7 +13,7 @@ export function Logo({ size = 48, className = "" }: LogoProps) {
     <div className="relative inline-flex items-center group">
       {/* Animated radial ambient glow behind logo */}
       <div 
-        className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#c9a84c]/10 via-[#c9a84c]/30 to-[#c9a84c]/10 opacity-70 blur-md group-hover:opacity-100 transition-all duration-500 pointer-events-none"
+        className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#BC9233]/10 via-[#BC9233]/30 to-[#BC9233]/10 opacity-70 blur-md group-hover:opacity-100 transition-all duration-500 pointer-events-none"
         style={{ animation: "logoPulse 3.5s ease-in-out infinite" }}
       />
       

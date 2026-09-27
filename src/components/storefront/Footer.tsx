@@ -43,7 +43,7 @@ export function Footer({ contactSettings = DEFAULT_CONTACT_SETTINGS, footerConte
                 href={instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#c9a84c]/30 bg-[#161411] flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0a0907] hover:border-[#c9a84c] transition-all duration-300 shadow-md"
+                className="w-10 h-10 rounded-full border border-[#BC9233]/30 bg-[#161411] flex items-center justify-center text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0a0907] hover:border-[#BC9233] transition-all duration-300 shadow-md"
                 aria-label="Follow Noor Herbal Enterprises on Instagram"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -56,7 +56,7 @@ export function Footer({ contactSettings = DEFAULT_CONTACT_SETTINGS, footerConte
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#c9a84c]/30 bg-[#161411] flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0a0907] hover:border-[#c9a84c] transition-all duration-300 shadow-md"
+                className="w-10 h-10 rounded-full border border-[#BC9233]/30 bg-[#161411] flex items-center justify-center text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0a0907] hover:border-[#BC9233] transition-all duration-300 shadow-md"
                 aria-label="Contact Noor Herbal Enterprises on WhatsApp"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -69,7 +69,7 @@ export function Footer({ contactSettings = DEFAULT_CONTACT_SETTINGS, footerConte
                 href={facebookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#c9a84c]/30 bg-[#161411] flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0a0907] hover:border-[#c9a84c] transition-all duration-300 shadow-md"
+                className="w-10 h-10 rounded-full border border-[#BC9233]/30 bg-[#161411] flex items-center justify-center text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0a0907] hover:border-[#BC9233] transition-all duration-300 shadow-md"
                 aria-label="Follow Noor Herbal Enterprises on Facebook"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -118,7 +118,7 @@ export function Footer({ contactSettings = DEFAULT_CONTACT_SETTINGS, footerConte
               href="https://mnoumanrasheed.netlify.app/"
               target="_blank"
               rel="noreferrer"
-              className="text-[#c9a84c] hover:underline font-bold transition-colors"
+              className="text-[#BC9233] hover:underline font-bold transition-colors"
             >
               Developer Portfolio ↗
             </a>

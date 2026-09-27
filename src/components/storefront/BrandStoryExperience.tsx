@@ -93,8 +93,8 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
             
             {/* Left Column: Hero Story Text */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-[#c9a84c]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c9a84c] shadow-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-[#BC9233]/35 bg-[#161412]/90 backdrop-blur-md px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#BC9233] shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233] animate-pulse" />
                 THE NOOR HERBAL STORY
               </div>
 
@@ -106,15 +106,15 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                 {story.bodyOne}
               </p>
 
-              <div className="pt-1 flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-[#c9a84c] font-semibold">
-                <span className="h-px w-8 bg-[#c9a84c]" />
+              <div className="pt-1 flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-[#BC9233] font-semibold">
+                <span className="h-px w-8 bg-[#BC9233]" />
                 <span>Handcrafted for everyday kitchens & personal care</span>
               </div>
             </div>
 
             {/* Right Column: Premium Brand Stats Panel */}
             <div className="lg:col-span-6">
-              <div className="relative rounded-3xl border border-[#c9a84c]/30 bg-[#12100e] p-8 sm:p-10 shadow-2xl overflow-hidden">
+              <div className="relative rounded-3xl border border-[#BC9233]/30 bg-[#12100e] p-8 sm:p-10 shadow-2xl overflow-hidden">
                 {/* Ambient gold glow */}
                 <div
                   className="absolute inset-0 pointer-events-none"
@@ -126,10 +126,10 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
 
                 {/* Header */}
                 <div className="relative z-10 mb-8 border-b border-[#2d2822] pb-6">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#c9a84c] mb-2">NOOR HERBAL</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#BC9233] mb-2">NOOR HERBAL</p>
                   <h3 className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7] leading-tight">
                     Pure Artisanal<br />
-                    <span className="text-[#c9a84c]">Heritage Craft</span>
+                    <span className="text-[#BC9233]">Heritage Craft</span>
                   </h3>
                 </div>
 
@@ -145,7 +145,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                       key={label}
                       className="rounded-2xl border border-[#2d2822] bg-[#161411] p-4 space-y-1"
                     >
-                      <p className="font-display text-2xl font-bold text-[#c9a84c]">{value}</p>
+                      <p className="font-display text-2xl font-bold text-[#BC9233]">{value}</p>
                       <p className="text-[11px] uppercase tracking-[0.16em] text-[#a09a8f] font-semibold">{label}</p>
                     </div>
                   ))}
@@ -153,8 +153,8 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
 
                 {/* Bottom tag line */}
                 <div className="relative z-10 flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#c9a84c] animate-pulse" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]/80">
+                  <span className="w-2 h-2 rounded-full bg-[#BC9233] animate-pulse" />
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233]/80">
                     Handcrafted in Pakistan · Est. for Daily Tables
                   </p>
                 </div>
@@ -169,17 +169,17 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
           className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none z-10"
           aria-hidden="true"
         >
-          <span className="text-[9px] uppercase tracking-[0.32em] text-[#c9a84c]/80 font-semibold">
+          <span className="text-[9px] uppercase tracking-[0.32em] text-[#BC9233]/80 font-semibold">
             SCROLL TO EXPLORE
           </span>
-          <div className="w-px h-7 bg-gradient-to-b from-[#c9a84c]/70 to-transparent animate-pulse" />
+          <div className="w-px h-7 bg-gradient-to-b from-[#BC9233]/70 to-transparent animate-pulse" />
         </div>
       </section>
 
       {/* ── 2. Reading Story Section ── */}
       <section className="py-20 bg-[#0c0b09] border-b border-[#25221d]">
         <div className="site-shell max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c9a84c]">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BC9233]">
             01 / Our Philosophy
           </p>
           <p className="font-display text-2xl sm:text-4xl text-[#f6f0e7] leading-relaxed font-normal">
@@ -192,7 +192,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
       <section aria-labelledby="timeline-heading" className="py-20 border-b border-[#25221d] relative">
         <div className="site-shell px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c9a84c]">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BC9233]">
               Generational Journey
             </p>
             <h2 id="timeline-heading" className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
@@ -213,15 +213,15 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                   onMouseLeave={() => setActiveCard(null)}
                   className={`group relative rounded-3xl border border-t-2 p-8 transition-all duration-300 shadow-xl ${
                     isHovered
-                      ? "border-[#c9a84c] border-t-[#c9a84c] bg-[#1d1a15] -translate-y-2 shadow-2xl shadow-[#c9a84c]/15"
-                      : "border-[#383229] border-t-[#c9a84c]/60 bg-[#161411]"
+                      ? "border-[#BC9233] border-t-[#BC9233] bg-[#1d1a15] -translate-y-2 shadow-2xl shadow-[#BC9233]/15"
+                      : "border-[#383229] border-t-[#BC9233]/60 bg-[#161411]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-display text-4xl font-bold text-[#c9a84c] group-hover:scale-110 transition-transform duration-300">
+                    <span className="font-display text-4xl font-bold text-[#BC9233] group-hover:scale-110 transition-transform duration-300">
                       {item.step}
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/15 border border-[#c9a84c]/30 px-3 py-1 rounded-full font-semibold shadow-sm">
+                    <span className="text-[10px] uppercase tracking-widest text-[#BC9233] bg-[#BC9233]/15 border border-[#BC9233]/30 px-3 py-1 rounded-full font-semibold shadow-sm">
                       {item.badge}
                     </span>
                   </div>
@@ -229,7 +229,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                   <h3 className="font-display text-xl font-bold text-[#f6f0e7] mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#c9a84c] mb-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#BC9233] mb-3">
                     {item.subtitle}
                   </p>
                   <p className="text-xs text-[#d0c9bd] leading-relaxed font-normal">
@@ -246,7 +246,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
       <section aria-labelledby="purpose-heading" className="py-20 border-b border-[#25221d] bg-[#0c0b09]">
         <div className="site-shell px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c9a84c]">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BC9233]">
               Guiding Principles
             </p>
             <h2 id="purpose-heading" className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
@@ -259,17 +259,17 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {/* Mission Card */}
-            <article className="rounded-3xl border border-[#383229] border-t-2 border-t-[#c9a84c] bg-[#161411] p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-[#c9a84c] transition-all duration-300 group">
+            <article className="rounded-3xl border border-[#383229] border-t-2 border-t-[#BC9233] bg-[#161411] p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-[#BC9233] transition-all duration-300 group">
               <div
                 className="absolute inset-0 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"
                 style={{ background: "radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.08) 0%, transparent 65%)" }}
               />
               <div className="relative z-10 space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[#c9a84c]">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/30 bg-[#BC9233]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[#BC9233]">
                     01 · OUR MISSION
                   </span>
-                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#c9a84c]/60 uppercase">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#BC9233]/60 uppercase">
                     PURITY FIRST
                   </span>
                 </div>
@@ -278,7 +278,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                   For Everyday Life, Made Pure.
                 </h3>
 
-                <div className="h-px w-12 bg-[#c9a84c]/40" />
+                <div className="h-px w-12 bg-[#BC9233]/40" />
 
                 <p className="text-sm sm:text-base text-[#d0c9bd] leading-relaxed font-normal">
                   {story.mission}
@@ -287,25 +287,25 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
 
               <div className="relative z-10 pt-6 mt-6 border-t border-[#2a2620] flex items-center justify-between text-xs text-[#a09a8f]">
                 <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233]" />
                   Pure Botanical & Culinary Care
                 </span>
-                <span className="font-semibold text-[#c9a84c]">100% Authentic</span>
+                <span className="font-semibold text-[#BC9233]">100% Authentic</span>
               </div>
             </article>
 
             {/* Vision Card */}
-            <article className="rounded-3xl border border-[#383229] border-t-2 border-t-[#c9a84c] bg-[#161411] p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-[#c9a84c] transition-all duration-300 group">
+            <article className="rounded-3xl border border-[#383229] border-t-2 border-t-[#BC9233] bg-[#161411] p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-[#BC9233] transition-all duration-300 group">
               <div
                 className="absolute inset-0 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"
                 style={{ background: "radial-gradient(ellipse at 85% 15%, rgba(201,168,76,0.08) 0%, transparent 65%)" }}
               />
               <div className="relative z-10 space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[#c9a84c]">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#BC9233]/30 bg-[#BC9233]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[#BC9233]">
                     02 · OUR VISION
                   </span>
-                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#c9a84c]/60 uppercase">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#BC9233]/60 uppercase">
                     GENERATIONAL CRAFT
                   </span>
                 </div>
@@ -314,7 +314,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
                   A Collection Returned To Across Generations.
                 </h3>
 
-                <div className="h-px w-12 bg-[#c9a84c]/40" />
+                <div className="h-px w-12 bg-[#BC9233]/40" />
 
                 <p className="text-sm sm:text-base text-[#d0c9bd] leading-relaxed font-normal">
                   {story.vision}
@@ -323,10 +323,10 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
 
               <div className="relative z-10 pt-6 mt-6 border-t border-[#2a2620] flex items-center justify-between text-xs text-[#a09a8f]">
                 <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233]" />
                   Long-lasting Quality & Trust
                 </span>
-                <span className="font-semibold text-[#c9a84c]">Heritage Legacy</span>
+                <span className="font-semibold text-[#BC9233]">Heritage Legacy</span>
               </div>
             </article>
           </div>
@@ -338,7 +338,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
       <section aria-label="Our core values" className="py-20 border-b border-[#25221d]">
         <div className="site-shell px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c9a84c]">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BC9233]">
               Pillars of Excellence
             </p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
@@ -353,13 +353,13 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
             {BRAND_VALUES.map(({ num, tag, title, desc }) => (
               <div
                 key={title}
-                className="group relative rounded-3xl border border-[#383229] bg-[#161411] p-7 space-y-4 border-t-2 border-t-[#c9a84c] hover:border-[#c9a84c] hover:bg-[#1d1a15] transition-all duration-300 shadow-xl hover:-translate-y-1"
+                className="group relative rounded-3xl border border-[#383229] bg-[#161411] p-7 space-y-4 border-t-2 border-t-[#BC9233] hover:border-[#BC9233] hover:bg-[#1d1a15] transition-all duration-300 shadow-xl hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#c9a84c]/40 bg-[#c9a84c]/15 text-xs font-mono font-bold text-[#c9a84c] group-hover:bg-[#c9a84c] group-hover:text-[#0a0907] transition-colors">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#BC9233]/40 bg-[#BC9233]/15 text-xs font-mono font-bold text-[#BC9233] group-hover:bg-[#BC9233] group-hover:text-[#0a0907] transition-colors">
                     {num}
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#BC9233]">
                     {tag}
                   </span>
                 </div>
@@ -379,7 +379,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
       {/* ── 6. Cinematic Closing Banner ── */}
       <section className="pt-20 text-center">
         <div className="site-shell max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c9a84c]">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BC9233]">
             Explore The Collection
           </p>
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#f6f0e7]">

@@ -49,7 +49,7 @@ export function ProductGallery({ images = [], productName }: ProductGalleryProps
                 onClick={() => setSelectedIndex(idx)}
                 className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border transition-all ${
                   isSelected
-                    ? "border-[#c9a84c] ring-2 ring-[#c9a84c]/30 scale-105"
+                    ? "border-[#BC9233] ring-2 ring-[#BC9233]/30 scale-105"
                     : "border-[#2a2620] opacity-70 hover:opacity-100"
                 }`}
               >

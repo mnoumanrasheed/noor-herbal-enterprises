@@ -54,14 +54,14 @@ export default async function OrderConfirmationPage({ params }: Props) {
           <div className="w-16 h-16 rounded-full bg-green-900/30 border border-green-500/40 text-green-400 flex items-center justify-center text-3xl mx-auto mb-5 shadow-lg">
             ✓
           </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] mb-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233] mb-2">
             Order Successfully Placed
           </p>
           <h1 className="font-display text-3xl sm:text-5xl font-bold text-[#f6f0e7]">
             Thank You, {order.customer_name.split(" ")[0]}!
           </h1>
           <p className="mt-4 text-sm sm:text-base text-[#bfb7aa] max-w-lg mx-auto leading-relaxed">
-            Your order reference is <strong className="text-[#c9a84c] font-mono text-base">{order.order_number}</strong>. We have logged your order in our system and are preparing it for packaging.
+            Your order reference is <strong className="text-[#BC9233] font-mono text-base">{order.order_number}</strong>. We have logged your order in our system and are preparing it for packaging.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -75,7 +75,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
             </a>
             <Link
               href="/categories"
-              className="rounded-xl border border-[#38332a] bg-[#1a1715] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#d8d2c7] hover:border-[#c9a84c]/50 hover:text-[#c9a84c] transition-colors"
+              className="rounded-xl border border-[#38332a] bg-[#1a1715] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#d8d2c7] hover:border-[#BC9233]/50 hover:text-[#BC9233] transition-colors"
             >
               Continue Shopping
             </Link>
@@ -134,19 +134,19 @@ export default async function OrderConfirmationPage({ params }: Props) {
               </div>
               <div>
                 <span className="text-xs uppercase text-[#8e8578] block">Payment Method</span>
-                <span className="text-[#c9a84c] font-semibold">
+                <span className="text-[#BC9233] font-semibold">
                   {order.payment_method === "bank_transfer" ? "Direct Bank Transfer" : "Cash on Delivery (COD)"}
                 </span>
               </div>
               <div>
                 <span className="text-xs uppercase text-[#8e8578] block">Order Status</span>
-                <span className="inline-flex items-center rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 px-3 py-1 text-xs font-semibold text-[#c9a84c] uppercase tracking-wider mt-1">
+                <span className="inline-flex items-center rounded-full bg-[#BC9233]/20 border border-[#BC9233]/40 px-3 py-1 text-xs font-semibold text-[#BC9233] uppercase tracking-wider mt-1">
                   {order.status}
                 </span>
               </div>
               {order.payment_method === "bank_transfer" && (
                 <div className="mt-4 rounded-xl border border-[#38332a] bg-[#181614] p-3 text-xs text-[#d8d2c7] space-y-1">
-                  <p className="font-semibold text-[#c9a84c]">Meezan Bank Transfer Details:</p>
+                  <p className="font-semibold text-[#BC9233]">Meezan Bank Transfer Details:</p>
                   <p>Title: Noor Herbal Enterprises</p>
                   <p>Account: 0101-0102030405</p>
                   <p>IBAN: PK12MEZN0001010102030405</p>
@@ -175,7 +175,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
                     {formatPrice(item.unit_price_paise)} × {item.quantity}
                   </p>
                 </div>
-                <p className="font-display text-base font-bold text-[#c9a84c]">
+                <p className="font-display text-base font-bold text-[#BC9233]">
                   {formatPrice(item.line_total_paise)}
                 </p>
               </div>
@@ -195,7 +195,7 @@ export default async function OrderConfirmationPage({ params }: Props) {
             </div>
             <div className="flex justify-between items-baseline border-t border-[#25221d] pt-4 text-base">
               <span className="font-display font-bold text-[#f6f0e7]">Grand Total</span>
-              <span className="font-display text-2xl font-bold text-[#c9a84c]">
+              <span className="font-display text-2xl font-bold text-[#BC9233]">
                 {formatPrice(order.total_paise)}
               </span>
             </div>

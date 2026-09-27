@@ -174,46 +174,72 @@ export async function submitCheckout(
 
   const formatPkr = (paise: number) => `Rs. ${(paise / 100).toLocaleString("en-PK")}`;
 
-  const todayDate = new Date().toLocaleDateString("en-PK", {
+
+
+  // Build WhatsApp message – clean ASCII format, no emojis
+  const orderDateFormatted = new Date().toLocaleDateString("en-PK", {
     day: "numeric",
-    month: "short",
+    month: "long",
     year: "numeric",
   });
 
-  // Build Premium WhatsApp message content
-  const itemLines = verifiedOrderLines
+  const itemBlocks = verifiedOrderLines
     .map(
-      (line, index) =>
-        `  ${index + 1}️⃣ *${line.productName}* ${line.variantName ? `(${line.variantName})` : ""}\n      Qty: *${line.quantity}*  |  Price: *${formatPkr(line.lineTotalPaise)}*`
+      (line) =>
+        `*${line.productName}${line.variantName ? ` - ${line.variantName}` : ""}*\nQuantity: ${line.quantity}\nUnit Price: ${formatPkr(line.unitPricePaise)}\nAmount: ${formatPkr(line.lineTotalPaise)}`
     )
     .join("\n\n");
 
-  const messageText = `✨ *NOOR HERBAL ENTERPRISES* ✨
-📜 *OFFICIAL ORDER CONFIRMATION*
+  const cityRegion = [data.city, data.province]
+    .filter(Boolean)
+    .join(", ");
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-🆔 *ORDER REF:* #${orderNumber}
-📅 *DATE:* ${todayDate}
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const emailLine = data.customerEmail
+    ? `Email: ${data.customerEmail}\n`
+    : "";
 
-👤 *CUSTOMER DETAILS*
-▫️ *Full Name:* ${data.customerName}
-▫️ *Phone / WhatsApp:* ${data.customerPhone}
-${data.customerEmail ? `▫️ *Email:* ${data.customerEmail}\n` : ""}▫️ *City / Region:* ${data.city}${data.province ? `, ${data.province}` : ""}
-▫️ *Delivery Address:* ${data.address}
-${data.customerNote && data.customerNote.trim().toLowerCase() !== "no" ? `▫️ *Special Instructions:* ${data.customerNote}\n` : ""}
-🛒 *ORDERED ITEMS*
-${itemLines}
+  const noteLine =
+    data.customerNote && data.customerNote.trim().toLowerCase() !== "no"
+      ? `\nSpecial Instructions: ${data.customerNote}\n`
+      : "";
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-💳 *PAYMENT & BILL SUMMARY*
-▫️ *Products Subtotal:* ${formatPkr(subtotalPaise)}
-▫️ *Delivery Charges:* 💬 *To be confirmed via Chat*
-👉 *GRAND TOTAL:* *${formatPkr(subtotalPaise)}* _(Excl. Delivery)_
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const messageText =
+`*NOOR HERBAL ENTERPRISES*
+*ORDER CONFIRMATION*
 
-🌿 *Thank you for choosing Noor Herbal Enterprises!*
-We prepare every jar and formula with natural care. Please confirm delivery timing.`;
+--------------------------------
+*Order Reference:* #${orderNumber}
+*Order Date:* ${orderDateFormatted}
+--------------------------------
+
+*CUSTOMER DETAILS*
+
+Name: ${data.customerName}
+Phone / WhatsApp: ${data.customerPhone}
+${emailLine}City / Region: ${cityRegion}
+
+Delivery Address:
+${data.address}
+${noteLine}
+--------------------------------
+*ORDER DETAILS*
+
+${itemBlocks}
+
+--------------------------------
+*PAYMENT SUMMARY*
+
+Products Subtotal: ${formatPkr(subtotalPaise)}
+Delivery Charges: To be confirmed
+--------------------------------
+*Total Before Delivery: ${formatPkr(subtotalPaise)}*
+--------------------------------
+
+Delivery charges will be added separately, where applicable.
+
+Thank you for choosing *Noor Herbal Enterprises*.
+
+Your order has been received successfully. Our team will contact you to confirm the delivery details and timing.`;
 
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(messageText)}`;
 

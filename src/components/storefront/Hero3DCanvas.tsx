@@ -59,7 +59,7 @@ export function Hero3DCanvas() {
     const ambientLight = new THREE.AmbientLight(0xfff5e0, 0.9);
     scene.add(ambientLight);
 
-    const goldPoint = new THREE.PointLight(0xc9a84c, 3.0, 15);
+    const goldPoint = new THREE.PointLight(0xBC9233, 3.0, 15);
     goldPoint.position.set(4, 3, 4);
     scene.add(goldPoint);
 

@@ -59,7 +59,7 @@ export function AdminImageUpload({
       <input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple={multiple} disabled={busy} onChange={(event) => upload(event.target.files)} className="admin-file-input" />
       <p className="text-xs text-[#7e776d]">JPG, PNG, or WebP. Maximum 5 MB per image. Convert JFIF files to JPG before uploading.</p>
       {error && <p role="alert" className="admin-form-error">{error}</p>}
-      {busy && <p className="text-xs text-[#c9a84c]">Uploading securely…</p>}
+      {busy && <p className="text-xs text-[#BC9233]">Uploading securely…</p>}
       {images.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {images.map((image, index) => (

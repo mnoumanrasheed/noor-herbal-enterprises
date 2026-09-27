@@ -38,7 +38,7 @@ export function Input({
         className={[
           "w-full rounded-[8px] border bg-white px-3 py-2.5 text-[#0f0f0f] text-base",
           "placeholder:text-[#9e9e9e] outline-none transition-colors duration-150",
-          "focus:border-[#c9a84c] focus:ring-2 focus:ring-[#c9a84c]/20",
+          "focus:border-[#BC9233] focus:ring-2 focus:ring-[#BC9233]/20",
           error
             ? "border-[#c0392b] focus:border-[#c0392b] focus:ring-[#c0392b]/20"
             : "border-[#e8e3d9]",

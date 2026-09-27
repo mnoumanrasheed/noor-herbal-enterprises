@@ -49,7 +49,7 @@ export default async function HomePage() {
       {/* Skip-to-content link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#c9a84c] focus:px-4 focus:py-2 focus:text-[#0f0f0f] focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#BC9233] focus:px-4 focus:py-2 focus:text-[#0f0f0f] focus:font-semibold"
       >
         Skip to main content
       </a>
@@ -63,6 +63,7 @@ export default async function HomePage() {
         {/* ── 1. Full-Bleed Background Video — vibrant and visible ── */}
         <video
           src="/hero-video.mp4"
+          poster="/hero-poster.jpg"
           autoPlay
           loop
           muted
@@ -119,8 +120,8 @@ export default async function HomePage() {
             
             {/* Eyebrow */}
             <div className="hero-eyebrow-anim flex items-center gap-3">
-              <span className="h-px w-7 bg-[#c9a84c]/60" />
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.28em] text-[#c9a84c]">
+              <span className="h-px w-7 bg-[#BC9233]/60" />
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.28em] text-[#BC9233]">
                 ROOTED IN TRADITION • CRAFTED IN PAKISTAN
               </span>
             </div>
@@ -155,7 +156,7 @@ export default async function HomePage() {
             <div className="hero-cta-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 href="/categories"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c9a84c] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#c9a84c]/25 transition-all duration-300 hover:shadow-[#c9a84c]/50 hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#BC9233] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.22em] text-[#0a0907] shadow-xl shadow-[#BC9233]/25 transition-all duration-300 hover:shadow-[#BC9233]/50 hover:-translate-y-0.5"
               >
                 <span>SHOP THE COLLECTION</span>
                 <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -163,7 +164,7 @@ export default async function HomePage() {
 
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/8 backdrop-blur-sm px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-[#c9a84c]/70 hover:text-[#c9a84c] hover:bg-white/12"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/8 backdrop-blur-sm px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-[#BC9233]/70 hover:text-[#BC9233] hover:bg-white/12"
               >
                 <span>OUR HERITAGE</span>
                 <span aria-hidden="true" className="text-sm">↗</span>
@@ -178,10 +179,10 @@ export default async function HomePage() {
           className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none z-10"
           aria-hidden="true"
         >
-          <span className="text-[9px] uppercase tracking-[0.32em] text-[#c9a84c]/80 font-semibold">
+          <span className="text-[9px] uppercase tracking-[0.32em] text-[#BC9233]/80 font-semibold">
             SCROLL TO EXPLORE
           </span>
-          <div className="w-px h-7 bg-gradient-to-b from-[#c9a84c]/70 to-transparent animate-pulse" />
+          <div className="w-px h-7 bg-gradient-to-b from-[#BC9233]/70 to-transparent animate-pulse" />
         </div>
 
         {/* ── Keyframe styles ── */}
@@ -199,7 +200,7 @@ export default async function HomePage() {
           <div className="site-shell px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] mb-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233] mb-2">
                   Considered Selection
                 </p>
                 <h2 id="featured-heading" className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
@@ -208,7 +209,7 @@ export default async function HomePage() {
               </div>
               <Link
                 href="/categories"
-                className="text-xs font-semibold uppercase tracking-[0.16em] text-[#c9a84c] hover:underline self-start sm:self-auto"
+                className="text-xs font-semibold uppercase tracking-[0.16em] text-[#BC9233] hover:underline self-start sm:self-auto"
               >
                 View Complete Shop →
               </Link>
@@ -234,7 +235,7 @@ export default async function HomePage() {
       {/* Brand Heritage Story Teaser */}
       <section aria-label="Brand Philosophy" className="py-20 border-t border-[#2a2620] bg-[#13110f] relative overflow-hidden">
         <div className="site-shell max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c9a84c]">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#BC9233]">
             The Noor Herbal Philosophy
           </p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f6f0e7] leading-tight">
@@ -273,7 +274,7 @@ export default async function HomePage() {
               },
             ].map(({ number, title, desc }) => (
               <li key={title} className="flex flex-col items-center px-4 pt-6 sm:pt-0">
-                <span className="font-display text-2xl font-bold text-[#c9a84c]" aria-hidden="true">
+                <span className="font-display text-2xl font-bold text-[#BC9233]" aria-hidden="true">
                   {number}
                 </span>
                 <h3 className="mt-3 font-display text-lg font-semibold text-[#f6f0e7]">

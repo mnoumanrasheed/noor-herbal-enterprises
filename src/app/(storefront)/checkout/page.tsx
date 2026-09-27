@@ -115,9 +115,9 @@ export default function CheckoutPage() {
         {/* Breadcrumb / Heading */}
         <div className="border-b border-[#2a2620] pb-6 mb-8">
           <nav aria-label="Breadcrumb" className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#8e8578]">
-            <Link href="/cart" className="hover:text-[#c9a84c] transition-colors">Cart</Link>
+            <Link href="/cart" className="hover:text-[#BC9233] transition-colors">Cart</Link>
             <span aria-hidden="true" className="text-[#4a443b]">/</span>
-            <span aria-current="page" className="text-[#c9a84c] font-semibold">Order Details</span>
+            <span aria-current="page" className="text-[#BC9233] font-semibold">Order Details</span>
           </nav>
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
             Complete Your Order
@@ -141,7 +141,7 @@ export default function CheckoutPage() {
               {/* 1. Contact Info */}
               <section className="rounded-3xl border border-[#2d2924] bg-[#141210] p-6 sm:p-8 shadow-xl">
                 <h2 className="font-display text-xl font-bold text-[#f6f0e7] mb-6 flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#c9a84c]/20 text-xs text-[#c9a84c] font-mono">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#BC9233]/20 text-xs text-[#BC9233] font-mono">
                     1
                   </span>
                   Customer Information
@@ -158,7 +158,7 @@ export default function CheckoutPage() {
                       type="text"
                       required
                       placeholder="e.g. Muhammad Usman"
-                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none"
+                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none"
                     />
                   </div>
 
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                         type="tel"
                         required
                         placeholder="e.g. 0300 5599174"
-                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none"
+                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -185,7 +185,7 @@ export default function CheckoutPage() {
                         name="customerEmail"
                         type="email"
                         placeholder="name@example.com"
-                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none"
+                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export default function CheckoutPage() {
               {/* 2. Delivery Address */}
               <section className="rounded-3xl border border-[#2d2924] bg-[#141210] p-6 sm:p-8 shadow-xl">
                 <h2 className="font-display text-xl font-bold text-[#f6f0e7] mb-6 flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#c9a84c]/20 text-xs text-[#c9a84c] font-mono">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#BC9233]/20 text-xs text-[#BC9233] font-mono">
                     2
                   </span>
                   Delivery Address in Pakistan
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
                       required
                       rows={3}
                       placeholder="House/Apartment #, Street, Sector/Block, Nearby Landmark"
-                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none resize-y"
+                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none resize-y"
                     />
                   </div>
 
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                         type="text"
                         required
                         placeholder="e.g. Lahore"
-                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none"
+                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
                         id="province"
                         name="province"
                         defaultValue="Punjab"
-                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] focus:border-[#c9a84c] focus:outline-none"
+                        className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3.5 text-sm text-[#f6f0e7] focus:border-[#BC9233] focus:outline-none"
                       >
                         <option value="Punjab">Punjab</option>
                         <option value="Sindh">Sindh</option>
@@ -260,7 +260,7 @@ export default function CheckoutPage() {
                       name="customerNote"
                       rows={2}
                       placeholder="e.g. Preferred time, nearby landmark..."
-                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none resize-y"
+                      className="w-full rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none resize-y"
                     />
                   </div>
                 </div>
@@ -312,7 +312,7 @@ export default function CheckoutPage() {
                         {quote?.variant_name} × {item.quantity}
                       </p>
                     </div>
-                    <p className="font-display text-sm font-semibold text-[#c9a84c]">
+                    <p className="font-display text-sm font-semibold text-[#BC9233]">
                       {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "—"}
                     </p>
                   </div>
@@ -327,7 +327,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Delivery Charges</span>
-                  <span className="text-xs text-[#c9a84c] font-semibold bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-2.5 py-1 rounded-full">
+                  <span className="text-xs text-[#BC9233] font-semibold bg-[#BC9233]/10 border border-[#BC9233]/20 px-2.5 py-1 rounded-full">
                     Decided on WhatsApp
                   </span>
                 </div>
@@ -339,14 +339,14 @@ export default function CheckoutPage() {
                   <span className="font-display text-lg font-bold text-[#f6f0e7] block">Products Total</span>
                   <span className="text-[10px] text-[#8e8578] uppercase tracking-wider">Excl. Delivery</span>
                 </div>
-                <span className="font-display text-3xl font-bold text-[#c9a84c]">
+                <span className="font-display text-3xl font-bold text-[#BC9233]">
                   {formatPrice(subtotal)}
                 </span>
               </div>
 
               {/* Guarantee */}
               <div className="rounded-2xl bg-[#181614] border border-[#25221d] p-4 text-xs text-[#8e8578] space-y-2">
-                <div className="flex items-center gap-2 text-[#c9a84c]">
+                <div className="flex items-center gap-2 text-[#BC9233]">
                   <span>🌿</span>
                   <span className="font-semibold">Direct WhatsApp Confirmation</span>
                 </div>

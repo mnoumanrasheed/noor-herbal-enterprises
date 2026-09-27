@@ -34,8 +34,8 @@ export default async function AdminDashboardPage() {
       label: "Total Categories",
       value: summary.categoryCount,
       sub: "Active catalogue categories",
-      valueColor: "text-[#b8913f]",
-      iconBg: "bg-[#c9a84c]/10",
+      valueColor: "text-[#BC9233]",
+      iconBg: "bg-[#BC9233]/10",
       icon: "◫",
       href: "/admin/categories",
     },
@@ -84,7 +84,7 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {statCards.map((card) => (
           <Link key={card.label} href={card.href} className="group">
-            <div className="rounded-2xl border border-[#e2e5ee] bg-white p-5 h-full flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#c9a84c]/40 transition-all duration-200">
+            <div className="rounded-2xl border border-[#e2e5ee] bg-white p-5 h-full flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#BC9233]/40 transition-all duration-200">
               <div className="flex items-start justify-between">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-[#9ca3af] mb-3">
                   {card.label}
@@ -118,7 +118,7 @@ export default async function AdminDashboardPage() {
             <Link
               key={href}
               href={href}
-              className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#374151] hover:border-[#c9a84c]/60 hover:text-[#b8913f] hover:bg-[#c9a84c]/5 transition-all shadow-sm"
+              className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#374151] hover:border-[#BC9233]/60 hover:text-[#BC9233] hover:bg-[#BC9233]/5 transition-all shadow-sm"
             >
               {label}
             </Link>

@@ -68,7 +68,7 @@ export function OrderDetailManager({ order }: OrderDetailManagerProps) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#25221d] pb-5">
           <div>
             <h3 className="font-display text-lg font-bold text-white">Order Status & Fulfillment</h3>
-            <p className="text-xs text-[#8e8578] mt-0.5">Current state: <strong className="uppercase text-[#c9a84c]">{status}</strong></p>
+            <p className="text-xs text-[#8e8578] mt-0.5">Current state: <strong className="uppercase text-[#BC9233]">{status}</strong></p>
           </div>
 
           {/* WhatsApp Direct Chat */}
@@ -100,10 +100,10 @@ export function OrderDetailManager({ order }: OrderDetailManagerProps) {
                   disabled={isPending || isCurrent}
                   className={`rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all ${
                     isCurrent
-                      ? "bg-[#c9a84c] text-[#0e0d0c] shadow-lg"
+                      ? "bg-[#BC9233] text-[#0e0d0c] shadow-lg"
                       : s === "cancelled"
                       ? "border border-red-500/40 bg-[#1e1414] text-red-300 hover:bg-red-900/40"
-                      : "border border-[#332f28] bg-[#181614] text-[#d8d2c7] hover:border-[#c9a84c]/50"
+                      : "border border-[#332f28] bg-[#181614] text-[#d8d2c7] hover:border-[#BC9233]/50"
                   } disabled:opacity-50`}
                 >
                   {s}
@@ -123,7 +123,7 @@ export function OrderDetailManager({ order }: OrderDetailManagerProps) {
               id="paymentStatusSelect"
               value={paymentStatus}
               onChange={(e) => setPaymentStatus(e.target.value as PaymentStatus)}
-              className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-xs text-white focus:border-[#c9a84c] focus:outline-none"
+              className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-xs text-white focus:border-[#BC9233] focus:outline-none"
             >
               <option value="pending">Pending</option>
               <option value="paid">Paid</option>
@@ -142,7 +142,7 @@ export function OrderDetailManager({ order }: OrderDetailManagerProps) {
               onChange={(e) => setAdminNote(e.target.value)}
               rows={2}
               placeholder="e.g. Courier tracking # TCS-99887766, verified on call"
-              className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-2.5 text-xs text-white placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none resize-y"
+              className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-2.5 text-xs text-white placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none resize-y"
             />
           </div>
         </div>

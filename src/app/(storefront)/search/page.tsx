@@ -34,7 +34,7 @@ export default async function SearchPage({ searchParams }: Props) {
       <div className="site-shell px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] mb-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233] mb-2">
             Storefront Search
           </p>
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f6f0e7]">
@@ -52,7 +52,7 @@ export default async function SearchPage({ searchParams }: Props) {
                 name="q"
                 defaultValue={q}
                 placeholder="Search by name, ingredients, SKU, or collection..."
-                className="w-full rounded-2xl border border-[#38332a] bg-[#161412] px-5 py-4 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
+                className="w-full rounded-2xl border border-[#38332a] bg-[#161412] px-5 py-4 text-sm text-[#f6f0e7] placeholder-[#6e675d] focus:border-[#BC9233] focus:outline-none focus:ring-1 focus:ring-[#BC9233]"
               />
               {category && <input type="hidden" name="category" value={category} />}
             </div>
@@ -73,8 +73,8 @@ export default async function SearchPage({ searchParams }: Props) {
               href={`/search?q=${encodeURIComponent(q)}&sort=${sort}`}
               className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
                 !category
-                  ? "bg-[#c9a84c] text-[#0e0d0c] font-semibold"
-                  : "border border-[#332f28] bg-[#161412] text-[#d8d2c7] hover:border-[#c9a84c]/50"
+                  ? "bg-[#BC9233] text-[#0e0d0c] font-semibold"
+                  : "border border-[#332f28] bg-[#161412] text-[#d8d2c7] hover:border-[#BC9233]/50"
               }`}
             >
               All Categories
@@ -87,8 +87,8 @@ export default async function SearchPage({ searchParams }: Props) {
                   href={`/search?q=${encodeURIComponent(q)}&category=${cat.slug}&sort=${sort}`}
                   className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
                     isSelected
-                      ? "bg-[#c9a84c] text-[#0e0d0c] font-semibold"
-                      : "border border-[#332f28] bg-[#161412] text-[#d8d2c7] hover:border-[#c9a84c]/50"
+                      ? "bg-[#BC9233] text-[#0e0d0c] font-semibold"
+                      : "border border-[#332f28] bg-[#161412] text-[#d8d2c7] hover:border-[#BC9233]/50"
                   }`}
                 >
                   {cat.name}
@@ -112,7 +112,7 @@ export default async function SearchPage({ searchParams }: Props) {
                 defaultValue={sort}
                 // @ts-expect-error form submission on change
                 onChange="this.form.submit()"
-                className="rounded-xl border border-[#332f28] bg-[#161412] px-3 py-1.5 text-xs text-[#d8d2c7] focus:border-[#c9a84c] focus:outline-none"
+                className="rounded-xl border border-[#332f28] bg-[#161412] px-3 py-1.5 text-xs text-[#d8d2c7] focus:border-[#BC9233] focus:outline-none"
               >
                 <option value="featured">Featured First</option>
                 <option value="newest">Newest Additions</option>
@@ -136,7 +136,7 @@ export default async function SearchPage({ searchParams }: Props) {
           </div>
         ) : (
           <div className="rounded-3xl border border-[#2a2620] bg-[#141210] p-12 text-center max-w-lg mx-auto my-12">
-            <div className="w-12 h-12 rounded-full border border-[#c9a84c]/40 flex items-center justify-center text-[#c9a84c] mx-auto mb-4">
+            <div className="w-12 h-12 rounded-full border border-[#BC9233]/40 flex items-center justify-center text-[#BC9233] mx-auto mb-4">
               🔍
             </div>
             <h3 className="font-display text-xl font-semibold text-white mb-2">No matching products found</h3>

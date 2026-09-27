@@ -88,7 +88,7 @@ export function ProductPurchase({
     <div className="space-y-6">
       {/* Price & Savings Display */}
       <div className="flex flex-wrap items-baseline gap-3">
-        <span className="font-display text-3xl font-bold text-[#c9a84c]">
+        <span className="font-display text-3xl font-bold text-[#BC9233]">
           {formatPrice(currentPrice)}
         </span>
         {comparePrice && comparePrice > currentPrice && (
@@ -96,7 +96,7 @@ export function ProductPurchase({
             <span className="text-base text-[#7a7367] line-through">
               {formatPrice(comparePrice)}
             </span>
-            <span className="rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 px-2.5 py-0.5 text-xs font-semibold text-[#c9a84c]">
+            <span className="rounded-full bg-[#BC9233]/20 border border-[#BC9233]/40 px-2.5 py-0.5 text-xs font-semibold text-[#BC9233]">
               Save {savings}%
             </span>
           </>
@@ -128,13 +128,13 @@ export function ProductPurchase({
                   }}
                   className={`flex flex-col items-start p-3 rounded-xl border text-left transition-all ${
                     isSelected
-                      ? "border-[#c9a84c] bg-[#1f1b15] shadow-md shadow-[#c9a84c]/10"
+                      ? "border-[#BC9233] bg-[#1f1b15] shadow-md shadow-[#BC9233]/10"
                       : varOutOfStock
                       ? "border-[#25221d] bg-[#141210]/50 opacity-50 cursor-not-allowed"
-                      : "border-[#332f28] bg-[#181614] hover:border-[#c9a84c]/50"
+                      : "border-[#332f28] bg-[#181614] hover:border-[#BC9233]/50"
                   }`}
                 >
-                  <span className={`text-sm font-medium ${isSelected ? "text-[#c9a84c]" : "text-[#f6f0e7]"}`}>
+                  <span className={`text-sm font-medium ${isSelected ? "text-[#BC9233]" : "text-[#f6f0e7]"}`}>
                     {variant.name}
                   </span>
                   <span className="text-xs text-[#a09a8f] mt-1">
@@ -182,7 +182,7 @@ export function ProductPurchase({
                 type="button"
                 onClick={() => handleQuantityChange(-1)}
                 disabled={quantity <= 1}
-                className="px-3.5 py-2 text-[#d8d2c7] hover:text-[#c9a84c] disabled:opacity-30 text-base"
+                className="px-3.5 py-2 text-[#d8d2c7] hover:text-[#BC9233] disabled:opacity-30 text-base"
                 aria-label="Decrease quantity"
               >
                 −
@@ -194,14 +194,14 @@ export function ProductPurchase({
                 type="button"
                 onClick={() => handleQuantityChange(1)}
                 disabled={quantity >= stock}
-                className="px-3.5 py-2 text-[#d8d2c7] hover:text-[#c9a84c] disabled:opacity-30 text-base"
+                className="px-3.5 py-2 text-[#d8d2c7] hover:text-[#BC9233] disabled:opacity-30 text-base"
                 aria-label="Increase quantity"
               >
                 +
               </button>
             </div>
             <span className="text-xs text-[#8e8578]">
-              Subtotal: <strong className="text-[#c9a84c] font-semibold">{formatPrice(currentPrice * quantity)}</strong>
+              Subtotal: <strong className="text-[#BC9233] font-semibold">{formatPrice(currentPrice * quantity)}</strong>
             </span>
           </div>
 
@@ -218,7 +218,7 @@ export function ProductPurchase({
             <button
               type="button"
               onClick={handleBuyNow}
-              className="w-full rounded-xl border border-[#c9a84c] bg-[#1e1b15] py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0e0d0c] transition-all shadow-lg"
+              className="w-full rounded-xl border border-[#BC9233] bg-[#1e1b15] py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233] hover:bg-[#BC9233] hover:text-[#0e0d0c] transition-all shadow-lg"
             >
               Buy Now
             </button>
@@ -232,7 +232,7 @@ export function ProductPurchase({
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 text-xs font-medium text-[#c9a84c] hover:text-[#dfbc5e] transition-colors"
+          className="inline-flex items-center gap-2.5 text-xs font-medium text-[#BC9233] hover:text-[#F1DD7A] transition-colors"
         >
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#25D366]/20 text-[#25D366]">
             💬

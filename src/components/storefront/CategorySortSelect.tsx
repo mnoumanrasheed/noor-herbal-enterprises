@@ -13,7 +13,7 @@ export function CategorySortSelect({ defaultValue }: CategorySortSelectProps) {
       name="sort"
       defaultValue={defaultValue}
       onChange={(e) => e.target.form?.requestSubmit()}
-      className="rounded-xl border border-[#332f28] bg-[#161412] px-3 py-2 text-xs text-[#d8d2c7] focus:border-[#c9a84c] focus:outline-none cursor-pointer"
+      className="rounded-xl border border-[#332f28] bg-[#161412] px-3 py-2 text-xs text-[#d8d2c7] focus:border-[#BC9233] focus:outline-none cursor-pointer"
     >
       <option value="featured">Featured First</option>
       <option value="newest">Newest Additions</option>

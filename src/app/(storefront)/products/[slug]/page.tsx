@@ -161,19 +161,19 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="site-shell px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb Bar */}
           <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#8e8578]">
-            <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#BC9233] transition-colors">Home</Link>
             <span aria-hidden="true" className="text-[#4a443b]">/</span>
-            <Link href="/categories" className="hover:text-[#c9a84c] transition-colors">Shop</Link>
+            <Link href="/categories" className="hover:text-[#BC9233] transition-colors">Shop</Link>
             {product.category_slug && (
               <>
                 <span aria-hidden="true" className="text-[#4a443b]">/</span>
-                <Link href={`/categories/${product.category_slug}`} className="hover:text-[#c9a84c] transition-colors">
+                <Link href={`/categories/${product.category_slug}`} className="hover:text-[#BC9233] transition-colors">
                   {product.category_name}
                 </Link>
               </>
             )}
             <span aria-hidden="true" className="text-[#4a443b]">/</span>
-            <span aria-current="page" className="text-[#c9a84c] font-semibold truncate max-w-[240px]">
+            <span aria-current="page" className="text-[#BC9233] font-semibold truncate max-w-[240px]">
               {product.name}
             </span>
           </nav>
@@ -192,13 +192,13 @@ export default async function ProductDetailPage({ params }: Props) {
                 {product.category_name && (
                   <Link
                     href={`/categories/${product.category_slug}`}
-                    className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c] hover:underline"
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233] hover:underline"
                   >
                     {product.category_name}
                   </Link>
                 )}
                 {product.is_featured && (
-                  <span className="rounded-full border border-[#c9a84c]/40 bg-[#161412] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c9a84c]">
+                  <span className="rounded-full border border-[#BC9233]/40 bg-[#161412] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#BC9233]">
                     Featured
                   </span>
                 )}
@@ -228,15 +228,15 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Trust Badges Strip */}
               <div className="grid grid-cols-3 gap-3 border-y border-[#25221d] py-5 text-center">
                 <div>
-                  <p className="text-sm font-semibold text-[#c9a84c]">100% Homemade</p>
+                  <p className="text-sm font-semibold text-[#BC9233]">100% Homemade</p>
                   <p className="text-[11px] text-[#8e8578] mt-0.5">Pure traditional recipes</p>
                 </div>
                 <div className="border-x border-[#25221d]">
-                  <p className="text-sm font-semibold text-[#c9a84c]">Delivery All Over Pakistan</p>
+                  <p className="text-sm font-semibold text-[#BC9233]">Delivery All Over Pakistan</p>
                   <p className="text-[11px] text-[#8e8578] mt-0.5">Direct nationwide delivery</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#c9a84c]">Artisanal Small Batch</p>
+                  <p className="text-sm font-semibold text-[#BC9233]">Artisanal Small Batch</p>
                   <p className="text-[11px] text-[#8e8578] mt-0.5">100% Pure & Fresh</p>
                 </div>
               </div>
@@ -253,7 +253,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Description */}
               {product.description && (
                 <div className="rounded-2xl border border-[#25221d] bg-[#141210] p-6 sm:p-8">
-                  <h3 className="font-display text-lg font-semibold text-[#c9a84c] mb-3">
+                  <h3 className="font-display text-lg font-semibold text-[#BC9233] mb-3">
                     About This Preparation
                   </h3>
                   <div className="text-sm text-[#bfb7aa] leading-relaxed whitespace-pre-line">
@@ -265,7 +265,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Ingredients / Composition */}
               {product.ingredients && (
                 <div className="rounded-2xl border border-[#25221d] bg-[#141210] p-6 sm:p-8">
-                  <h3 className="font-display text-lg font-semibold text-[#c9a84c] mb-3">
+                  <h3 className="font-display text-lg font-semibold text-[#BC9233] mb-3">
                     Pure Ingredients
                   </h3>
                   <div className="text-sm text-[#bfb7aa] leading-relaxed whitespace-pre-line">
@@ -277,7 +277,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* How to use / Instructions */}
               {product.how_to_use && (
                 <div className="rounded-2xl border border-[#25221d] bg-[#141210] p-6 sm:p-8">
-                  <h3 className="font-display text-lg font-semibold text-[#c9a84c] mb-3">
+                  <h3 className="font-display text-lg font-semibold text-[#BC9233] mb-3">
                     Recommended Usage & Ritual
                   </h3>
                   <div className="text-sm text-[#bfb7aa] leading-relaxed whitespace-pre-line">
@@ -288,7 +288,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
               {/* Shipping & Delivery Policy */}
               <div className="rounded-2xl border border-[#25221d] bg-[#141210] p-6 sm:p-8">
-                <h3 className="font-display text-lg font-semibold text-[#c9a84c] mb-3">
+                <h3 className="font-display text-lg font-semibold text-[#BC9233] mb-3">
                   Delivery & Guarantee
                 </h3>
                 <p className="text-sm text-[#bfb7aa] leading-relaxed">
@@ -310,7 +310,7 @@ export default async function ProductDetailPage({ params }: Props) {
             <section aria-labelledby="related-heading" className="mt-20 sm:mt-28 border-t border-[#2a2620] pt-14">
               <div className="flex items-end justify-between mb-8">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#BC9233]">
                     Considered Pairings
                   </p>
                   <h2 id="related-heading" className="font-display text-2xl sm:text-3xl font-bold text-[#f6f0e7] mt-1">
@@ -319,7 +319,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 </div>
                 <Link
                   href="/categories"
-                  className="hidden sm:inline-flex text-xs font-semibold uppercase tracking-[0.16em] text-[#c9a84c] hover:underline"
+                  className="hidden sm:inline-flex text-xs font-semibold uppercase tracking-[0.16em] text-[#BC9233] hover:underline"
                 >
                   View All Collection →
                 </Link>

@@ -58,7 +58,7 @@ export function LoginForm() {
           autoComplete="email"
           required
           placeholder="admin@noorherbal.com"
-          className="w-full rounded-xl border border-[#d1d5db] bg-[#f9fafb] px-4 py-3 text-sm text-[#111827] placeholder-[#9ca3af] outline-none transition-all duration-200 focus:border-[#c9a84c] focus:bg-white focus:ring-2 focus:ring-[#c9a84c]/20 font-medium"
+          className="w-full rounded-xl border border-[#d1d5db] bg-[#f9fafb] px-4 py-3 text-sm text-[#111827] placeholder-[#9ca3af] outline-none transition-all duration-200 focus:border-[#BC9233] focus:bg-white focus:ring-2 focus:ring-[#BC9233]/20 font-medium"
         />
       </div>
 
@@ -75,7 +75,7 @@ export function LoginForm() {
             autoComplete="current-password"
             required
             placeholder="••••••••"
-            className="w-full rounded-xl border border-[#d1d5db] bg-[#f9fafb] pl-4 pr-12 py-3 text-sm text-[#111827] placeholder-[#9ca3af] outline-none transition-all duration-200 focus:border-[#c9a84c] focus:bg-white focus:ring-2 focus:ring-[#c9a84c]/20 font-medium"
+            className="w-full rounded-xl border border-[#d1d5db] bg-[#f9fafb] pl-4 pr-12 py-3 text-sm text-[#111827] placeholder-[#9ca3af] outline-none transition-all duration-200 focus:border-[#BC9233] focus:bg-white focus:ring-2 focus:ring-[#BC9233]/20 font-medium"
           />
           <button
             type="button"

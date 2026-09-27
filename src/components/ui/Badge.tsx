@@ -9,7 +9,7 @@ interface BadgeProps {
 }
 
 const variants: Record<BadgeVariant, string> = {
-  gold:  "bg-[#f5eecf] text-[#a67c2e] border border-[#c9a84c]/40",
+  gold:  "bg-[#f8f0d0] text-[#AD7A2B] border border-[#BC9233]/40",
   green: "bg-green-50 text-green-800 border border-green-200",
   red:   "bg-red-50 text-red-700 border border-red-200",
   gray:  "bg-[#f5f5f5] text-[#4a4a4a] border border-[#e8e3d9]",

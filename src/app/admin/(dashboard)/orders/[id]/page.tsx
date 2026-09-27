@@ -33,9 +33,9 @@ export default async function AdminOrderDetailPage({ params }: Props) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e2e5ee] pb-6">
         <div>
           <nav aria-label="Breadcrumb" className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wider text-[#9ca3af]">
-            <Link href="/admin/orders" className="hover:text-[#c9a84c] transition-colors">Orders</Link>
+            <Link href="/admin/orders" className="hover:text-[#BC9233] transition-colors">Orders</Link>
             <span aria-hidden="true">/</span>
-            <span className="text-[#c9a84c] font-mono">{order.order_number}</span>
+            <span className="text-[#BC9233] font-mono">{order.order_number}</span>
           </nav>
           <h1 className="font-display text-2xl font-bold text-[#111827]">
             Order #{order.order_number}
@@ -47,7 +47,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
 
         <Link
           href="/admin/orders"
-          className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#374151] hover:text-[#c9a84c] hover:border-[#c9a84c]/50 transition-colors self-start sm:self-auto shadow-sm"
+          className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#374151] hover:text-[#BC9233] hover:border-[#BC9233]/50 transition-colors self-start sm:self-auto shadow-sm"
         >
           ← Back to Orders
         </Link>
@@ -109,7 +109,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             </div>
             <div>
               <span className="text-[11px] uppercase text-[#9ca3af] block mb-0.5 font-semibold tracking-wider">Payment Method</span>
-              <span className="text-[#b8913f] font-semibold">
+              <span className="text-[#BC9233] font-semibold">
                 {order.payment_method === "bank_transfer" ? "Direct Bank Transfer" : "Cash on Delivery (COD)"}
               </span>
             </div>
@@ -148,7 +148,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                   <td className="px-6 py-4 text-right text-xs text-[#6b7280]">
                     {formatPrice(item.unit_price_paise)}
                   </td>
-                  <td className="px-6 py-4 text-right font-display font-bold text-[#b8913f]">
+                  <td className="px-6 py-4 text-right font-display font-bold text-[#BC9233]">
                     {formatPrice(item.line_total_paise)}
                   </td>
                 </tr>
@@ -172,7 +172,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             </div>
             <div className="flex justify-between items-baseline border-t border-[#e2e5ee] pt-3 mt-2">
               <span className="font-display font-bold text-[#111827] text-base">Total</span>
-              <span className="font-display text-2xl font-bold text-[#b8913f]">
+              <span className="font-display text-2xl font-bold text-[#BC9233]">
                 {formatPrice(order.total_paise)}
               </span>
             </div>

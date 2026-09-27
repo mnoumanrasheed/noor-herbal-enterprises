@@ -126,7 +126,7 @@ export function CartExperience() {
       <div className="site-shell px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb / Page Title */}
         <div className="border-b border-[#2a2620] pb-6 mb-8">
-          <p className="text-xs uppercase tracking-[0.16em] text-[#c9a84c] mb-1 font-semibold">
+          <p className="text-xs uppercase tracking-[0.16em] text-[#BC9233] mb-1 font-semibold">
             Shopping Cart
           </p>
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#f6f0e7]">
@@ -180,7 +180,7 @@ export function CartExperience() {
                       <div>
                         <h2 className="font-display text-base sm:text-lg font-semibold text-[#f6f0e7]">
                           {quote?.product_slug ? (
-                            <Link href={`/products/${quote.product_slug}`} className="hover:text-[#c9a84c] transition-colors">
+                            <Link href={`/products/${quote.product_slug}`} className="hover:text-[#BC9233] transition-colors">
                               {quote.product_name}
                             </Link>
                           ) : (
@@ -191,7 +191,7 @@ export function CartExperience() {
                           {quote ? `${quote.variant_name}` : "Item currently unavailable"}
                         </p>
                         {quote && (
-                          <p className="font-display text-sm font-semibold text-[#c9a84c] mt-1 sm:hidden">
+                          <p className="font-display text-sm font-semibold text-[#BC9233] mt-1 sm:hidden">
                             {formatPrice(Number(quote.price_paise) * item.quantity)}
                           </p>
                         )}
@@ -213,7 +213,7 @@ export function CartExperience() {
                           type="button"
                           onClick={() => changeQuantity(item.variantId, item.quantity - 1, quote?.stock_quantity)}
                           disabled={item.quantity <= 1 || isItemUnavailable}
-                          className="px-3 py-1.5 text-[#d8d2c7] hover:text-[#c9a84c] disabled:opacity-30 text-sm"
+                          className="px-3 py-1.5 text-[#d8d2c7] hover:text-[#BC9233] disabled:opacity-30 text-sm"
                           aria-label="Decrease quantity"
                         >
                           −
@@ -225,7 +225,7 @@ export function CartExperience() {
                           type="button"
                           onClick={() => changeQuantity(item.variantId, item.quantity + 1, quote?.stock_quantity)}
                           disabled={isItemUnavailable || (quote && item.quantity >= quote.stock_quantity)}
-                          className="px-3 py-1.5 text-[#d8d2c7] hover:text-[#c9a84c] disabled:opacity-30 text-sm"
+                          className="px-3 py-1.5 text-[#d8d2c7] hover:text-[#BC9233] disabled:opacity-30 text-sm"
                           aria-label="Increase quantity"
                         >
                           +
@@ -234,7 +234,7 @@ export function CartExperience() {
 
                       {/* Price (Desktop) */}
                       <div className="hidden sm:block text-right min-w-[100px]">
-                        <p className="font-display text-base font-bold text-[#c9a84c]">
+                        <p className="font-display text-base font-bold text-[#BC9233]">
                           {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "—"}
                         </p>
                         <p className="text-[10px] text-[#6e675d]">
@@ -272,7 +272,7 @@ export function CartExperience() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Delivery Charges</span>
-                  <span className="text-xs text-[#c9a84c] font-semibold bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-2 py-0.5 rounded-full">
+                  <span className="text-xs text-[#BC9233] font-semibold bg-[#BC9233]/10 border border-[#BC9233]/20 px-2 py-0.5 rounded-full">
                     Decided on WhatsApp
                   </span>
                 </div>
@@ -280,7 +280,7 @@ export function CartExperience() {
 
               <div className="flex justify-between items-baseline py-4 border-b border-[#25221d]">
                 <span className="font-display text-lg font-bold text-[#f6f0e7]">Subtotal Total</span>
-                <span className="font-display text-2xl font-bold text-[#c9a84c]">
+                <span className="font-display text-2xl font-bold text-[#BC9233]">
                   {formatPrice(subtotal)}
                 </span>
               </div>

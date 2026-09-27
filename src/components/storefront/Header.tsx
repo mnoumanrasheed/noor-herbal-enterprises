@@ -106,7 +106,7 @@ export function Header({
     >
       {/* Top Announcement Bar */}
       <div className="announcement-bar border-b border-white/5 bg-[#12100e]/40">
-        <div className="site-shell flex min-h-7 items-center justify-center px-4 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#c9a84c] text-center">
+        <div className="site-shell flex min-h-7 items-center justify-center px-4 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#BC9233] text-center">
           {announcementText}
         </div>
       </div>
@@ -129,7 +129,7 @@ export function Header({
             <Link
               href="/categories"
               className={`nav-link inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] font-semibold transition-colors ${
-                pathname.startsWith("/categories") ? "text-[#c9a84c]" : "text-[#e0d8cc] hover:text-[#c9a84c]"
+                pathname.startsWith("/categories") ? "text-[#BC9233]" : "text-[#e0d8cc] hover:text-[#BC9233]"
               }`}
             >
               Collection
@@ -144,7 +144,7 @@ export function Header({
                   <Link
                     key={href}
                     href={href}
-                    className="flex items-center justify-between rounded-lg px-3 py-2 text-xs text-[#d8d2c7] hover:bg-[#201c17] hover:text-[#c9a84c] transition-colors"
+                    className="flex items-center justify-between rounded-lg px-3 py-2 text-xs text-[#d8d2c7] hover:bg-[#201c17] hover:text-[#BC9233] transition-colors"
                   >
                     <span>{label}</span>
                     <span aria-hidden="true" className="text-xs text-[#8e8578]">→</span>
@@ -154,7 +154,7 @@ export function Header({
               <div className="mt-2 border-t border-[#2d2924] pt-2">
                 <Link
                   href="/categories"
-                  className="block text-center text-[11px] font-semibold uppercase tracking-wider text-[#c9a84c] hover:underline py-1"
+                  className="block text-center text-[11px] font-semibold uppercase tracking-wider text-[#BC9233] hover:underline py-1"
                 >
                   View All Categories →
                 </Link>
@@ -167,7 +167,7 @@ export function Header({
               key={href}
               href={href}
               className={`nav-link text-xs uppercase tracking-[0.16em] font-semibold transition-colors ${
-                pathname === href ? "text-[#c9a84c]" : "text-[#e0d8cc] hover:text-[#c9a84c]"
+                pathname === href ? "text-[#BC9233]" : "text-[#e0d8cc] hover:text-[#BC9233]"
               }`}
             >
               {label}
@@ -181,7 +181,7 @@ export function Header({
           <Link
             href="/search"
             aria-label="Search the catalogue"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] hover:border-[#c9a84c]/60 hover:text-[#c9a84c] transition-colors backdrop-blur-sm"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] hover:border-[#BC9233]/60 hover:text-[#BC9233] transition-colors backdrop-blur-sm"
           >
             <SearchIcon className="w-4 h-4" />
           </Link>
@@ -189,12 +189,12 @@ export function Header({
           {/* Cart Icon & Count Badge */}
           <Link
             href="/cart"
-            className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] hover:border-[#c9a84c]/60 hover:text-[#c9a84c] transition-colors backdrop-blur-sm"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] hover:border-[#BC9233]/60 hover:text-[#BC9233] transition-colors backdrop-blur-sm"
             aria-label={`Shopping cart${cartCount ? `, ${cartCount} items` : ""}`}
           >
             <CartIcon className="w-4 h-4" />
             {cartCount > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c9a84c] px-1 text-[9px] font-bold text-[#0e0d0c] shadow">
+              <span className="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#BC9233] px-1 text-[9px] font-bold text-[#0e0d0c] shadow">
                 {cartCount}
               </span>
             )}
@@ -215,7 +215,7 @@ export function Header({
             aria-controls="mobile-menu"
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((open) => !open)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] lg:hidden hover:text-[#c9a84c] transition-colors backdrop-blur-sm"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#3a352d]/60 bg-[#161310]/70 text-[#e0d8cc] lg:hidden hover:text-[#BC9233] transition-colors backdrop-blur-sm"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             <span aria-hidden="true" className="relative block h-4 w-4">
@@ -235,9 +235,9 @@ export function Header({
               <Link
                 href="/search"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#aaa39a] hover:border-[#c9a84c]"
+                className="flex items-center gap-3 rounded-xl border border-[#38332a] bg-[#1a1715] px-4 py-3 text-sm text-[#aaa39a] hover:border-[#BC9233]"
               >
-                <SearchIcon className="w-4 h-4 text-[#c9a84c]" />
+                <SearchIcon className="w-4 h-4 text-[#BC9233]" />
                 <span>Search products, categories...</span>
               </Link>
             </div>
@@ -246,28 +246,28 @@ export function Header({
               <Link
                 href="/categories"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#c9a84c]"
+                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#BC9233]"
               >
                 Collection
               </Link>
               <Link
                 href="/about"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#c9a84c]"
+                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#BC9233]"
               >
                 Our Story
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#c9a84c]"
+                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-white hover:text-[#BC9233]"
               >
                 Contact
               </Link>
               <Link
                 href="/cart"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-[#c9a84c]"
+                className="rounded-lg bg-[#1a1715] p-3 text-sm font-medium text-[#BC9233]"
               >
                 Cart ({cartCount})
               </Link>

@@ -36,7 +36,7 @@ export default async function StorefrontLayout({
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-[#0e0d0c] text-[#f6f0e7] selection:bg-[#c9a84c] selection:text-[#0e0d0c]">
+    <div className="flex min-h-dvh flex-col bg-[#0e0d0c] text-[#f6f0e7] selection:bg-[#BC9233] selection:text-[#0e0d0c]">
       <BrandLoader />
       <Header
         categories={categories.map((c) => ({ name: c.name, slug: c.slug }))}

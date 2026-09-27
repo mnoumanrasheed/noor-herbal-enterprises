@@ -66,7 +66,7 @@ export function Contact3DCanvas() {
     keyLight.position.set(5, 6, 6);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xc9a84c, 2.0);
+    const rimLight = new THREE.DirectionalLight(0xBC9233, 2.0);
     rimLight.position.set(-6, -4, -3);
     scene.add(rimLight);
 
@@ -362,7 +362,7 @@ export function Contact3DCanvas() {
         /* CSS Fallback when WebGL is unsupported or disabled */
         <div className="relative z-10 flex flex-col items-center justify-center text-center p-8">
           <div
-            className="w-48 h-48 rounded-full border border-[#c9a84c]/40 animate-pulse flex items-center justify-center"
+            className="w-48 h-48 rounded-full border border-[#BC9233]/40 animate-pulse flex items-center justify-center"
             style={{
               background: "radial-gradient(circle, rgba(201,168,76,0.28) 0%, rgba(45,30,12,0.6) 70%)",
               boxShadow: "0 0 50px rgba(201,168,76,0.25)",
@@ -379,10 +379,10 @@ export function Contact3DCanvas() {
 
       {/* Floating Art Tag */}
       <div
-        className="absolute bottom-6 right-6 z-20 hidden sm:flex items-center gap-2 rounded-full border border-[#3a352c]/80 bg-[#161412]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#c9a84c] pointer-events-none shadow-lg"
+        className="absolute bottom-6 right-6 z-20 hidden sm:flex items-center gap-2 rounded-full border border-[#3a352c]/80 bg-[#161412]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#BC9233] pointer-events-none shadow-lg"
         aria-hidden="true"
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#BC9233] animate-pulse" />
         Botanical Luxury Atelier
       </div>
     </div>

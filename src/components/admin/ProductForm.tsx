@@ -103,7 +103,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
 
       <div className="admin-form-heading">
         <div>
-          <p className="eyebrow text-xs uppercase tracking-[0.2em] text-[#c9a84c]">{product ? "Edit product" : "New product"}</p>
+          <p className="eyebrow text-xs uppercase tracking-[0.2em] text-[#BC9233]">{product ? "Edit product" : "New product"}</p>
           <h2>{product ? product.name : "Create a product"}</h2>
         </div>
       </div>
@@ -171,11 +171,11 @@ export function ProductForm({ product, categories }: { product?: Product; catego
 
         <div className="flex flex-wrap items-center gap-6 pt-6">
           <label className="admin-checkbox-label cursor-pointer">
-            <input name="isActive" type="checkbox" defaultChecked={product?.is_active ?? true} className="accent-[#c9a84c]" />
+            <input name="isActive" type="checkbox" defaultChecked={product?.is_active ?? true} className="accent-[#BC9233]" />
             Published to Storefront
           </label>
           <label className="admin-checkbox-label cursor-pointer">
-            <input name="isFeatured" type="checkbox" defaultChecked={product?.is_featured ?? false} className="accent-[#c9a84c]" />
+            <input name="isFeatured" type="checkbox" defaultChecked={product?.is_featured ?? false} className="accent-[#BC9233]" />
             Featured Badge
           </label>
         </div>
@@ -203,7 +203,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
 
       {/* Variants & Stock */}
       <div className="admin-section-rule">
-        <p className="eyebrow text-xs uppercase tracking-wider text-[#c9a84c]">Variants and Stock</p>
+        <p className="eyebrow text-xs uppercase tracking-wider text-[#BC9233]">Variants and Stock</p>
         <p className="admin-field-hint mt-1">Configure pricing in PKR and stock quantities per variant.</p>
       </div>
 
@@ -260,7 +260,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
                   type="checkbox"
                   checked={variant.isActive}
                   onChange={(e) => updateVariant(index, "isActive", e.target.checked)}
-                  className="accent-[#c9a84c]"
+                  className="accent-[#BC9233]"
                 />
                 Variant Active
               </label>
@@ -280,7 +280,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
         <button
           type="button"
           onClick={() => setVariants((cur) => [...cur, { name: "", sku: "", price: "", comparePrice: "", weight: "", quantity: "0", lowStockAlert: "5", isActive: true }])}
-          className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2 text-xs font-semibold text-[#374151] hover:border-[#c9a84c] hover:text-[#b8913f] transition-colors shadow-sm"
+          className="rounded-xl border border-[#e2e5ee] bg-white px-4 py-2 text-xs font-semibold text-[#374151] hover:border-[#BC9233] hover:text-[#BC9233] transition-colors shadow-sm"
         >
           + Add Variant Option
         </button>
@@ -288,7 +288,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
 
       {/* Product Images */}
       <div className="admin-section-rule">
-        <p className="eyebrow text-xs uppercase tracking-wider text-[#c9a84c] mb-3">Product Images</p>
+        <p className="eyebrow text-xs uppercase tracking-wider text-[#BC9233] mb-3">Product Images</p>
         <AdminImageUpload images={images} onChange={setImages} multiple />
       </div>
 

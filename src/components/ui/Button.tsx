@@ -12,11 +12,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-[#c9a84c] text-[#0f0f0f] font-semibold hover:bg-[#a67c2e] focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2",
+    "bg-gradient-to-r from-[#AD7A2B] via-[#F1DD7A] to-[#BC9233] text-[#0f0f0f] font-semibold hover:brightness-110 focus-visible:ring-2 focus-visible:ring-[#BC9233] focus-visible:ring-offset-2",
   secondary:
-    "border border-[#c9a84c] text-[#c9a84c] bg-transparent hover:bg-[#f5eecf] focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2",
+    "border border-[#BC9233] text-[#BC9233] bg-transparent hover:bg-[#f8f0d0] focus-visible:ring-2 focus-visible:ring-[#BC9233] focus-visible:ring-offset-2",
   ghost:
-    "text-[#0f0f0f] bg-transparent hover:bg-[#f5eecf] focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2",
+    "text-[#0f0f0f] bg-transparent hover:bg-[#f8f0d0] focus-visible:ring-2 focus-visible:ring-[#BC9233] focus-visible:ring-offset-2",
   danger:
     "bg-[#c0392b] text-white hover:bg-[#96281b] focus-visible:ring-2 focus-visible:ring-[#c0392b] focus-visible:ring-offset-2",
 };

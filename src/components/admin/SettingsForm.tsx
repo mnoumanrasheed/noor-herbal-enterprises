@@ -88,16 +88,16 @@ export function SettingsForm({ settings }: { settings: EditableSettings }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Contact Email</span>
-            <input name="email" type="email" defaultValue={settings.email} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="email" type="email" defaultValue={settings.email} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">WhatsApp / Phone</span>
-            <input name="phone" type="tel" defaultValue={settings.phone} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="phone" type="tel" defaultValue={settings.phone} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
         </div>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Instagram Profile URL</span>
-          <input name="instagram" type="url" defaultValue={settings.instagram} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+          <input name="instagram" type="url" defaultValue={settings.instagram} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
         </label>
       </div>
 
@@ -108,29 +108,29 @@ export function SettingsForm({ settings }: { settings: EditableSettings }) {
         </h2>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Announcement Bar Text</span>
-          <input name="announcementBarText" defaultValue={settings.announcementBarText} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+          <input name="announcementBarText" defaultValue={settings.announcementBarText} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Standard Delivery Flat Fee (PKR)</span>
-            <input name="shippingFeeRs" type="number" defaultValue={settings.shippingFeeRs} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="shippingFeeRs" type="number" defaultValue={settings.shippingFeeRs} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Free Delivery Threshold (PKR)</span>
-            <input name="freeShippingThresholdRs" type="number" defaultValue={settings.freeShippingThresholdRs} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="freeShippingThresholdRs" type="number" defaultValue={settings.freeShippingThresholdRs} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
         </div>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Direct Bank Transfer Details</span>
-          <textarea name="bankTransferDetails" defaultValue={settings.bankTransferDetails} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none font-mono text-xs resize-y" required />
+          <textarea name="bankTransferDetails" defaultValue={settings.bankTransferDetails} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none font-mono text-xs resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Shipping Policy Text</span>
-          <textarea name="shippingPolicy" defaultValue={settings.shippingPolicy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="shippingPolicy" defaultValue={settings.shippingPolicy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Returns & Guarantee Policy Text</span>
-          <textarea name="returnsPolicy" defaultValue={settings.returnsPolicy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="returnsPolicy" defaultValue={settings.returnsPolicy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
       </div>
 
@@ -142,24 +142,24 @@ export function SettingsForm({ settings }: { settings: EditableSettings }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Eyebrow</span>
-            <input name="heroEyebrow" defaultValue={settings.heroEyebrow} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="heroEyebrow" defaultValue={settings.heroEyebrow} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
           <label>
             <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">CTA Button Label</span>
-            <input name="heroCtaLabel" defaultValue={settings.heroCtaLabel} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+            <input name="heroCtaLabel" defaultValue={settings.heroCtaLabel} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
           </label>
         </div>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Headline</span>
-          <input name="heroTitle" defaultValue={settings.heroTitle} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+          <input name="heroTitle" defaultValue={settings.heroTitle} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Hero Supporting Description</span>
-          <textarea name="heroDescription" defaultValue={settings.heroDescription} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="heroDescription" defaultValue={settings.heroDescription} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Collection Category Tag</span>
-          <input name="heroVisualCategory" defaultValue={settings.heroVisualCategory} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+          <input name="heroVisualCategory" defaultValue={settings.heroVisualCategory} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
         </label>
       </div>
 
@@ -170,15 +170,15 @@ export function SettingsForm({ settings }: { settings: EditableSettings }) {
         </h2>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Homepage Catalogue Copy</span>
-          <textarea name="homepageCopy" defaultValue={settings.homepageCopy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="homepageCopy" defaultValue={settings.homepageCopy} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Featured Note</span>
-          <textarea name="featuredContent" defaultValue={settings.featuredContent} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="featuredContent" defaultValue={settings.featuredContent} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Footer Summary Copy</span>
-          <textarea name="footerContent" defaultValue={settings.footerContent} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="footerContent" defaultValue={settings.footerContent} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
       </div>
 
@@ -189,23 +189,23 @@ export function SettingsForm({ settings }: { settings: EditableSettings }) {
         </h2>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Story Heading</span>
-          <input name="storyHeading" defaultValue={settings.storyHeading} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none" required />
+          <input name="storyHeading" defaultValue={settings.storyHeading} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Story Opening Paragraph</span>
-          <textarea name="storyBodyOne" defaultValue={settings.storyBodyOne} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="storyBodyOne" defaultValue={settings.storyBodyOne} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Story Continuation</span>
-          <textarea name="storyBodyTwo" defaultValue={settings.storyBodyTwo} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="storyBodyTwo" defaultValue={settings.storyBodyTwo} rows={3} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Our Mission</span>
-          <textarea name="storyMission" defaultValue={settings.storyMission} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="storyMission" defaultValue={settings.storyMission} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
         <label className="block">
           <span className="field-label text-xs uppercase tracking-wider text-[#a09a8f] block mb-1.5">Our Vision</span>
-          <textarea name="storyVision" defaultValue={settings.storyVision} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#c9a84c] focus:outline-none resize-y" required />
+          <textarea name="storyVision" defaultValue={settings.storyVision} rows={2} className="w-full rounded-xl border border-[#38332a] bg-[#181614] px-4 py-3 text-sm text-white focus:border-[#BC9233] focus:outline-none resize-y" required />
         </label>
 
         <StoryImageField label="Story Opening Image" helper="High quality authentic product photo for opening story block" urlName="storyOpeningImage" publicIdName="storyOpeningImagePublicId" altName="storyOpeningImageAlt" url={settings.storyOpeningImage} publicId={settings.storyOpeningImagePublicId} alt={settings.storyOpeningImageAlt} />

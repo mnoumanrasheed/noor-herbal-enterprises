@@ -37,7 +37,7 @@ export function AdminSidebar() {
         <button
           onClick={() => setCollapsed((c) => !c)}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="flex h-8 w-8 items-center justify-center rounded-md text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#c9a84c] transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-md text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#BC9233] transition-colors"
         >
           {collapsed ? "→" : "←"}
         </button>
@@ -60,7 +60,7 @@ export function AdminSidebar() {
                   className={[
                     "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-sm font-medium transition-all",
                     isActive
-                      ? "bg-[#c9a84c]/10 text-[#b8913f] border border-[#c9a84c]/25"
+                      ? "bg-[#BC9233]/10 text-[#BC9233] border border-[#BC9233]/25"
                       : "text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151]",
                   ].join(" ")}
                 >
@@ -83,7 +83,7 @@ export function AdminSidebar() {
         <Link
           href="/"
           target="_blank"
-          className="flex w-full items-center gap-2 rounded-[8px] border border-[#e2e5ee] bg-[#fafafa] px-3 py-2 text-xs font-medium text-[#c9a84c] hover:border-[#c9a84c]/50 hover:bg-[#c9a84c]/5 transition-colors"
+          className="flex w-full items-center gap-2 rounded-[8px] border border-[#e2e5ee] bg-[#fafafa] px-3 py-2 text-xs font-medium text-[#BC9233] hover:border-[#BC9233]/50 hover:bg-[#BC9233]/5 transition-colors"
         >
           <span>🌐</span>
           {!collapsed && <span>View Live Store ↗</span>}

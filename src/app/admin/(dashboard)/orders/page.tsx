@@ -69,7 +69,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
               { label: "Pending Orders", value: report?.pending_orders ?? 0, color: "text-amber-600", bg: "bg-amber-50", icon: "⏳" },
               { label: "Active Orders", value: report?.active_orders ?? 0, color: "text-blue-600", bg: "bg-blue-50", icon: "🚀" },
               { label: "Delivered Orders", value: report?.delivered_orders ?? 0, color: "text-emerald-600", bg: "bg-emerald-50", icon: "✅" },
-              { label: "Total Revenue", value: formatPrice(report?.total_revenue_paise ?? 0), color: "text-[#b8913f]", bg: "bg-[#c9a84c]/10", icon: "💰" },
+              { label: "Total Revenue", value: formatPrice(report?.total_revenue_paise ?? 0), color: "text-[#BC9233]", bg: "bg-[#BC9233]/10", icon: "💰" },
             ].map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-[#e2e5ee] bg-white p-5 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
@@ -92,7 +92,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
               <Link
                 href="/admin/orders"
                 className={`rounded-xl px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                  !status ? "bg-[#c9a84c] text-white shadow-sm" : "border border-[#e2e5ee] bg-white text-[#6b7280] hover:border-[#c9a84c]/50 hover:text-[#b8913f]"
+                  !status ? "bg-[#BC9233] text-white shadow-sm" : "border border-[#e2e5ee] bg-white text-[#6b7280] hover:border-[#BC9233]/50 hover:text-[#BC9233]"
                 }`}
               >
                 All Orders
@@ -102,7 +102,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                   key={s}
                   href={`/admin/orders?status=${s}${search ? `&search=${encodeURIComponent(search)}` : ""}`}
                   className={`rounded-xl px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                    status === s ? "bg-[#c9a84c] text-white shadow-sm" : "border border-[#e2e5ee] bg-white text-[#6b7280] hover:border-[#c9a84c]/50 hover:text-[#b8913f]"
+                    status === s ? "bg-[#BC9233] text-white shadow-sm" : "border border-[#e2e5ee] bg-white text-[#6b7280] hover:border-[#BC9233]/50 hover:text-[#BC9233]"
                   }`}
                 >
                   {s}
@@ -118,11 +118,11 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                 name="search"
                 defaultValue={search}
                 placeholder="Search order #, customer, phone, city..."
-                className="rounded-xl border border-[#e2e5ee] bg-[#f9fafb] px-4 py-1.5 text-xs text-[#374151] placeholder-[#9ca3af] focus:border-[#c9a84c] focus:outline-none focus:bg-white w-full sm:w-64 transition-colors"
+                className="rounded-xl border border-[#e2e5ee] bg-[#f9fafb] px-4 py-1.5 text-xs text-[#374151] placeholder-[#9ca3af] focus:border-[#BC9233] focus:outline-none focus:bg-white w-full sm:w-64 transition-colors"
               />
               <button
                 type="submit"
-                className="rounded-xl border border-[#e2e5ee] bg-white px-3 py-1.5 text-xs font-semibold text-[#374151] hover:border-[#c9a84c] hover:text-[#b8913f] transition-colors"
+                className="rounded-xl border border-[#e2e5ee] bg-white px-3 py-1.5 text-xs font-semibold text-[#374151] hover:border-[#BC9233] hover:text-[#BC9233] transition-colors"
               >
                 Search
               </button>
@@ -158,7 +158,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                         <td className="px-4 py-3">
                           <Link
                             href={`/admin/orders/${order.id}`}
-                            className="font-mono text-xs font-bold text-[#c9a84c] hover:text-[#b8913f] hover:underline block"
+                            className="font-mono text-xs font-bold text-[#BC9233] hover:text-[#BC9233] hover:underline block"
                           >
                             {order.order_number}
                           </Link>
@@ -198,7 +198,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                             <OrderStatusActions orderId={order.id} status={order.status} />
                             <Link
                               href={`/admin/orders/${order.id}`}
-                              className="rounded-lg border border-[#e2e5ee] bg-white px-3 py-1 text-xs font-semibold text-[#374151] hover:border-[#c9a84c] hover:text-[#b8913f] transition-colors"
+                              className="rounded-lg border border-[#e2e5ee] bg-white px-3 py-1 text-xs font-semibold text-[#374151] hover:border-[#BC9233] hover:text-[#BC9233] transition-colors"
                             >
                               Details →
                             </Link>
