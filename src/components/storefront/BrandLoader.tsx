@@ -8,7 +8,9 @@ const FADE_DURATION = 420;
 
 /** A one-time, CSS-driven brand reveal for the storefront. */
 export function BrandLoader() {
-  const [visible, setVisible] = useState(false);
+  // Start visible so the overlay is part of the server-rendered HTML. Starting
+  // from `false` made the storefront flash briefly before hydration showed it.
+  const [visible, setVisible] = useState(true);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
@@ -16,9 +18,10 @@ export function BrandLoader() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion) return;
-
-    setVisible(true);
+    if (prefersReducedMotion) {
+      setVisible(false);
+      return;
+    }
 
     let fadeTimer: ReturnType<typeof setTimeout> | undefined;
     const exitTimer = setTimeout(() => {
