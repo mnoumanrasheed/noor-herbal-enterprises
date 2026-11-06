@@ -69,3 +69,13 @@ There is no custom `vercel.json`; Vercel detects this as a standard Next.js app.
 - `AUTH_URL` and `NEXT_PUBLIC_SITE_URL` — the deployed site URL.
 
 `ADMIN_PASSWORD` is required only while running `npm run db:seed` to create the first admin. It is not needed by the running app after that step. Run migrations from a controlled local/CI environment before deployment; do not run seed or migrations automatically during a Vercel build.
+
+## Temporarily pausing the storefront
+
+The site includes a reversible maintenance mode instead of an intentional 404. In Vercel, set `STOREFRONT_MODE` to `maintenance` and redeploy. Public storefront pages will return a clear `503 Service Unavailable` page, while `/admin` remains available. To restore the site, set `STOREFRONT_MODE=live` (or remove the variable) and redeploy.
+
+Recovery prompt for a future developer or assistant:
+
+```text
+This Next.js project uses an environment-controlled maintenance mode. Restore the public storefront by setting STOREFRONT_MODE=live in Vercel Project Settings → Environment Variables for the correct environment, then redeploy the latest commit. Keep /admin protected and do not add an intentional 404 or hidden failure mechanism. Verify the home page returns 200 and the maintenance page is no longer served.
+```
