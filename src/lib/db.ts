@@ -48,7 +48,7 @@ export const sql = new Proxy((() => undefined) as unknown as SqlClient, {
   },
 });
 
-/** pg-compatible Pool — used by NextAuth adapter and bulk operations */
+/** pg-compatible Pool: used by NextAuth adapter and bulk operations */
 let _pool: Pool | null = null;
 export function getPool(): Pool {
   if (!_pool) {

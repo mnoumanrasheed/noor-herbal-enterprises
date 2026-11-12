@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getCategoryById } from "@/lib/queries";
 import { CategoryForm } from "@/components/admin/CategoryForm";
 
-export const metadata: Metadata = { title: "Edit Category — Admin" };
+export const metadata: Metadata = { title: "Edit Category | Admin" };
 
 export default async function EditCategoryPage({ params }: { params: Promise<{ id: string }> }) {
   const category = await getCategoryById((await params).id);

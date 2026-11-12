@@ -102,7 +102,7 @@ export async function createInquiry(_previous: InquiryState, formData: FormData)
       "Items:",
       ...normalized.map((line) => {
         const quantity = quantities.get(line.variantId) ?? 0;
-        return `• ${line.productName} — ${line.variantName} × ${quantity} @ ${formatPrice(line.pricePaise)} = ${formatPrice(line.pricePaise * quantity)}`;
+        return `• ${line.productName} (${line.variantName}) × ${quantity} @ ${formatPrice(line.pricePaise)} = ${formatPrice(line.pricePaise * quantity)}`;
       }),
       "",
       `Subtotal: ${formatPrice(subtotal)}`,

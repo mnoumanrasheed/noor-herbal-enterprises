@@ -17,7 +17,7 @@ import {
 import type { Category, Product } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Noor Herbal Enterprises — Pure, Handcrafted Botanical & Pantry Essentials",
+  title: "Noor Herbal Enterprises: Pure, Handcrafted Botanical & Pantry Essentials",
   description:
     "Discover authentic traditional chutneys, artisanal pickles, nourishing botanical hair oils, and herbal shampoos handcrafted in Pakistan.",
 };
@@ -54,13 +54,13 @@ export default async function HomePage() {
         Skip to main content
       </a>
 
-      {/* Viewport-Correct Cinematic Hero — height = 100svh minus sticky header */}
+      {/* Viewport-Correct Cinematic Hero: height = 100svh minus sticky header */}
       <section
         aria-labelledby="hero-heading"
         className="viewport-hero flex flex-col border-b border-[#2d2924]"
         style={{ background: "#080706" }}
       >
-        {/* ── 1. Full-Bleed Background Video — vibrant and visible ── */}
+        {/* ── 1. Full-Bleed Background Video: vibrant and visible ── */}
         <video
           src="/hero-video.mp4"
           poster="/hero-poster.jpg"
@@ -114,7 +114,7 @@ export default async function HomePage() {
           }}
         />
 
-        {/* ── 4. Hero Content — flex-centered inside available viewport area ── */}
+        {/* ── 4. Hero Content: flex-centered inside available viewport area ── */}
         <div className="viewport-hero-inner site-shell">
           <div className="max-w-[680px] space-y-5 sm:space-y-6">
             
@@ -126,7 +126,7 @@ export default async function HomePage() {
               </span>
             </div>
 
-            {/* Headline — larger, bolder, white */}
+            {/* Headline: larger, bolder, white */}
             <h1
               id="hero-heading"
               className="font-display font-bold tracking-tight text-white mt-3"
@@ -144,7 +144,7 @@ export default async function HomePage() {
               </span>
             </h1>
 
-            {/* Supporting Paragraph — larger, crisp white */}
+            {/* Supporting Paragraph: larger, crisp white */}
             <p
               className="hero-para-anim text-[#f0ebe2] font-normal leading-relaxed mt-4 max-w-[520px]"
               style={{ fontSize: "clamp(16px, 1.3vw, 20px)" }}
@@ -152,7 +152,7 @@ export default async function HomePage() {
               Discover authentic chutneys, pickles, oils, and herbal essentials crafted with care for everyday kitchens, shelves, and routines.
             </p>
 
-            {/* CTA Buttons — larger */}
+            {/* CTA Buttons: larger */}
             <div className="hero-cta-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 href="/categories"
@@ -242,7 +242,7 @@ export default async function HomePage() {
             Rooted in Authentic Rituals. Prepared With Honest Care.
           </h2>
           <p className="text-base sm:text-lg text-[#bfb7aa] leading-relaxed max-w-2xl mx-auto">
-            From authentic Aloo Bukhara chutney and traditional mango pickles shared around dinner tables, to pure herbal hair oils and shampoos created for daily rejuvenation—our creations honor time-tested heritage.
+            From authentic Aloo Bukhara chutney and traditional mango pickles shared around dinner tables to pure herbal hair oils and shampoos created for daily rejuvenation, our creations honor time-tested heritage.
           </p>
           <div className="pt-4">
             <Link href="/about" className="button-primary px-8 py-3.5 text-xs uppercase tracking-[0.18em]">

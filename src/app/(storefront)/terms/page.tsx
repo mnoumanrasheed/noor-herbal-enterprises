@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Noor Herbal Enterprises",
+  title: "Terms & Conditions | Noor Herbal Enterprises",
   description: "Terms and conditions of service for purchases and use of the Noor Herbal Enterprises website.",
 };
 

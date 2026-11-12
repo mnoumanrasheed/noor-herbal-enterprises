@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAllCategories } from "@/lib/queries";
 import { ProductForm } from "@/components/admin/ProductForm";
 
-export const metadata: Metadata = { title: "New Product — Admin" };
+export const metadata: Metadata = { title: "New Product | Admin" };
 
 export default async function NewProductPage() {
   const categories = await getAllCategories();

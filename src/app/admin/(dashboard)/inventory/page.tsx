@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { InventoryTable } from "@/components/admin/InventoryTable";
 import { getInventoryOverview, type InventoryItemRow } from "@/lib/queries";
 
-export const metadata: Metadata = { title: "Inventory & Stock Management — Admin" };
+export const metadata: Metadata = { title: "Inventory & Stock Management | Admin" };
 
 export default async function AdminInventoryPage() {
   let inventory: InventoryItemRow[] = [];

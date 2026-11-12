@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Noor Herbal Enterprises",
+  title: "Privacy Policy | Noor Herbal Enterprises",
   description: "Privacy and data protection principles for Noor Herbal Enterprises.",
 };
 

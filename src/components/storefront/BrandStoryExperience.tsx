@@ -54,7 +54,7 @@ const BRAND_VALUES = [
     num: "04",
     tag: "HONESTY",
     title: "Honest & Transparent",
-    desc: "No artificial dyes or hidden fillers — just honest, pure quality in every single batch.",
+    desc: "No artificial dyes or hidden fillers, just honest, pure quality in every single batch.",
   },
 ];
 
@@ -242,7 +242,7 @@ export function BrandStoryExperience({ story }: { story: BrandStoryContent }) {
         </div>
       </section>
 
-      {/* ── 4. Mission & Vision — Balanced 2-Column Luxury Grid ── */}
+      {/* ── 4. Mission & Vision: Balanced 2-Column Luxury Grid ── */}
       <section aria-labelledby="purpose-heading" className="py-20 border-b border-[#25221d] bg-[#0c0b09]">
         <div className="site-shell px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-2">

@@ -909,7 +909,7 @@ button.product-variant { cursor: pointer; }
   color: #f4efe6;
 }
 
-/* Category / contact page headings — slightly smaller */
+/* Category / contact page headings: slightly smaller */
 .hero-h1-sub {
   font-family: var(--font-display, Georgia, serif);
   font-size: clamp(36px, 4.4vw, 66px);

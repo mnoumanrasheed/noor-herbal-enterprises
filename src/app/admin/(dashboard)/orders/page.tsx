@@ -5,7 +5,7 @@ import { formatPrice, type Order, type OrderItem, type OrderStatus, type Payment
 import { Badge } from "@/components/ui/Badge";
 import { OrderStatusActions } from "@/components/admin/OrderStatusActions";
 
-export const metadata: Metadata = { title: "Order Management — Admin" };
+export const metadata: Metadata = { title: "Order Management | Admin" };
 
 const statusVariant: Record<OrderStatus, "gold" | "green" | "red" | "blue" | "gray"> = {
   pending: "gold",
@@ -174,7 +174,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                           {order.city}
                         </td>
                         <td className="px-4 py-3 text-xs text-[#6b7280] max-w-xs truncate">
-                          {order.items?.map((item: OrderItem) => `${item.product_name} (${item.variant_name} × ${item.quantity})`).join(", ") || "—"}
+                          {order.items?.map((item: OrderItem) => `${item.product_name} (${item.variant_name} × ${item.quantity})`).join(", ") || "No items"}
                         </td>
                         <td className="px-4 py-3 font-display font-bold text-[#111827] text-xs">
                           {formatPrice(order.total_paise)}

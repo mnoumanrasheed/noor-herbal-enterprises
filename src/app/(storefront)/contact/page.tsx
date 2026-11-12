@@ -4,7 +4,7 @@ import { DEFAULT_CONTACT_SETTINGS, type ContactSettings } from "@/lib/site-setti
 import { ContactExperience } from "@/components/storefront/ContactExperience";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Noor Herbal Enterprises",
+  title: "Contact Us | Noor Herbal Enterprises",
   description:
     "Get in touch with Noor Herbal Enterprises for product inquiries, customer support, collaborations, or order assistance via WhatsApp, Email, or Instagram.",
 };

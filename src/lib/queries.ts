@@ -1,6 +1,6 @@
 /**
  * Server-side data access helpers.
- * All functions in this file are SERVER-ONLY — they talk directly to the DB.
+ * All functions in this file are SERVER-ONLY: they talk directly to the DB.
  * Do NOT import this file from client components.
  */
 
@@ -119,7 +119,7 @@ export async function getBrandStoryContent(): Promise<BrandStoryContent> {
     bodyOne: values.story_body_one || DEFAULT_BRAND_STORY_CONTENT.bodyOne,
     bodyTwo: values.story_body_two || DEFAULT_BRAND_STORY_CONTENT.bodyTwo,
     mission: values.story_mission || DEFAULT_BRAND_STORY_CONTENT.mission,
-    vision: values.story_vision || DEFAULT_BRAND_STORY_CONTENT.vision,
+    vision: (values.story_vision || DEFAULT_BRAND_STORY_CONTENT.vision).replace(/[ \t]*\u2014[ \t]*/g, ", "),
     openingImage: values.story_opening_image || DEFAULT_BRAND_STORY_CONTENT.openingImage,
     openingImageAlt: values.story_opening_image_alt || DEFAULT_BRAND_STORY_CONTENT.openingImageAlt,
     openingImagePublicId: values.story_opening_image_public_id || null,

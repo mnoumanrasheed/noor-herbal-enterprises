@@ -1,5 +1,5 @@
 /**
- * NextAuth v5 configuration — Credentials provider only.
+ * NextAuth v5 configuration: Credentials provider only.
  *
  * Strategy: JWT sessions (no database sessions table needed at runtime).
  * The admin user's email + bcrypt hash is stored in admin_users table.
@@ -31,7 +31,7 @@ export const authConfig: NextAuthConfig = {
   },
   callbacks: {
     /**
-     * jwt callback — runs when token is created/refreshed.
+     * jwt callback: runs when token is created/refreshed.
      * Embeds the user id and role so we can check it in middleware
      * without hitting the DB on every request.
      */
@@ -43,17 +43,17 @@ export const authConfig: NextAuthConfig = {
       return token;
     },
     /**
-     * session callback — shapes what client components see via useSession().
+     * session callback: shapes what client components see via useSession().
      * We expose only non-sensitive fields.
      */
     session({ session, token }) {
       session.user.id = token.id as string;
-      // @ts-expect-error — role is not in the default Session type
+      // @ts-expect-error: role is not in the default Session type
       session.user.role = token.role;
       return session;
     },
     /**
-     * authorized callback — runs in middleware to gate routes.
+     * authorized callback: runs in middleware to gate routes.
      */
     authorized({ auth, request }) {
       const pathname = request.nextUrl.pathname;
@@ -82,7 +82,7 @@ export const authConfig: NextAuthConfig = {
         // This keeps an unexpected additional database row from becoming an admin.
         if (!isConfiguredAdmin(email)) return null;
 
-        // Query admin_users — server-only, never exposed to client
+        // Query admin_users: server-only, never exposed to client
         const rows = await sql`
           SELECT id, email, name, password_hash
           FROM admin_users

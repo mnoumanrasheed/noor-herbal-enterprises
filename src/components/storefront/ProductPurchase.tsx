@@ -162,7 +162,7 @@ export function ProductPurchase({
         ) : isLowStock ? (
           <>
             <span className="h-2.5 w-2.5 rounded-full bg-amber-500 animate-pulse" />
-            <span className="text-amber-400 font-medium">Low Stock — Only {stock} remaining</span>
+            <span className="text-amber-400 font-medium">Low Stock: Only {stock} remaining</span>
           </>
         ) : (
           <>

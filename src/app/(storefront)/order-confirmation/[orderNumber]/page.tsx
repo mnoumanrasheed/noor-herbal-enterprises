@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "Order Confirmation — Noor Herbal Enterprises",
+  title: "Order Confirmation | Noor Herbal Enterprises",
   description: "Thank you for your order with Noor Herbal Enterprises.",
 };
 

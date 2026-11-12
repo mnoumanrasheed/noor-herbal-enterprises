@@ -1,5 +1,5 @@
 // =============================================================
-// Noor Herbal Enterprises — Shared Domain Types
+// Noor Herbal Enterprises: Shared Domain Types
 // =============================================================
 
 export interface Category {

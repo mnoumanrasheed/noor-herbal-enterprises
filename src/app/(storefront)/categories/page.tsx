@@ -4,7 +4,7 @@ import { CategoryShowcase } from "@/components/storefront/CategoryShowcase";
 import { getCategoryShowcases } from "@/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Shop the Collection — Noor Herbal Enterprises",
+  title: "Shop the Collection | Noor Herbal Enterprises",
   description: "Explore handcrafted chutneys, pickles, oils, and herbal care created with tradition, care, and everyday use in mind.",
 };
 

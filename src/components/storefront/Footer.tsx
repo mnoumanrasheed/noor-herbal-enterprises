@@ -33,7 +33,7 @@ export function Footer({ contactSettings = DEFAULT_CONTACT_SETTINGS, footerConte
       <div className="site-shell px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.7fr_1fr_1fr_1.4fr] lg:gap-10">
           <div>
-            <Link href="/" aria-label="Noor Herbal Enterprises — go to homepage" className="inline-block rounded-md bg-white p-1.5">
+            <Link href="/" aria-label="Noor Herbal Enterprises, go to homepage" className="inline-block rounded-md bg-white p-1.5">
               <Logo size={48} />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-7 text-[#aaa39a]">{footerContent}</p>

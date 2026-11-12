@@ -5,7 +5,7 @@ import { getActiveCategories, searchProducts } from "@/lib/queries";
 import type { CatalogSortOption } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Search Catalogue — Noor Herbal Enterprises",
+  title: "Search Catalogue | Noor Herbal Enterprises",
   description: "Search our pure, handcrafted botanical collection and traditional pantry favourites.",
 };
 

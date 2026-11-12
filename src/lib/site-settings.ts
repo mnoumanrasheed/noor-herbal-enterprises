@@ -71,7 +71,7 @@ export const DEFAULT_BRAND_STORY_CONTENT = {
   bodyOne: "Noor Herbal Enterprises brings together two parts of daily life: the flavours we share and the care we give ourselves. From chutneys and pickles at the table to hair oil and shampoo in our personal care range, our collection is made for familiar routines and meaningful moments.",
   bodyTwo: "We believe a good product should feel considered from the moment you discover it. That belief shapes how we present our collection: with clarity, warmth, and attention to detail. Whether you are choosing something for a meal or for your daily care routine, we want the experience to feel simple, personal, and worth returning to.",
   mission: "To bring thoughtfully presented food and personal care products into everyday life, while making it easy for customers to discover, choose, and order with confidence.",
-  vision: "To build Noor Herbal Enterprises into a trusted name for everyday favourites—known for a distinctive collection, a welcoming shopping experience, and lasting relationships with customers.",
+  vision: "To build Noor Herbal Enterprises into a trusted name for everyday favourites, known for a distinctive collection, a welcoming shopping experience, and lasting relationships with customers.",
   openingImage: "/images/products/noor-herbal-hair-oil.jpeg",
   openingImageAlt: "Noor Herbal hair oil bottle",
   missionImage: "/images/products/aloo-bukharay-ki-chutney.jpeg",

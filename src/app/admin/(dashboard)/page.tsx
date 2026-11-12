@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAdminDashboardSummary } from "@/lib/queries";
 
-export const metadata: Metadata = { title: "Admin Dashboard — Noor Herbal Enterprises" };
+export const metadata: Metadata = { title: "Admin Dashboard | Noor Herbal Enterprises" };
 
 export default async function AdminDashboardPage() {
   let summary = {

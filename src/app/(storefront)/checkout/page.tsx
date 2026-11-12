@@ -313,7 +313,7 @@ export default function CheckoutPage() {
                       </p>
                     </div>
                     <p className="font-display text-sm font-semibold text-[#BC9233]">
-                      {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "—"}
+                      {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "Unavailable"}
                     </p>
                   </div>
                 ))}

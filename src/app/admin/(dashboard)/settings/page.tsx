@@ -8,7 +8,7 @@ import {
 } from "@/lib/site-settings";
 import { SettingsForm, type EditableSettings } from "@/components/admin/SettingsForm";
 
-export const metadata: Metadata = { title: "Site & Store Settings — Admin" };
+export const metadata: Metadata = { title: "Site & Store Settings | Admin" };
 
 async function getEditableSettings(): Promise<EditableSettings> {
   const rows = await sql`
@@ -56,7 +56,7 @@ async function getEditableSettings(): Promise<EditableSettings> {
     storyBodyOne: values.story_body_one || DEFAULT_BRAND_STORY_CONTENT.bodyOne,
     storyBodyTwo: values.story_body_two || DEFAULT_BRAND_STORY_CONTENT.bodyTwo,
     storyMission: values.story_mission || DEFAULT_BRAND_STORY_CONTENT.mission,
-    storyVision: values.story_vision || DEFAULT_BRAND_STORY_CONTENT.vision,
+    storyVision: (values.story_vision || DEFAULT_BRAND_STORY_CONTENT.vision).replace(/[ \t]*\u2014[ \t]*/g, ", "),
     storyOpeningImage: values.story_opening_image || DEFAULT_BRAND_STORY_CONTENT.openingImage,
     storyOpeningImageAlt: values.story_opening_image_alt || DEFAULT_BRAND_STORY_CONTENT.openingImageAlt,
     storyOpeningImagePublicId: values.story_opening_image_public_id || "",

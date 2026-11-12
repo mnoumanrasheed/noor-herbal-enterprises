@@ -1,5 +1,5 @@
 /**
- * Next.js 16 Proxy (formerly Middleware) — handles admin route protection.
+ * Next.js 16 Proxy (formerly Middleware): handles admin route protection.
  *
  * Uses NextAuth v5's `auth` helper.
  * Unauthenticated requests to /admin/* (except /admin/login) are

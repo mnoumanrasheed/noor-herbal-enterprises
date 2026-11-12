@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getAllCategories, getProductById } from "@/lib/queries";
 import { ProductForm } from "@/components/admin/ProductForm";
 
-export const metadata: Metadata = { title: "Edit Product — Admin" };
+export const metadata: Metadata = { title: "Edit Product | Admin" };
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id;

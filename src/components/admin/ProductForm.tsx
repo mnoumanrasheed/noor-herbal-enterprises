@@ -96,7 +96,7 @@ export function ProductForm({ product, categories }: { product?: Product; catego
   return (
     <form action={action} className="admin-form-card space-y-8">
       {product && <input type="hidden" name="id" value={product.id} />}
-      {/* Slug auto-generated from name — hidden but still needed for routing */}
+      {/* Slug auto-generated from name: hidden but still needed for routing */}
       <input type="hidden" name="slug" value={product?.slug || autoSlug} />
       <input type="hidden" name="images" value={JSON.stringify(images)} />
       <input type="hidden" name="variants" value={serializedVariants} />

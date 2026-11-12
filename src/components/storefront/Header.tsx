@@ -116,7 +116,7 @@ export function Header({
         {/* Brand Logo (Links to Home) */}
         <Link
           href="/"
-          aria-label="Noor Herbal Enterprises — go to homepage"
+          aria-label="Noor Herbal Enterprises, go to homepage"
           className="site-brand-link flex items-center"
         >
           <Logo size={48} />

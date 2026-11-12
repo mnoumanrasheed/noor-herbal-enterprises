@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
     const category = await getCategoryBySlug(slug);
-    if (!category) return { title: "Collection not found — Noor Herbal Enterprises" };
+    if (!category) return { title: "Collection not found | Noor Herbal Enterprises" };
 
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://noor-herbal-enterprises.vercel.app";
-    const title = `${category.name} Collection — Noor Herbal Enterprises`;
+    const title = `${category.name} Collection | Noor Herbal Enterprises`;
     const description =
       category.description ||
       `Discover pure and handcrafted ${category.name.toLowerCase()} products from Noor Herbal Enterprises.`;
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   } catch {
-    return { title: "Collection — Noor Herbal Enterprises" };
+    return { title: "Collection | Noor Herbal Enterprises" };
   }
 }
 

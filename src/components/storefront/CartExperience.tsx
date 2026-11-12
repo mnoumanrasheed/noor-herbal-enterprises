@@ -235,7 +235,7 @@ export function CartExperience() {
                       {/* Price (Desktop) */}
                       <div className="hidden sm:block text-right min-w-[100px]">
                         <p className="font-display text-base font-bold text-[#BC9233]">
-                          {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "—"}
+                          {quote ? formatPrice(Number(quote.price_paise) * item.quantity) : "Unavailable"}
                         </p>
                         <p className="text-[10px] text-[#6e675d]">
                           {quote ? `${formatPrice(Number(quote.price_paise))} each` : ""}

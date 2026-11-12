@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getAllCategories } from "@/lib/queries";
 import { Badge } from "@/components/ui/Badge";
 
-export const metadata: Metadata = { title: "Categories — Admin" };
+export const metadata: Metadata = { title: "Categories | Admin" };
 
 export default async function AdminCategoriesPage() {
   let categories: Awaited<ReturnType<typeof getAllCategories>> = [];
