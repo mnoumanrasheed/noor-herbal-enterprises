@@ -70,12 +70,20 @@ There is no custom `vercel.json`; Vercel detects this as a standard Next.js app.
 
 `ADMIN_PASSWORD` is required only while running `npm run db:seed` to create the first admin. It is not needed by the running app after that step. Run migrations from a controlled local/CI environment before deployment; do not run seed or migrations automatically during a Vercel build.
 
-## Temporarily pausing the storefront
+## Going live after maintenance
 
-The site includes a reversible maintenance mode instead of an intentional 404. In Vercel, set `STOREFRONT_MODE` to `maintenance` and redeploy. Public storefront pages will return a clear `503 Service Unavailable` page, while `/admin` remains available. To restore the site, set `STOREFRONT_MODE=live` (or remove the variable) and redeploy.
+The temporary maintenance mode has been removed. Public pages now serve the storefront, and `/maintenance` redirects to `/`. Authentication still protects `/admin` and `/api/admin`. This version does not read `STOREFRONT_MODE`, so an old maintenance value cannot pause the storefront after this code is deployed.
 
-Recovery prompt for a future developer or assistant:
+1. In the Vercel project, open **Settings -> Environment Variables**. Set `STOREFRONT_MODE` to `live` for **Production**, or remove it. This also restores normal behavior if an older version is redeployed. Clear any Preview override if you use preview deployments.
+2. Commit and push these code changes to the connected production branch (`main` for this checkout):
 
-```text
-This Next.js project uses an environment-controlled maintenance mode. Restore the public storefront by setting STOREFRONT_MODE=live in Vercel Project Settings → Environment Variables for the correct environment, then redeploy the latest commit. Keep /admin protected and do not add an intentional 404 or hidden failure mechanism. Verify the home page returns 200 and the maintenance page is no longer served.
-```
+   ```bash
+   git add src/middleware.ts src/app/maintenance/page.tsx .env.example README.md
+   git commit -m "Restore public storefront after maintenance"
+   git push origin main
+   ```
+
+3. In **Deployments**, wait for the deployment of that new commit to become **Ready** with the **Production** environment. If a manual redeploy is needed, use the Production deployment containing the new commit, open its **...** menu, and select **Redeploy**. Redeploying an older commit does not include these local code changes. Environment variable changes only apply to new deployments.
+4. Open the production domain in a private browser window. Confirm the home page returns HTTP `200` and displays the actual storefront, not "We'll be back soon." Check categories, a product, and the cart. `/maintenance` should redirect to the home page, and visiting `/admin` while signed out should redirect to `/admin/login`.
+
+Keep the existing database, authentication, and Cloudinary variables. No database migration or seed is needed for this restoration.
